@@ -1,0 +1,36 @@
+说明文档：
+
+///////////////////////////////////////////////////////
+
+字符集 utf-8
+默认主页为 login.html
+在使用前需配置inc.php中的数据库信息
+需支持php `short open tag`（即<? ?>默认为<?php  ?>）
+
+//////////////////////////////////////////////////////
+
+使用步骤：
+
+1、将除“说明.txt”文件以外的所有文件复制到根目录下
+2、配置inc.php  (这个就不用多说了吧，很简单的:)
+3、打开phpmyadmin，在对应的数据库中导入下表
+
+CREATE TABLE `member` (
+  `member_account` varchar(25) collate utf8_unicode_ci NOT NULL,
+  `member_password` varchar(32) collate utf8_unicode_ci NOT NULL,
+  `member_name` varchar(20) collate utf8_unicode_ci NOT NULL,
+  `sex` varchar(1) collate utf8_unicode_ci NOT NULL,
+  `schoolnumber` varchar(10) collate utf8_unicode_ci NOT NULL,
+  `phonenumber` varchar(15) collate utf8_unicode_ci NOT NULL,
+  `email` varchar(50) collate utf8_unicode_ci NOT NULL,
+  UNIQUE KEY `member_account` (`member_account`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+4、在浏览器中打开login.html看看
+
+/////////////////////////////////////////////////////////
+                                                  
+                                                by victor
+
+
+
