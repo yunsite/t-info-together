@@ -1,28 +1,51 @@
 <?php
+
 	/*
-	*	Description: 数据库配置文件
+	*	Description:	数据库配置类
+	*
 	*
 	*/
 	class db_config{
-			public $db_server;
-			public $db_username;
-			public $db_userpass;
-			public $link = '';
 			
-			//初始化数据库配置参数
+
+			public $db_server;		//数据库服务器地址
+			public $db_username;	//数据库用户名
+			public $db_userpass;	//数据库用户密码
+			public $link = '';		//数据库连接
+			
+			/*	()
+			*	@Description:	初始化数据库->服务器地址,用户名,密码
+
+				@param	$server	数据库服务器地址	|	127.0.0.1
+						$user	数据库用户名		|	root
+						$pass	数据库用户密码		|	
+			*
+			*
+			*/
 			public function __construct($server = '127.0.0.1',$user = 'root',$pass = ''){
+
 				$this -> db_server = $server;
 				$this -> db_username = $user;
 				$this -> db_userpass = $pass;
+
 			}
 			
-			//连接数据库
+			/*	()
+			*	@Description:	连接数据库
+
+				@param	none
+			*
+			*
+			*/
 			public function db_conn(){
-				$this -> link = mysql_connect( $this->db_server, $this->db_username, $this->db_userpass);
+				
+				//打开一个到 MySQL 服务器的连接
+				$this -> link = mysql_connect( $this->db_server, $this->db_username, $this->db_userpass );
 				if(!$this->link){
 					$this -> link = '';
-					die('Could not connect to Mysql: '.mysql_error());
-					}
+					die('不能连接到Mysql: '.mysql_error());
+				}
+
 				if( !(mysql_query( 'USE library' )) ){
 					die("连接出错，不能正确连接数据库，错误信息：".mysql_error());
 				}
@@ -31,7 +54,13 @@
 				}
 			}
 			
-			//关闭数据库连接
+			/*	()
+			*	@Description:	关闭数据库连接
+
+				@param	none
+			*
+			*
+			*/
 			public function db_close(){
 				mysql_close( $this->link );
 			}
@@ -98,6 +127,15 @@
 			* @Param $columns 操作列
 			* @Param $conditions 条件
 			* @return $result 从结果集查询
+			*/
+			/*	()
+			*	@Description:	查询记录
+
+				@param	$table		操作的表	|	127.0.0.1
+						$columns	操作的列		|	root
+						$conditions	查询条件		|	
+			*
+			*
 			*/
 			public function db_select( $table,$columns = '*',$conditions = '' ){
 				
