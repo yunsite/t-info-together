@@ -1,7 +1,10 @@
 <?php
 	/*
 	*	@Description:	模拟QQ登陆
-	*	@Reference:	http://jucelin.com/php-crul-for-qq-login.html
+	*	@Reference:	
+			http://jucelin.com/php-crul-for-qq-login.html
+			http://qq.jucelin.com/
+			http://jucelin.com/qqonline-update1.html
 	*
 	*
 	*/
@@ -53,4 +56,6 @@
 	curl_close($curl);
 	
 	echo $result;
+
+	//增加PHP获取当前URL,然后记录SID
 ?>
