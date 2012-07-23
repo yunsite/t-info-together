@@ -61,6 +61,7 @@ CREATE TABLE t_drycomm
 
 #----------------------------------------用户模块---------------------------------------------------
 
+#用户基本表
 CREATE TABLE t_member
 (
 
@@ -81,12 +82,20 @@ CREATE TABLE t_member
 
 )DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
 
+#用户(权限)分组表
+CREATE TABLE t_mempermit
+(
+	per_id		INT		NOT NULL	AUTO_INCREMENT,
+	per_name	VARCHAR(12)	NOT NULL,
+	PRIMARY KEY(per_id)
 
+)DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
 
 #----------------------------------------End(用户模块)----------------------------------------------
 
 #----------------------------------------消息模块---------------------------------------------------
 
+#消息表
 CREATE TABLE t_message
 (
 
