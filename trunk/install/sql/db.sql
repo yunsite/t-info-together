@@ -85,6 +85,27 @@ CREATE TABLE t_member
 
 #----------------------------------------End(用户模块)----------------------------------------------
 
+#----------------------------------------消息模块---------------------------------------------------
+
+CREATE TABLE t_message
+(
+
+	msg_id			INT		NOT NULL	AUTO_INCREMENT,
+	msg_senderid		INT		NOT NULL,
+	msg_receiverid		INT		NOT NULL,
+	msg_title		VARCHAR(24)	NOT NULL,
+	msg_content		TEXT		NOT NULL,
+	msg_time		INT		NOT NULL,
+	msg_type		BIT(3)		NOT NULL	DEFAULT 0,
+	msg_replyfatherid	INT		NOT NULL,
+	PRIMARY KEY(msg_id)
+
+)DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
+
+
+
+#----------------------------------------End(消息模块)----------------------------------------------
+
 
 #-----------------------------------------百度官方新闻(Over)---------------------------------------------------------
 
