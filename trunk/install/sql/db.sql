@@ -59,7 +59,31 @@ CREATE TABLE t_drycomm
 
 #----------------------------------------End(日志模块)---------------------------------------------------
 
+#----------------------------------------用户模块---------------------------------------------------
 
+CREATE TABLE t_member
+(
+
+	mem_id		INT		NOT NULL	AUTO_INCREMENT,
+	mem_name	VARCHAR(10)	NOT NULL,
+	mem_pwd		VARCHAR(64)	NOT NULL,
+	mem_group	BIT(3)		NOT NULL	DEFAULT 0,
+	mem_qq		VARCHAR(12)	NOT NULL	DEFAULT '',
+	mem_email	VARCHAR(100)	NOT NULL	DEFAULT '',
+	mem_sign	VARCHAR(255)	NOT NULL	DEFAULT '',
+	mem_phone	VARCHAR(20)	NOT NULL	DEFAULT '',
+	mem_city	VARCHAR(30)	NOT NULL	DEFAULT '',
+	mem_area	VARCHAR(100)	NOT NULL	DEFAULT '',
+	mem_regtime	INT		NOT NULL,
+	mem_llogtime	INT		NOT NULL,
+	mem_llogip	VARCHAR(19)	NOT NULL,
+	PRIMARY KEY(mem_id)
+
+)DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
+
+
+
+#----------------------------------------End(用户模块)----------------------------------------------
 
 
 #-----------------------------------------百度官方新闻(Over)---------------------------------------------------------
