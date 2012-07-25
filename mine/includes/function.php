@@ -10,4 +10,12 @@
 	*
 	*/
 	function get_
+
+	/*	()
+	*	@Description:	编码转换
+
+		@param	none
+	*
+	*
+	*/
 ?>
