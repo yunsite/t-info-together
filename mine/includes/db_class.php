@@ -8,10 +8,10 @@
 	class db_config{
 			
 
-			public $db_server;		//数据库服务器地址
-			public $db_username;	//数据库用户名
-			public $db_userpass;	//数据库用户密码
-			public $link = '';		//数据库连接
+			private $db_server;		//数据库服务器地址
+			private $db_username;	//数据库用户名
+			private $db_userpass;	//数据库用户密码
+			private $link = '';		//数据库连接
 			
 			/*	()
 			*	@Description:	初始化数据库->服务器地址,用户名,密码
