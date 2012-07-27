@@ -12,4 +12,7 @@
 
 	//数据库密码
 	$db_pwd = '';
+
+	//Cookie加密密钥
+	$Cookie_pwd = '';
 ?>
