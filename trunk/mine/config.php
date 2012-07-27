@@ -15,4 +15,6 @@
 
 	//Cookie加密密钥
 	$Cookie_pwd = '';
+
+	//Smarty模板配置
 ?>
