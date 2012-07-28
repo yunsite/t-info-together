@@ -5,6 +5,9 @@
 	*
 	*/
 
+	//包含UserBase.php(model)
+	include_once("../models/UserBase.php");
+
 	/*	()
 	*	@Description:	注册用户
 
