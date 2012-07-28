@@ -14,6 +14,9 @@
 	//包含	函数库
 	include_once("includes/function.php");
 
+	//包含	安全处理文件
+	include_once("includes/security.php");
+
 	//检测程序是否已安装,没有安装的话,则跳转到安装文件
 	if( !file_exists("install.lock") )
 		header("Location: ../install/index.php");
@@ -39,12 +42,6 @@
 		$register_long_arrays = 1;
 	}
 
-
-	//安全处理文件
-	include_once("security.php");
-
-	//数据库处理文件类
-	include_once("db_config.php");
 
 	//检测当前脚本
 ?>
