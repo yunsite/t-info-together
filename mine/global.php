@@ -5,6 +5,9 @@
 	*
 	*/
 
+	//包含	数据库操作基类
+	include_once("includes/db_class.php");
+
 	//检测程序是否已安装,没有安装的话,则跳转到安装文件
 	if( !file_exists("install.lock") )
 		header("Location: ../install/index.php");
