@@ -1,20 +1,20 @@
 <?php
 
 	/*
-	*	Description:	数据库配置类
+	*	Description:	数据库基础类
 	*
 	*
 	*/
-	class db_config{
+	class db_class{
 			
-
-			private $db_server;		//数据库服务器地址
-			private $db_username;	//数据库用户名
-			private $db_userpass;	//数据库用户密码
-			private $link = '';		//数据库连接
+			private $db_server;			//数据库服务器地址
+			private $db_name;			//数据库名
+			private $db_username;		//数据库用户名
+			private $db_userpass;		//数据库用户密码
+			private $dblink = '';		//数据库连接
 			
 			/*	()
-			*	@Description:	初始化数据库->服务器地址,用户名,密码
+			*	@Description:	初始化数据库->服务器地址,数据库名,用户名,密码	连接数据库
 
 				@param	$server	数据库服务器地址	|	127.0.0.1
 						$user	数据库用户名		|	root
@@ -22,12 +22,14 @@
 			*
 			*
 			*/
-			public function __construct($server = '127.0.0.1',$user = 'root',$pass = ''){
+			public function __construct( $db_server = '127.0.0.1', $db_name, $db_username = 'root', $db_userpass = '' ){
 
-				$this -> db_server = $server;
-				$this -> db_username = $user;
-				$this -> db_userpass = $pass;
+				$this -> db_name = $db_name;
+				$this -> db_server = $db_server;
+				$this -> db_username = $db_username;
+				$this -> db_userpass = $db_userpass;
 
+				$this->db_conn();
 			}
 			
 			/*	()
@@ -40,17 +42,18 @@
 			public function db_conn(){
 				
 				//打开一个到 MySQL 服务器的连接
-				$this -> link = mysql_connect( $this->db_server, $this->db_username, $this->db_userpass );
-				if(!$this->link){
-					$this -> link = '';
-					die('不能连接到Mysql: '.mysql_error());
+				$this -> dblink = mysql_connect( $db_server, $db_username, $db_userpass );
+				if(!$this->dblink){
+					$this -> dblink = '';
+					die('Error:不能连接到Mysql: '.mysql_error());
 				}
-
-				if( !(mysql_query( 'USE library' )) ){
-					die("连接出错，不能正确连接数据库，错误信息：".mysql_error());
+				//使用数据库
+				if( !(mysql_query( 'USE '.$db_name )) ){
+					die("Error:不能正确使用数据库,错误信息：".mysql_error());
 				}
-				if( !(mysql_query( 'Set names "utf8"' )) ){
-				
+				//设置编码
+				if( !(mysql_query( 'SET NAMES "UTF8"' )) ){
+					die("Error:不能正确设置  编码");
 				}
 			}
 			
