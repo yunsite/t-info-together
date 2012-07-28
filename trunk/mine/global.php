@@ -11,6 +11,9 @@
 	//包含	系统配置文件
 	include_once("config.php");
 
+	//包含	函数库
+	include_once("includes/function.php");
+
 	//检测程序是否已安装,没有安装的话,则跳转到安装文件
 	if( !file_exists("install.lock") )
 		header("Location: ../install/index.php");
