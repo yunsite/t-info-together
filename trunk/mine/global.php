@@ -5,6 +5,10 @@
 	*
 	*/
 
+	//检测程序是否已安装,没有安装的话,则跳转到安装文件
+	if( !file_exists("install.lock") )
+		header("Location: ../install/index.php");
+
 
 	/*
 	*	Description:	设置错误报告级别(显示错误情况)
