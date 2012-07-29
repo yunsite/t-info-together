@@ -16,14 +16,14 @@
 			/*	()
 			*	@Description:	初始化数据库->服务器地址,数据库名,用户名,密码	连接数据库
 
-				@param	$server		数据库服务器地址	|	127.0.0.1
+				@param	$server		数据库服务器地址	|
 						$db_name	数据库名			|
-						$user		数据库用户名		|	root
+						$user		数据库用户名		|
 						$pass		数据库用户密码		|
 			*
 			*
 			*/
-			public function __construct( $db_server = '127.0.0.1', $db_name, $db_username = 'root', $db_userpass = '' ){
+			public function __construct( $db_server, $db_name, $db_username, $db_userpass ){
 
 				$this -> db_name = $db_name;
 				$this -> db_server = $db_server;
