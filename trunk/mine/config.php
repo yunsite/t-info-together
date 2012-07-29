@@ -8,6 +8,9 @@
 	
 	//系统版本号
 	$sys_version = '';
+	
+	//系统编码
+	$sys_charset = 'utf8';
 
 	//数据库连接地址
 	$db_server = '127.0.0.1';
