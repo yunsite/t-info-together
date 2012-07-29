@@ -20,10 +20,11 @@
 						$db_name	数据库名			|
 						$user		数据库用户名		|
 						$pass		数据库用户密码		|
+						$charset	数据库默认编码		|
 			*
 			*
 			*/
-			public function __construct( $db_server, $db_name, $db_username, $db_userpass ){
+			public function __construct( $db_server, $db_name, $db_username, $db_userpass, $charset ){
 
 				$this -> db_name = $db_name;
 				$this -> db_server = $db_server;
@@ -31,7 +32,7 @@
 				$this -> db_userpass = $db_userpass;
 				
 				//连接数据库
-				$this->db_conn( $db_server, $db_name, $db_username, $db_userpass );
+				$this->db_conn( $db_server, $db_name, $db_username, $db_userpass, $charset );
 			}
 			
 			/*	()
@@ -41,10 +42,11 @@
 						$db_name	数据库名			|
 						$user		数据库用户名		|
 						$pass		数据库用户密码		|
+						$charset	数据库默认编码		|
 			*
 			*
 			*/
-			public function db_conn( $db_server, $db_name, $db_username, $db_userpass ){
+			public function db_conn( $db_server, $db_name, $db_username, $db_userpass, $charset ){
 				
 				//打开一个到 MySQL 服务器的连接
 				$this -> dblink = mysql_connect( $db_server, $db_username, $db_userpass );
@@ -57,8 +59,8 @@
 					die("Error:不能正确使用数据库,错误信息：".mysql_error());
 				}
 				//设置编码
-				if( !(mysql_query( 'SET NAMES "UTF8"' )) ){
-					die("Error:不能正确设置  编码");
+				if( !(mysql_query( 'SET NAMES "'.$charset.'"' )) ){
+					die("Error:不能正确设置 ".$charset." 编码");
 				}
 			}
 			
