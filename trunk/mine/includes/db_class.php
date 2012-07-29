@@ -35,11 +35,11 @@
 			}
 			
 			/*	()
-			*	@Description:	连接数据库
+			*	@Description:	连接,使用数据库,设置默认编码
 
-				@param	$server		数据库服务器地址	|	127.0.0.1
+				@param	$server		数据库服务器地址	|
 						$db_name	数据库名			|
-						$user		数据库用户名		|	root
+						$user		数据库用户名		|
 						$pass		数据库用户密码		|
 			*
 			*
