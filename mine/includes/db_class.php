@@ -16,9 +16,10 @@
 			/*	()
 			*	@Description:	初始化数据库->服务器地址,数据库名,用户名,密码	连接数据库
 
-				@param	$server	数据库服务器地址	|	127.0.0.1
-						$user	数据库用户名		|	root
-						$pass	数据库用户密码		|	
+				@param	$server		数据库服务器地址	|	127.0.0.1
+						$db_name	数据库名			|
+						$user		数据库用户名		|	root
+						$pass		数据库用户密码		|
 			*
 			*
 			*/
@@ -28,18 +29,22 @@
 				$this -> db_server = $db_server;
 				$this -> db_username = $db_username;
 				$this -> db_userpass = $db_userpass;
-
-				$this->db_conn();
+				
+				//连接数据库
+				$this->db_conn( $db_server, $db_name, $db_username, $db_userpass );
 			}
 			
 			/*	()
 			*	@Description:	连接数据库
 
-				@param	none
+				@param	$server		数据库服务器地址	|	127.0.0.1
+						$db_name	数据库名			|
+						$user		数据库用户名		|	root
+						$pass		数据库用户密码		|
 			*
 			*
 			*/
-			public function db_conn(){
+			public function db_conn( $db_server, $db_name, $db_username, $db_userpass ){
 				
 				//打开一个到 MySQL 服务器的连接
 				$this -> dblink = mysql_connect( $db_server, $db_username, $db_userpass );
