@@ -103,21 +103,28 @@
 			}
 			
 			
-			/*
-			* Description: 删除记录
-			* @Param $table 操作表
-			* @Param $conditions  条件
+			/*()
+			*	Description: 删除记录
+
+			*	@Param		$table			操作表
+			*	@Param		$conditions		条件
 			*/
-			public function db_delete( $table,$conditions = '' ){
+			public function db_delete( $table, $conditions = '' ){
 				
-				if( $conditions != ''){
+				if( $conditions != '' ){
+
 					$sql = 'DELETE FROM '.$table.' WHERE '.$conditions;
+
 				}else{
+
 					$sql = 	'DELETE FROM '.$table;
+
 				}
 				
-				if( !mysql_query( $sql,$this->link ) ){
-					die('Delete Error :'.mysql_error());
+				if( !mysql_query( $sql, $this->link ) ){
+
+					die( 'Delete Error :'.mysql_error() );
+
 				}
 			}
 			
