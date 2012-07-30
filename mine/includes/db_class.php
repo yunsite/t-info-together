@@ -46,7 +46,7 @@
 			*
 			*
 			*/
-			public function db_conn( $db_server, $db_name, $db_username, $db_userpass, $charset ){
+			private function db_conn( $db_server, $db_name, $db_username, $db_userpass, $charset ){
 				
 				//打开一个到 MySQL 服务器的连接
 				$this -> dblink = mysql_connect( $db_server, $db_username, $db_userpass );
@@ -75,26 +75,33 @@
 				mysql_close( $this->link );
 			}
 			
-			/*
-			* Description: 插入记录
-			* @Param $table 操作表 
-			* @Param $coloumns 字段
-			* @Param $values 值
+			/*()
+			*	Description: 插入记录
+
+			*	@Param	$table		操作表 
+			*	@Param	$coloumns	字段		|	空
+			*	@Param	$values		值
 			*/
-			/*
-			public function db_insert($table,$coloumns,$values){
+			
+			public function db_insert( $table, $coloumns='', $values ){
 				
-				if($coloumn){
-					$sql = 'INSERT INTO '.$table.' ('.$coloumn.') VALUES ('.$values.')';
+				if( $coloumns ){
+
+					$sql = 'INSERT INTO '.$table.' ('.$coloumns.') VALUES ('.$values.')';
+
 				}else{
-					$sql = 'INSERT INTO '.$table.' VALUES ('.$values')';	
+
+					$sql = 'INSERT INTO '.$table.' VALUES ('.$values')';
+
 				}
 				
 				if( !mysql_query( $sql, $this -> link ) ){
+
 					die('Insert Error :'.mysql_error());
+
 				}
 			}
-			*/
+			
 			
 			/*
 			* Description: 删除记录
