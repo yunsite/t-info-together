@@ -128,22 +128,21 @@
 				}
 			}
 			
-			/*
-			* Description: 更新记录
-			* @Param $table 操作表
-			* @Param $modify 修改的列值
-			* @Param $column_condi 条件列
-			* @Param $value_condi 条件值
+			/*()
+			*	Description: 更新记录
+			*	@Param		$table			操作表
+			*	@Param		$modify			修改的列值
+			*	@Param		$conditions		依据的条件列值
 			*/
-			/*
-			public function db_update( $table,$modify,$column_condi,$value_condi, ){
-				$sql = 'UPDATE '.$table.' SET '.$modify.' WHERE '.$column_condi.' = '.$value_condi;
+			public function db_update( $table, $modify, $conditions ){
+
+				$sql = 'UPDATE '.$table.' SET '.$modify.' WHERE '.$conditions;
 				
 				if( !mysql_query( $sql,$this->link ) ){
-					die('Update Error :'.mysql_error());	
+					die('Update Error :'.mysql_error());
 				}
+
 			}
-			*/
 			
 			/*
 			* Description: 查询记录
