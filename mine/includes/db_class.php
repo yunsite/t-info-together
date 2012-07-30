@@ -144,43 +144,38 @@
 
 			}
 			
-			/*
-			* Description: 查询记录
-			* @Param $table 操作表
-			* @Param $columns 操作列
-			* @Param $conditions 条件
-			* @return $result 从结果集查询
-			*/
 			/*	()
 			*	@Description:	查询记录
 
-				@param	$table		操作的表	|	127.0.0.1
-						$columns	操作的列		|	root
-						$conditions	查询条件		|	
+				@param	$table			操作的表
+						$columns		操作的列
+						$conditions		查询条件
+
+				@return		$result		符合条件的结果集二维数组
 			*
 			*
 			*/
-			public function db_select( $table,$columns = '*',$conditions = '' ){
+			public function db_select( $table, $columns = '*', $conditions = '' ){
 				
 				if( $conditions ){
-					$sql = 'SELECT '.$columns.' FROM '.$table.'WHERE '.$conditions ;
+
+					$sql = 'SELECT '.$columns.' FROM '.$table.' WHERE '.$conditions;
+
 				}else{
-					$sql = 'SELECT '.$columns.' FROM '.$table;	
+
+					$sql = 'SELECT '.$columns.' FROM '.$table;
+
 				}
-				
-				//echo $sql;
-				//echo "<br/>";
-				//echo $this->link;
 				
 				if( !($handle = mysql_query( $sql,$this->link )) ){
-					die("查询错误，错误信息：".mysql_error());
+
+					die( "Update Error :".mysql_error() );
+
 				}
-				if( $handle = mysql_query( $sql,$this->link ) ){
-					while($result[] = mysql_fetch_array( $handle )){
-						
-					};
-				}
-				print_r($result);
+
+				while( $result[] = mysql_fetch_array( $handle ) ){};
+
+				return $result;
 			}
 		}
 ?>
