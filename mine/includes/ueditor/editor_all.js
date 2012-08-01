@@ -3652,9 +3652,11 @@ var dtd = dom.dtd = (function() {
         //设置默认的常用属性
         me.setOpt({
             isShow : true,
-            initialContent:'欢迎使用ueditor!',
+			//修改初始内容	@localtest
+            initialContent:'欢迎使用T-note!',
             autoClearinitialContent:false,
             iframeCssUrl: me.options.UEDITOR_HOME_URL + '/themes/default/iframe.css',
+			//修改默认表单name	@localtest
             textarea:'editorValue',
             focus:false,
             minFrameHeight:320,
