@@ -115,7 +115,7 @@ CREATE TABLE t_message
 
 #----------------------------------------End(消息模块)----------------------------------------------
 
-#----------------------------------------消息模块---------------------------------------------------
+#----------------------------------------#站点基本信息表---------------------------------------------------
 
 #站点基本信息表
 CREATE TABLE t_siteinfo
@@ -127,7 +127,14 @@ CREATE TABLE t_siteinfo
 
 )DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
 
-#----------------------------------------End(消息模块)----------------------------------------------
+#初始数据
+INSERT INTO t_siteinfo(conf_name,conf_value) VALUES('site_name','T信息聚合系统');
+INSERT INTO t_siteinfo(conf_name,conf_value) VALUES('site_keywords','T,信息,聚合,信息聚合,信息聚合系统');
+INSERT INTO t_siteinfo(conf_name,conf_value) VALUES('site_description','T信息聚合系统暂时是枕头(localtest)的一个个人项目');
+INSERT INTO t_siteinfo(conf_name,conf_value) VALUES('if_close','0'); #0---未关闭 1---关闭
+INSERT INTO t_siteinfo(conf_name,conf_value) VALUES('close_reason','网站维护!');
+
+#----------------------------------------End(#站点基本信息表)----------------------------------------------
 
 
 #-----------------------------------------百度官方新闻(Over)---------------------------------------------------------
