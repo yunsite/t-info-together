@@ -28,5 +28,20 @@
 	//Cookie加密密钥
 	$Cookie_pwd = '';
 
-	//Smarty模板配置
+	//Smarty模板配置变量
+
+	//模板目录
+	$sys_template_dir = "/templates/";
+	//模板编译目录
+	$sys_compile_dir = "/data/templates_c/";
+	//特殊配置文件目录
+	$sys_config_dir = "";
+	//缓存目录
+	$sys_cache_dir = "/data/cache/";
+	//是否允许缓存
+	$sys_caching = 0;
+	//替换变量左边界符
+	$sys_left_delimiter = "<{";
+	//替换变量右边界符
+	$sys_right_delimiter = "}>";
 ?>
