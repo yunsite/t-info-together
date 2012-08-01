@@ -5,6 +5,48 @@
 	*
 	*/
 
-//检测程序安装与否,如果没安装的话,跳转到install/index.php(安装程序入口文件)
+	class IndexController{
+	
+		function __construct( $get/$post/... ){
+		
+			//检测包含 系统初始处理
+			include_once("global.php");
+
+			//默认视图
+			$this->IndexAction();
+
+			if( $get/$post/... ){
+			
+			}
+		
+		}
+	
+		/*
+		*
+		*	@Description:	初始动作,基本初始网站信息显示
+		*	@Param	None
+		*	@Return
+				string	$
+				string	$
+		*
+		*
+		*/
+		private function IndexAction(){
+
+			$tpl->assign("title",$sys_title);
+			$tpl->assign("keywords",$sys_keywords);
+			$tpl->assign("description",$sys_description);
+			$tpl->display("index.tpl");
+
+		}
+
+	}
+
+	
+	if( $get/$post/... ){
+			
+	}
+
+	$SiteIndex = new IndexController( $get/$post/... );
 
 ?>
