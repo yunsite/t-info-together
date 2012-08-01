@@ -5,17 +5,34 @@
 	*
 	*/
 
-	//包含	数据库操作基类
-	include_once("includes/db_class.php");
-
 	//包含	系统配置文件
 	include_once("config.php");
+
+	//包含	数据库操作基类
+	include_once("includes/db_class.php");
 
 	//包含	函数库
 	include_once("includes/function.php");
 
 	//包含	安全处理文件
 	include_once("includes/security.php");
+
+	
+	
+	//包含	Smarty类文件
+	include_once("includes/Smarty/libs/Smarty.class.php");
+	
+	//Smarty模板配置
+	$tpl = new Smarty();
+	$tpl_template_dir = $sys_template_dir;
+	$tpl_compile_dir = $sys_compile_dir;
+	$tpl_config_dir = $sys_config_dir;
+	$tpl_cache_dir = $sys_cache_dir;
+	$tpl_caching = $sys_caching;
+	$tpl_left_delimiter = $sys_left_delimiter;
+	$tpl_right_delimiter = $sys_right_delimiter;
+
+	
 
 	//检测程序是否已安装,没有安装的话,则跳转到安装文件
 	if( !file_exists("install.lock") )
