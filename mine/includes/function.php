@@ -11,6 +11,28 @@
 	*/
 	function get_
 
+	/*
+	*
+	*	@Description:	写缓存函数
+	*	@Param	None
+	*	@Return
+			string	$
+			string	$
+	*
+	*
+	*/
+
+	/*
+	*
+	*	@Description:	清除缓存函数(更新缓存即为:清除缓存,然后下次访问网站时,程序再生成缓存)
+	*	@Param	None
+	*	@Return
+			string	$
+			string	$
+	*
+	*
+	*/
+
 	/*	()
 	*	@Description:	编码转换
 
