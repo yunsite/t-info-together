@@ -12,11 +12,19 @@
 			//检测包含 系统初始处理
 			include_once("global.php");
 
+			
+
 			//默认视图
 			$this->IndexAction();
 
 			if( $get/$post/... ){
 			
+				
+
+			}else{
+				
+				xxx;
+
 			}
 		
 		}
@@ -32,6 +40,9 @@
 		*
 		*/
 		private function IndexAction(){
+
+			//包含xxx.php(model) 可放在这里检测需要添加的model
+			include_once("../models/xxx.php");
 
 			$tpl->assign("title",$sys_title);
 			$tpl->assign("keywords",$sys_keywords);
