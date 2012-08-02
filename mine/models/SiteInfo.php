@@ -6,7 +6,7 @@
 	*
 	*/
 	
-	class SiteInfo{
+	class SiteInfo extends db_class{
 	
 
 			/*	()
@@ -24,6 +24,12 @@
 			*
 			*
 			*/
+			si_select(  ){
+			
+			
+				parent::db_select();
+
+			}
 
 	}
 ?>
