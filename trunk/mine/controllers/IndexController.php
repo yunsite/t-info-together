@@ -10,13 +10,14 @@
 		function __construct( $get/$post/... ){
 		
 			//检测包含 系统初始处理
-			include_once("global.php");
+			//一般情况下,如果直接通过URL方式访问该处理脚本,则之前不会包含 系统初始处理脚本 ,通过下面语句来包含,而通过index.php方式访问则可以包含
+			include_once("../global.php");
 
-			
-
-			//默认视图
+			//调用默认Action方法(初始动作)显示首页
 			$this->IndexAction();
 
+			//下面被注释掉的if...else...语句结构是程序设计模式的一个示范
+			/*
 			if( $get/$post/... ){
 			
 				
@@ -26,6 +27,7 @@
 				xxx;
 
 			}
+			*/
 		
 		}
 	
@@ -41,8 +43,16 @@
 		*/
 		private function IndexAction(){
 
-			//包含xxx.php(model) 可放在这里检测需要添加的model
-			include_once("../models/xxx.php");
+			//包含 model,在这里检测包含处理用到的model
+			if( 是直接访问 ){
+			
+				include_once("../models/SiteInfo.php");
+
+			}else{//通过index.php入口文件访问
+			
+				include_once("models/SiteInfo.php");
+
+			}
 
 			$tpl->assign("title",$sys_title);
 			$tpl->assign("keywords",$sys_keywords);
@@ -53,10 +63,12 @@
 
 	}
 
-	
+	//下面被注释掉的if...语句结构是程序设计模式的一个示范
+	/*
 	if( $get/$post/... ){
 			
 	}
+	*/
 
 	$SiteIndex = new IndexController( $get/$post/... );
 
