@@ -42,17 +42,48 @@
 		*
 		*/
 		private function IndexAction(){
-
-			//包含 model,在这里检测包含处理用到的model
-			if( 是直接访问 ){
 			
-				include_once("../models/SiteInfo.php");
-
-			}else{//通过index.php入口文件访问
+			//判断缓存是否存在,而读取缓存
+			if( 缓存文件存在 ){
 			
-				include_once("models/SiteInfo.php");
+				读取缓存文件相关信息;
+
+				赋值所需要的变量;
+
+				$sys_title = ;
+				
+				$sys_keywords = ;
+
+				$sys_description = ;
+
+			}else{
+			
+				//创建数据库对象(在需要的时候才创建,而不是系统一初始化就创建,因为系统有缓存机制,如果没特殊操作,如系统后台更新了缓存,则使用缓存)
+				//似乎在后面直接声明它的子类对象就行了,不清楚的是,子类对象创建的时候会不会调用父类对象的构造函数(db_class会自动连接数据库),记得好像是会
+				$db_base = new db_class( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+				//包含 model,在这里检测包含处理用到的model
+				if( 是直接访问 ){
+				
+					include_once("../models/SiteInfo.php");
+
+				}else{//通过index.php入口文件访问
+				
+					include_once("models/SiteInfo.php");
+
+				}
+
+				$
+
+				//写缓存操作(如果缓存机制开启的话)
+				if( 开启缓存机制 ){
+				
+					写缓存操作;
+
+				}
 
 			}
+			
 
 			$tpl->assign("title",$sys_title);
 			$tpl->assign("keywords",$sys_keywords);
