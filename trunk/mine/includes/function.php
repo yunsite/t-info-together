@@ -33,6 +33,29 @@
 	
 	}
 
+	/*
+	*
+	*	@Description:	读缓存函数
+	*	@Param	None
+	*	@Return
+			string	$ch_filename	缓存名
+			string	$
+	*
+	*
+	*/
+	function read_cache( $ch_filename ){
+	
+		//读取 $ch_filename 缓存文件中保存的Json格式的缓存信息
+
+		$ch_data = 
+
+		//Json_decode缓存信息数组
+		$ch_data = json_decode( $ch_data );
+
+		//返回decode后的数据
+		return $ch_data;
+	
+	}
 
 	/*
 	*
