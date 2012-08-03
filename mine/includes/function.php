@@ -16,22 +16,38 @@
 	*	@Description:	写缓存函数
 	*	@Param	None
 	*	@Return
-			string	$
-			string	$
+			string	$ch_filename	缓存名
+			string	$ch_data		缓存数据
 	*
 	*
 	*/
+	function write_cache( $ch_filename, $ch_data ){
+	
+		
+		//检测缓存目录下,是否已有该缓存文件
+		//如果有的话,则直接更新里边的数据,没有的话,则创建文件并创建信息
+
+	
+	}
+
 
 	/*
 	*
 	*	@Description:	清除缓存函数(更新缓存即为:清除缓存,然后下次访问网站时,程序再生成缓存)
 	*	@Param	None
 	*	@Return
-			string	$
+			string	$ch_filename	缓存名
 			string	$
 	*
 	*
 	*/
+	function clear_cache( $ch_filename ){
+	
+		//删除缓存文件
+	
+	}
+
+
 
 	/*	()
 	*	@Description:	编码转换
