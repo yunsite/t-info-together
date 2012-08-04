@@ -143,4 +143,34 @@
 	$test = new encoding_transform( "UTF-8", "GB2312//IGNORE", $string );
 	$target = $test->do_transform();
 	echo $target;
+
+	/*
+	*
+	*    @Author:        Pcyoyo
+	*    @Site:          http://pcyoyo.com
+	*    @description    获取访客ip
+	*    @Param          none
+	*
+	*    @return         string $ip
+	*
+	*/
+	function getIp(){
+		if( $_SERVER["HTTP_CLIENT_IP"]){// check ip from share internet(手册上没有找到这个预定义服务器变量)
+
+			$ip = $_SERVER["HTTP_CLIENT_IP"];
+
+		}elseif( $_SERVER["HTTP_X_FORWARDED_FOR"] ){// to check ip is pass from proxy(手册上没有找到这个预定义服务器变量)
+
+			$ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+
+		}else{
+			
+			//浏览当前页面的用户的IP地址
+			$ip = $_SERVER["REMOTE_ADDR"];
+		}
+	 
+		return $ip;
+	 
+	}
+
 ?>
