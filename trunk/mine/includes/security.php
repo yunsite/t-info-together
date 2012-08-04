@@ -181,8 +181,9 @@
 
 	/*
 	*
-	*	@Description:	预防cc攻击(需修订)
+	*	@Description:	预防cc攻击(应该是防刷新)(需修订)
 	*	@Param	None
+		@Reference	http://www.oschina.net/code/snippet_267845_11273
 	*	@Return
 			string	$
 	*
@@ -190,32 +191,37 @@
 	*/
 	function defend_cc(){
 	
+		//是否启用Session,和在何时启用还待考虑
 		session_start();
 		$nowtime = time();
 		if( isset( $_SESSION['lasttime'] ) ){
 
-			$lasttime = $_SESSION['lasttime'];
-			//访问次数加1
+			//更新最后访问时间
+			$_SESSION['lasttime'] = $nowtime;
+			//更新访问次数(加1)
 			$_SESSION['times'] = $_SESSION['times'] + 1;
+
 		}else{
 			
 			//把当前时间设置为最后一次访问时间
 			$_SESSION['lasttime'] = $nowtime;
-			//访问次数为1
+			//访问次数初始化为1
 			$_SESSION['times'] = 1;
 			
 		}
 		
 		//如果 当前时间和最后一次访问的时间小于3秒的话
-		if (($nowtime - $lasttime)<3){
+		if ( ($nowtime - $lasttime)<3 ){
+
 			//如果访问次数大于等于5(应该不可能大于5吧？因为第五次就已经让客户端请求跳转到本机了)
 			if ($times>=5){
 				header(sprintf("Location: %s",'http://127.0.0.1'));
 			exit;
+
 		}
 		}else{//否则的话,重新设置
 			$_SESSION['lasttime'] = $nowtime;
-			$_SESSION['times'] = 0;
+			$_SESSION['times'] = 1;
 		}
 	
 	}
