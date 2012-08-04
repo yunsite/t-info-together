@@ -181,7 +181,7 @@
 
 	/*
 	*
-	*	@Description:	预防cc攻击(应该是防刷新)(需修订)
+	*	@Description:	预防cc攻击(应该是防刷新)(需增加针对ip用户的行为)(需修订)
 	*	@Param	None
 		@Reference	http://www.oschina.net/code/snippet_267845_11273
 	*	@Return
