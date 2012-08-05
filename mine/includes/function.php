@@ -173,4 +173,17 @@
 	 
 	}
 
+	/*
+	*
+	*	@Description:	浮点表示的时间
+	*	@Param	None
+	*	@Return
+	*
+	*
+	*/
+	function microtime_float(){
+		list($msec, $sec) = explode(" ", microtime());
+		return ((float)$msec + (float)$sec);
+	}
+
 ?>
