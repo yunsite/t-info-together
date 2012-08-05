@@ -5,6 +5,9 @@
 	*
 	*/
 
+	//包含	函数库
+	include_once("includes/function.php");
+
 	//脚本开始执行时间
 	//Description:用于计算每次请求页面,所消耗的时间——需要在输出模板前在Action里再调用一次,设置$End_time,然后把 ($Used_time = $End_time - $Start_time) 输出到模板
 	$Start_time = microtime_float();
@@ -14,9 +17,6 @@
 
 	//包含	数据库操作基类
 	include_once("includes/db_class.php");
-
-	//包含	函数库
-	include_once("includes/function.php");
 
 	//包含	安全处理文件
 	include_once("includes/security.php");
@@ -39,7 +39,8 @@
 	
 
 	//检测程序是否已安装,没有安装的话,则跳转到安装文件
-	if( !file_exists("install.lock") )
+	//这里为使项目跑起来,暂时假定从index.php文件包含global.php,把文件路劲暂时指定为"install/install.lock",但这里存在缺陷,需要更改
+	if( !file_exists("install/install.lock") )
 		header("Location: ../install/index.php");
 
 

@@ -83,6 +83,7 @@
 			*	@Param	$values		值
 			*/
 			
+			/*
 			public function db_insert( $table, $coloumns='', $values ){
 				
 				if( $coloumns ){
@@ -101,6 +102,7 @@
 
 				}
 			}
+			*/
 			
 			
 			/*()
