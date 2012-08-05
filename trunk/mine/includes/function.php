@@ -9,7 +9,7 @@
 	*	Description:	获取当前文件路径
 	*
 	*/
-	function get_
+	//function get_
 
 	/*
 	*
@@ -136,6 +136,7 @@
 
 	}
 
+	/*
 	$string = "测试字符串";
 	echo $string;
 	echo "<br/>";
@@ -143,6 +144,7 @@
 	$test = new encoding_transform( "UTF-8", "GB2312//IGNORE", $string );
 	$target = $test->do_transform();
 	echo $target;
+	*/
 
 	/*
 	*
