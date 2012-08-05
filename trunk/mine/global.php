@@ -5,6 +5,10 @@
 	*
 	*/
 
+	//脚本开始执行时间
+	//Description:用于计算每次请求页面,所消耗的时间——需要在输出模板前在Action里再调用一次,设置$End_time,然后把 ($Used_time = $End_time - $Start_time) 输出到模板
+	$Start_time = microtime_float();
+
 	//包含	系统配置文件
 	include_once("config.php");
 
