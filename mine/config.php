@@ -16,7 +16,7 @@
 	$db_server = '127.0.0.1';
 
 	//数据库名
-	$db_name = '';
+	$db_name = 't_info_together';
 
 	//数据库用户名
 	$db_user = 'root';
