@@ -101,7 +101,7 @@
 				//查询站点基本信息
 				$siteinfo = $db_base -> si_select( '*' ,'' );
 
-				print_r( $siteinfo );
+				//print_r( $siteinfo );
 
 				/*
 				$
@@ -113,6 +113,8 @@
 
 				}
 				*/
+				//这里暂未考虑缓存机制开启选项
+				write_cache( 'data/cache/SiteInfo', $siteinfo );
 
 			}
 			
