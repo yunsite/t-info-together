@@ -159,6 +159,16 @@
 			*/
 			public function db_select( $table, $columns = '*', $conditions = '' ){
 				
+				//为以后测试需要,暂时保留测试代码
+				/*
+				echo $table;
+				echo "<br/>";
+				echo $columns;
+				echo "<br/>";
+				echo $conditions;
+				echo "<br/>";
+				*/
+
 				if( $conditions ){
 
 					$sql = 'SELECT '.$columns.' FROM '.$table.' WHERE '.$conditions;
@@ -169,7 +179,10 @@
 
 				}
 				
-				if( !($handle = mysql_query( $sql,$this->link )) ){
+				//为以后测试需要,暂时保留测试代码
+				//echo $sql;
+
+				if( !($handle = mysql_query( $sql, $this->dblink )) ){
 
 					die( "Update Error :".mysql_error() );
 
