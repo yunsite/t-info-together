@@ -36,6 +36,9 @@
 		//保存缓存数据
 		//这里或者上面函数,可根据这几个函数的执行情况,返回状态码,来让控制器里的Action可以根据状态码做相应的处理
 		fwrite( $handle, $ch_data );
+		
+		//关闭文件指针
+		fclose( $handle );
 
 	
 	}
@@ -52,9 +55,16 @@
 	*/
 	function read_cache( $ch_filename ){
 	
+		//打开缓存文件
+		$handle =  fopen( $ch_filename, 'r' );
+
 		//读取 $ch_filename 缓存文件中保存的Json格式的缓存信息
 
-		$ch_data = 
+		$ch_data = fread( $handle, filesize($ch_filename) );
+		
+		//关闭文件指针
+		fclose( $handle );
+
 
 		//Json_decode缓存信息数组
 		$ch_data = json_decode( $ch_data );
@@ -69,14 +79,24 @@
 	*	@Description:	清除缓存函数(更新缓存即为:清除缓存,然后下次访问网站时,程序再生成缓存)
 	*	@Param	None
 	*	@Return
-			string	$ch_filename	缓存名
+			string	$ch_filename	缓存名 | 
 			string	$
 	*
 	*
 	*/
-	function clear_cache( $ch_filename ){
+	function clear_cache( $ch_filename = '' ){
 	
-		//删除缓存文件
+		//删除缓存文件(如果指定缓存文件,则只删除指定缓存文件,否则删除 data/cache 下所有缓存文件)
+		//(可扩展,以可以删除多个缓存文件)
+		if( $ch_filename ){
+		
+			unlink( $ch_filename );
+		
+		}else{
+		
+			//循环删除 data/cache 文件夹下所有缓存文件
+		
+		}
 	
 	}
 
