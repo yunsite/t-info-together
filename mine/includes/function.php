@@ -13,7 +13,7 @@
 
 	/*
 	*
-	*	@Description:	写缓存函数
+	*	@Description:	写缓存函数(修改缓存信息,可以通过 1.写缓存函数直接写重名缓存替换掉原缓存 或 2.清除缓存等系统下一次执行的时候再生成缓存)
 	*	@Param	None
 	*	@Return
 			string	$ch_filename	缓存名
