@@ -114,7 +114,7 @@
 				}
 				*/
 				//这里暂未考虑缓存机制开启选项
-				write_cache( 'data/cache/SiteInfo', $siteinfo );
+				write_cache( 'data/cache/SiteInfo.cache', $siteinfo );
 
 			}
 			
