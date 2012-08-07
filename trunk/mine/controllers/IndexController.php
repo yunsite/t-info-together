@@ -76,11 +76,13 @@
 
 				//创建数据库对象(在需要的时候才创建,而不是系统一初始化就创建,因为系统有缓存机制,如果没特殊操作,如系统后台更新了缓存,则使用缓存)
 				//似乎在后面直接声明它的子类对象就行了,不清楚的是,子类对象创建的时候会不会调用父类对象的构造函数(db_class会自动连接数据库),记得好像是会
-				$db_base = new db_class( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+				//$db_base = new db_class( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
 				
-				print_r( $db_base );
+				//print_r( $db_base );
 
-				//包含 model,在这里检测包含处理用到的model
+				//包含 model,在这里检测包含处理用到的model(下面的代码暂时只针对直接访问)
+				@include_once("../models/SiteInfo.php");
+				@include_once("models/SiteInfo.php");
 				/*if( 是直接访问 ){
 				
 					include_once("../models/SiteInfo.php");
@@ -91,6 +93,15 @@
 
 				}
 				*/
+
+				$db_base = new SiteInfo( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+				//print_r( $db_base );
+
+				//查询站点基本信息
+				$siteinfo = $db_base -> si_select( '*' ,'' );
+
+				print_r( $siteinfo );
 
 				/*
 				$
