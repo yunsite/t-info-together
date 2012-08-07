@@ -57,7 +57,11 @@
 			//因为不知道是直接访问控制器,还是从index.php入口文件访问,所以检测两种情况下,缓存文件是否存在
 			if( file_exists("../data/cache/SiteInfo.cache") || file_exists("data/cache/SiteInfo.cache") ){
 				
-				echo "缓存文件存在!";
+				//echo "缓存文件存在!";
+				//echo "<br/>";
+
+				$SiteInfo =  read_cache("data/cache/SiteInfo.cache");
+				//print_r($SiteInfo);
 
 				//读取缓存文件相关信息;
 
