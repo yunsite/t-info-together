@@ -95,6 +95,15 @@
 		}else{
 		
 			//循环删除 data/cache 文件夹下所有缓存文件
+			//使用 "data/cache" 这样定义目录有些问题,仅在从index.php入口文件下访问执行才能成功
+			$handle = opendir("data/cache");
+			
+			//遍历删除缓存目录下的文件(排除了.和..)
+			while (false !== ($file = readdir($handle))) {
+				if ($file != "." && $file != "..") {
+					unlink( $file );
+				}
+			}
 		
 		}
 	
