@@ -30,6 +30,8 @@
 
 	//Smarty模板配置变量
 
+	//Smarty配置,暂时先不用绝对路径情况,而只针对index.php入口文件写下配置
+	/*
 	//模板目录
 	$sys_template_dir = "/templates/";
 	//模板编译目录
@@ -43,5 +45,19 @@
 	//替换变量左边界符
 	$sys_left_delimiter = "<{";
 	//替换变量右边界符
+	$sys_right_delimiter = "}>";
+	*/
+	$sys_template_dir = "templates/";
+
+	$sys_compile_dir = "data/templates_c/";
+
+	$sys_config_dir = "";
+
+	$sys_cache_dir = "data/cache/";
+
+	$sys_caching = 0;
+
+	$sys_left_delimiter = "<{";
+
 	$sys_right_delimiter = "}>";
 ?>
