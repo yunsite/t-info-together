@@ -61,7 +61,7 @@
 				//echo "<br/>";
 
 				$SiteInfo =  read_cache("data/cache/SiteInfo.cache");
-				//print_r($SiteInfo);
+				print_r($SiteInfo);
 
 				//读取缓存文件相关信息;
 
@@ -106,6 +106,29 @@
 				$siteinfo = $db_base -> si_select( '*' ,'' );
 
 				//print_r( $siteinfo );
+				
+				//遍历赋值 站点信息
+				foreach( $siteinfo as $key => $value ){
+				
+					switch( $value["conf_name"] ){
+						
+						//系统名
+						case "site_name": $sys_title = $value["conf_value"];
+						break;
+
+						//关键字
+						case "site_keywords": $sys_keywords = $value["conf_value"];
+						break;
+
+						//站点描述
+						case "site_description": $sys_description = $value["conf_value"];
+						break;
+					
+					}
+				
+				}
+
+				//echo $sys_description;
 
 				/*
 				$
@@ -117,7 +140,7 @@
 
 				}
 				*/
-				//这里暂未考虑缓存机制开启选项
+				//这里暂未考虑缓存机制开启选项(需要修改缓存的内容——缓存指定的信息)
 				write_cache( 'data/cache/SiteInfo.cache', $siteinfo );
 
 			}
