@@ -67,7 +67,7 @@
 
 
 		//Json_decode缓存信息数组
-		$ch_data = json_decode( $ch_data );
+		$ch_data = json_decode( $ch_data, true );
 
 		//返回decode后的数据
 		return $ch_data;
