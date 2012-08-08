@@ -188,7 +188,10 @@
 
 				}
 
-				while( $result[] = mysql_fetch_array( $handle ) ){};
+				while( $result[] = mysql_fetch_array( $handle, MYSQL_ASSOC ) ){};
+				
+				//弹出返回信息数组的最后一个空单元
+				array_pop( $result );
 
 				return $result;
 			}
