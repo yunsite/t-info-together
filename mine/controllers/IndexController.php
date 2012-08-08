@@ -63,8 +63,8 @@
 				//echo "缓存文件存在!";
 				//echo "<br/>";
 
-				$SiteInfo =  read_cache("data/cache/SiteInfo.cache");
-				//print_r($SiteInfo);
+				$siteinfo_new =  read_cache("data/cache/SiteInfo.cache");
+				//print_r($siteinfo_new);
 
 				//读取缓存文件相关信息;
 
@@ -130,8 +130,15 @@
 					}
 				
 				}
-
+				
 				//echo $sys_description;
+
+				//整合站点信息为数组,便于缓存和模板输出
+				$siteinfo_new["site_name"] = $sys_title;
+				$siteinfo_new["site_keywords"] = $sys_keywords;
+				$siteinfo_new["site_description"] = $sys_description;
+
+				
 
 				/*
 				$
@@ -144,14 +151,14 @@
 				}
 				*/
 				//这里暂未考虑缓存机制开启选项(需要修改缓存的内容——缓存指定的信息)
-				write_cache( 'data/cache/SiteInfo.cache', $siteinfo );
+				write_cache( 'data/cache/SiteInfo.cache', $siteinfo_new );
 
 			}
 			
 			
-			$tpl->assign("title",$sys_title);
-			$tpl->assign("keywords",$sys_keywords);
-			$tpl->assign("description",$sys_description);
+			$tpl->assign( "title",$siteinfo_new["site_name"] );
+			$tpl->assign( "keywords",$siteinfo_new["site_keywords"] );
+			$tpl->assign( "description",$siteinfo_new["site_description"] );
 			$tpl->display("index.tpl");
 			
 
