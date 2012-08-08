@@ -53,6 +53,9 @@
 		*/
 		private function IndexAction(){
 			
+			//Smarty类对象在global.php实例化过
+			global $tpl;
+
 			//判断缓存是否存在,而读取缓存
 			//因为不知道是直接访问控制器,还是从index.php入口文件访问,所以检测两种情况下,缓存文件是否存在
 			if( file_exists("../data/cache/SiteInfo.cache") || file_exists("data/cache/SiteInfo.cache") ){
@@ -61,7 +64,7 @@
 				//echo "<br/>";
 
 				$SiteInfo =  read_cache("data/cache/SiteInfo.cache");
-				print_r($SiteInfo);
+				//print_r($SiteInfo);
 
 				//读取缓存文件相关信息;
 
@@ -145,12 +148,12 @@
 
 			}
 			
-			/*
+			
 			$tpl->assign("title",$sys_title);
 			$tpl->assign("keywords",$sys_keywords);
 			$tpl->assign("description",$sys_description);
 			$tpl->display("index.tpl");
-			*/
+			
 
 		}
 
