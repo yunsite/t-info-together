@@ -28,14 +28,16 @@
 	
 	//Smarty模板配置
 	$tpl = new Smarty();
-	$tpl_template_dir = $sys_template_dir;
-	$tpl_compile_dir = $sys_compile_dir;
-	$tpl_config_dir = $sys_config_dir;
-	$tpl_cache_dir = $sys_cache_dir;
-	$tpl_caching = $sys_caching;
-	$tpl_left_delimiter = $sys_left_delimiter;
-	$tpl_right_delimiter = $sys_right_delimiter;
+	$tpl->template_dir = $sys_template_dir;
+	$tpl->compile_dir = $sys_compile_dir;
+	$tpl->config_dir = $sys_config_dir;
+	$tpl->cache_dir = $sys_cache_dir;
+	$tpl->caching = $sys_caching;
+	$tpl->left_delimiter = $sys_left_delimiter;
+	$tpl->right_delimiter = $sys_right_delimiter;
 
+	//echo "test";
+	//print_r( $tpl );
 	
 
 	//检测程序是否已安装,没有安装的话,则跳转到安装文件
