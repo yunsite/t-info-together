@@ -40,7 +40,7 @@
 
 
 	/*
-	*	Description:	防止SQL注入
+	*	Description:	防止SQL注入(过滤函数,过滤用户输入信息)
 	*
 	*
 	*
