@@ -143,6 +143,14 @@
 				//站点描述
 				case "site_description": $siteinfo_new["site_description"] = $value["conf_value"];
 				break;
+				
+				//站点是否关闭
+				case "if_close": $siteinfo_new["if_close"] = $value["conf_value"];
+				break;
+				
+				//关闭原因
+				case "close_reason": $siteinfo_new["close_reason"] = $value["conf_value"];
+				break;
 					
 			}
 				
@@ -171,6 +179,17 @@
 		*/
 		//这里暂未考虑缓存机制开启选项(需要修改缓存的内容——缓存指定的信息)
 		write_cache( 'data/cache/SiteInfo.cache', $siteinfo_new );
+	}
+
+
+
+	//检测系统是否关闭
+
+	//判断 如果站点设置为:关闭,则关闭系统,只允许管理员进入系统
+	if( $siteinfo_new["if_close"] == 1 ){
+	
+		//跳转到相应的控制器 —— 显示关闭原因 + 登陆框
+	
 	}
 
 ?>
