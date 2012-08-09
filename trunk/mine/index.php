@@ -23,7 +23,9 @@
 	if( isset($_GET['logio']) ){	//登陆,退出
 	
 		include_once("controllers/LogioController.php");
-	
+		
+		//在包含调用控制器后,结束脚本的执行
+		die();
 	}
 
 	//包含 入口控制器
