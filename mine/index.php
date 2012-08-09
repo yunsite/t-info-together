@@ -19,6 +19,12 @@
 	//第二段表示调用类中的函数或方法。
 	//第三及更多的段表示的是传递给控制器的参数，如 ID 或其它各种变量。
 
+	//根据参数判断处理交由哪个控制器处理
+	if( isset($_GET['logio']) ){	//登陆,退出
+	
+		include_once("controllers/LogioController.php");
+	
+	}
 
 	//包含 入口控制器
 	include_once("controllers/IndexController.php");
