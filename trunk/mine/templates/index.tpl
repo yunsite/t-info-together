@@ -35,7 +35,10 @@
 		<!-- End(登陆框) -->
 
 		<div class="footer">
-			<span>ICP:</span><{$icp_num}>
+			<span><a href="#">ICP:<{$icp_num}></a></span>
+			<span><a href="#">猎头请进</a></span>
+			<span><a href="#">找我作实习生</a></span>
+			<span><a href="#">加入我们</a></span>
 		</div>
 	</body>
 
