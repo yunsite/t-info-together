@@ -64,10 +64,26 @@
 		/*	()
 		*	@Description:	注册用户
 
-			@param	none
+			@param	$RegInfo	注册信息
 		*
 		*
 		*/
+		private function reg_user( $RegInfo ){
+		
+			//获取当前时间戳
+			$regtime = time();
+
+			//最后一次登陆IP,因为是注册,所以取当前IP
+			$llogip = getIp();
+			
+			//需要对 $RegInfo["username"], $RegInfo["email"]， $RegInfo["password"] 作过滤安全处理
+
+			$RegInfo["username"];
+			$RegInfo["email"];
+			$RegInfo["password"];
+		
+		}
+
 		//1.检查用户名是否存在 -> 如果不存在,则添加用户并发送验证邮件
 		//2.Apache->邮件服务器
 		//3.验证成功后,跳转到登陆界面
