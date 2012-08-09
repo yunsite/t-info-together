@@ -6,64 +6,74 @@
 	*
 	*/
 	
-	class UserBase{
+	class UserBase extends db_class{
 	
 
 			/*	()
-			*	@Description:	注册(增加)用户
+			*	@Description:	增加用户
 
-				@param
+				@Param	$coloumns	字段		|	空
+			*	@Param	$values		值
 			*
 			*
 			*/
+			public function add_user( $coloumns = '', $values ){
+			
+				//增加用户
+				parent::db_insert( 't_member', $coloumns = '', $values );
+
+			}
 
 			/*	()
 			*	@Description:	删除用户
 
-				@param	
+				@param
+			*	@Param		$conditions		条件
 			*
 			*
 			*/
+			public function del_user( $conditions = '' ){
+				
+				//删除用户
+				parent::db_delete( 't_member', $conditions = '' );
+
+			}
+
 
 			/*	()
 			*	@Description:	修改用户基本信息
 
 				@param
+				@Param		$modify			修改的列值
+			*	@Param		$conditions		依据的条件列值
 			*
 			*
 			*/
+			public function modi_user( $modify, $conditions ){
+			
+				//修改用户信息
+				parent::db_update( 't_member', $modify, $conditions );
+
+			}
 
 			/*	()
 			*	@Description:	查询用户基本信息
 
-				@param	
+				@param
+
+					$columns		操作的列
+					$conditions		查询条件
 			*
 			*
 			*/
+			public function seli_user( $columns = '*', $conditions = '' ){
+				
+				//查询用户信息
+				$UserInfo =  parent::db_select( 't_member', $columns = '*', $conditions = '' );
+				
+				return $UserInfo;
 
-			/*	()
-			*	@Description:	用户登陆
-
-				@param	
-			*
-			*
-			*/
-
-			/*	()
-			*	@Description:	用户注销
-
-				@param	
-			*
-			*
-			*/
-
-			/*	()
-			*	@Description:	忘记密码
-
-				@param	
-			*
-			*
-			*/
+			}
 
 	}
 ?>
