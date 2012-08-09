@@ -83,8 +83,8 @@
 			*	@Param	$values		值
 			*/
 			
-			/*
-			public function db_insert( $table, $coloumns='', $values ){
+
+			public function db_insert( $table, $coloumns = '', $values ){
 				
 				if( $coloumns ){
 
@@ -92,7 +92,7 @@
 
 				}else{
 
-					$sql = 'INSERT INTO '.$table.' VALUES ('.$values')';
+					$sql = 'INSERT INTO '.$table.' VALUES ('.$values.')';
 
 				}
 				
@@ -102,7 +102,7 @@
 
 				}
 			}
-			*/
+
 			
 			
 			/*()
