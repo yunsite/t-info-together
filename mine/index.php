@@ -20,7 +20,7 @@
 	//第三及更多的段表示的是传递给控制器的参数，如 ID 或其它各种变量。
 
 	//根据参数判断处理交由哪个控制器处理
-	if( isset($_GET['logio']) ){	//登陆,退出
+	if( isset($_GET['logio']) || isset($_GET['reg']) ){	//登陆,退出
 	
 		include_once("controllers/DoorController.php");
 		

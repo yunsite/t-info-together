@@ -11,15 +11,29 @@
 		//把 $_GET和$_POST数组 作为构造函数的参数,供构造函数处理
 		function __construct( $arg_get = '', $arg_post = '' ){
 		
-			if( $arg_get["logio"] == 1 ){	//登陆系统
+			// 登陆&登出
+			if( @$arg_get["logio"] == 1 ){	//登陆系统
 			
 				//调用 登陆系统控制器
 				$this->login_sys( $arg_post );
 			
-			}elseif( $arg_get["logio"] == 0 ){	//登出系统
+			}elseif( @$arg_get["logio"] == 0 ){	//登出系统
 			
 				//调用 登出系统控制器
 				$this->logout_sys();
+
+			}
+			
+			//注册用户
+			if( $arg_get["reg"] == 1 ){	//注册用户
+			
+				//调用 注册用户控制器
+				$this->reg_user( $arg_post );
+			
+			}elseif( $arg_get["reg"] == 0 ){	//注册用户界面
+			
+				//调用 输出注册用户界面控制器
+				$this->reg_user_view();
 
 			}
 
@@ -60,6 +74,28 @@
 			
 		
 		}
+
+
+		/*	()
+		*	@Description:	注册用户(界面)
+
+			@param none
+		*
+		*
+		*/
+		private function reg_user_view(){
+		
+			//Smarty类对象在global.php实例化过
+			global $tpl,$siteinfo_new,$sys_charset;
+			
+			$tpl->assign( "title",$siteinfo_new["site_name"] );
+			$tpl->assign( "keywords",$siteinfo_new["site_keywords"] );
+			$tpl->assign( "description",$siteinfo_new["site_description"] );
+			$tpl->assign( "charset",$sys_charset );
+			$tpl->display("reg.tpl");
+		
+		}
+
 
 		/*	()
 		*	@Description:	注册用户
