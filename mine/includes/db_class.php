@@ -96,7 +96,7 @@
 
 				}
 				
-				if( !mysql_query( $sql, $this -> link ) ){
+				if( !mysql_query( $sql, $this -> dblink ) ){
 
 					die('Insert Error :'.mysql_error());
 

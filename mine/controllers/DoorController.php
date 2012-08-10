@@ -27,6 +27,9 @@
 			//注册用户
 			if( $arg_get["reg"] == 1 ){	//注册用户
 			
+				//包含 用户基本处理模型
+				include_once("models/UserBase.php");
+
 				//调用 注册用户控制器
 				$this->reg_user( $arg_post );
 			
@@ -99,16 +102,26 @@
 
 		/*	()
 		*	@Description:	注册用户
-
+			//1.检查用户名是否存在 -> 如果不存在,则添加用户并发送验证邮件
+			//2.Apache->邮件服务器
+			//3.验证成功后,跳转到登陆界面
+			//4.
 			@param	$RegInfo	注册信息
 		*
 		*
 		*/
 		private function reg_user( $RegInfo ){
-		
+	
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
 			
-			//需要对 $RegInfo["username"], $RegInfo["email"]， $RegInfo["password"] 作过滤安全处理
+			$UserBase = new UserBase( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
 
+			//需要对 $RegInfo["username"], $RegInfo["email"]， $RegInfo["password"] 作过滤安全处理
+			
+			//添加用户
+			$UserBase -> add_user( $RegInfo["username"], $RegInfo["password"] ,$RegInfo["email"] );
+
+			/*
 			echo $RegInfo["username"];
 			echo "<br/>";
 
@@ -117,13 +130,9 @@
 
 			echo $RegInfo["password"];
 			echo "<br/>";
+			*/
 		
 		}
-
-		//1.检查用户名是否存在 -> 如果不存在,则添加用户并发送验证邮件
-		//2.Apache->邮件服务器
-		//3.验证成功后,跳转到登陆界面
-		//4.
 
 		/*	()
 		*	@Description:	找回密码
