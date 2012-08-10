@@ -60,7 +60,7 @@
 				}
 				//设置编码
 				if( !(mysql_query( 'SET NAMES "'.$charset.'"' )) ){
-					die("Error:不能正确设置 ".$charset." 编码");
+					die("Error:不能正确设置 ".$charset." 编码".mysql_error() );
 				}
 			}
 			

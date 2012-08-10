@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<td><input type="submit" value="登陆"/></td>
-				<td><a href="#">注册</a></td>
+				<td><a href="index.php?reg=0">注册</a></td>
 			</tr>
 		</table>
 		</form>
