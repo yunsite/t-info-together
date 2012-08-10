@@ -193,11 +193,12 @@
 	*
 	*/
 	function getIp(){
-		if( $_SERVER["HTTP_CLIENT_IP"]){// check ip from share internet(手册上没有找到这个预定义服务器变量)
+
+		if( @$_SERVER["HTTP_CLIENT_IP"]){// check ip from share internet(手册上没有找到这个预定义服务器变量)
 
 			$ip = $_SERVER["HTTP_CLIENT_IP"];
 
-		}elseif( $_SERVER["HTTP_X_FORWARDED_FOR"] ){// to check ip is pass from proxy(手册上没有找到这个预定义服务器变量)
+		}elseif( @$_SERVER["HTTP_X_FORWARDED_FOR"] ){// to check ip is pass from proxy(手册上没有找到这个预定义服务器变量)
 
 			$ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
 
