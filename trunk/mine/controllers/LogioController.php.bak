@@ -5,7 +5,7 @@
 	*
 	*/
 
-	class DoorController{
+	class LogioController{
 
 
 		//把 $_GET和$_POST数组 作为构造函数的参数,供构造函数处理
@@ -70,17 +70,17 @@
 		*/
 		private function reg_user( $RegInfo ){
 		
+			//获取当前时间戳
+			$regtime = time();
+
+			//最后一次登陆IP,因为是注册,所以取当前IP
+			$llogip = getIp();
 			
-			//需要对 $RegInfo["username"], $RegInfo["email"]， $RegInfo["password"] 作过滤安全处理
+			//需要对 $RegInfo["username"], $RegInfo["email"]， 
 
-			echo $RegInfo["username"];
-			echo "<br/>";
-
-			echo $RegInfo["email"];
-			echo "<br/>";
-
-			echo $RegInfo["password"];
-			echo "<br/>";
+			$RegInfo["username"];
+			$RegInfo["email"];
+			$RegInfo["password"];
 		
 		}
 
@@ -105,5 +105,5 @@
 
 
 	//实例化 LogioController控制器
-	$SiteIndex = new DoorController( $_GET, $_POST );
+	$SiteIndex = new LogioController( $_GET, $_POST );
 ?>

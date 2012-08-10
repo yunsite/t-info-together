@@ -75,11 +75,9 @@
 
 			echo $RegInfo["username"];
 			echo "<br/>";
-
-			echo $RegInfo["email"];
+			$RegInfo["email"];
 			echo "<br/>";
-
-			echo $RegInfo["password"];
+			$RegInfo["password"];
 			echo "<br/>";
 		
 		}
