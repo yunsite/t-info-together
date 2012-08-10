@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>注册—T_info_together</title>
+	</head>
+	<body>
+
+		<!-- 登陆框 -->
+		<form action="" method="post">
+		<table>
+			<tr></tr>
+			<tr>
+				<td>用户名:</td>
+				<td><input type="text" name="username"/></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" name="email"/></td>
+			</tr>
+			<tr>
+				<td>密码:</td>
+				<td><input type="password" name="password"/></td>
+			</tr>
+			<tr>
+				<td>重复密码:</td>
+				<td><input type="password" name="re_password"/></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="提交"/></td>
+			</tr>
+		</table>
+		</form>
+		<!-- End(登陆框) -->
+
+	</body>
+</html>
