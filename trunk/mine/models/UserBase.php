@@ -2,6 +2,7 @@
 
 	/*
 	*	Description:	用户基本处理模型
+		//模型针对参数和处理还需要做许多修订
 	*
 	*
 	*/
@@ -91,8 +92,13 @@
 			*/
 			public function seli_user( $columns = '*', $conditions = '' ){
 				
+				/*
+				echo $conditions;
+				echo "<br/>";
+				*/
+
 				//查询用户信息
-				$UserInfo =  parent::db_select( 't_member', $columns = '*', $conditions = '' );
+				$UserInfo =  parent::db_select( 't_member', $columns, $conditions );
 				
 				return $UserInfo;
 

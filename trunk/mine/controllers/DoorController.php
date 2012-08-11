@@ -82,11 +82,11 @@
 		/*	()
 		*	@Description:	注册用户(界面)
 
-			@param none
+			@param $error_info	错误信息	|	空
 		*
 		*
 		*/
-		private function reg_user_view(){
+		private function reg_user_view( $error_info = '' ){
 		
 			//Smarty类对象在global.php实例化过
 			global $tpl,$siteinfo_new,$sys_charset;
@@ -95,6 +95,7 @@
 			$tpl->assign( "keywords",$siteinfo_new["site_keywords"] );
 			$tpl->assign( "description",$siteinfo_new["site_description"] );
 			$tpl->assign( "charset",$sys_charset );
+			$tpl->assign( "error_info",$error_info );
 			$tpl->display("reg.tpl");
 		
 		}
@@ -118,9 +119,24 @@
 
 			//需要对 $RegInfo["username"], $RegInfo["email"]， $RegInfo["password"] 作过滤安全处理
 			
+
+			//查询是否有已存在的用户
+			$UserInfo = $UserBase -> seli_user( "*", "mem_name = '".$RegInfo["username"]."'" );
+			//print_r( $UserInfo );
+			if( !empty( $UserInfo ) ){
+			
+				//调用 输出注册用户界面控制器
+				$this->reg_user_view("Sorrry: 亲,已经存在用户了哦!");
+				//die("Sorrry: 亲,已经存在用户了哦!");
+				die();
+			}
+
 			//添加用户
 			$UserBase -> add_user( $RegInfo["username"], $RegInfo["password"] ,$RegInfo["email"] );
 
+			//调用 输出注册用户界面控制器
+			//这里应该跳转到用户中心或登陆页面
+			$this->reg_user_view("亲,您成功注册了哦!");
 			/*
 			echo $RegInfo["username"];
 			echo "<br/>";
