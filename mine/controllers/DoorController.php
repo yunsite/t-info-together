@@ -139,7 +139,7 @@
 			$body = "您好,".$RegInfo["username"].",您已经注册成功!<br/>请牢记您的密码: ".$RegInfo["password"]."!<br/>";
 			$user_name = $RegInfo["username"];
 			//向用户发送邮件
-			send_mail( $RegInfo["email"], $subject, $body, $user_name )
+			send_mail( $RegInfo["email"], $subject, $body, $user_name );
 
 			//调用 输出注册用户界面控制器
 			//这里应该跳转到用户中心或登陆页面
