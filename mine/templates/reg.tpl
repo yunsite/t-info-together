@@ -33,6 +33,11 @@
 		</table>
 		</form>
 		<!-- End(注册框) -->
-
+		
+		<!-- 错误信息 -->
+		<div class="error_info">
+			<span style="color:red;"><{$error_info}></span>
+		</div>
+		<!-- End(错误信息) -->
 	</body>
 </html>

@@ -179,12 +179,17 @@
 
 				}
 				
+				/*
+				echo $sql;
+				echo "<br/>";
+				*/
+
 				//为以后测试需要,暂时保留测试代码
 				//echo $sql;
 
 				if( !($handle = mysql_query( $sql, $this->dblink )) ){
 
-					die( "Update Error :".mysql_error() );
+					die( "SELECT Error :".mysql_error() );
 
 				}
 
