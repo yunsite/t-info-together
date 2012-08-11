@@ -60,4 +60,32 @@
 	$sys_left_delimiter = "<{";
 
 	$sys_right_delimiter = "}>";
+
+
+
+
+	//邮件服务器配置
+
+	//邮件服务器地址
+	$smtp_host = "smtp.qq.com";
+
+	//SMTP认证用户
+	$smtp_username = "";
+
+	//SMTP认证用户密码
+	$smtp_pwd = "";
+
+	//发件人邮箱
+	$mail_from = "";
+
+	//发件人姓名
+	$mail_from_name = "T_Info_Together";
+
+	//邮件字符集
+	$mail_charset = "GB2312";
+
+	//邮件Encoding(暂为base64,至于为什么是它,我也不太清楚,稍后查一下)
+	$mail_encoding = "base64";
+
+
 ?>
