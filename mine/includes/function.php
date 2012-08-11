@@ -308,4 +308,32 @@
 	}
 
 
+	/*
+	*
+	*	@Description:	设置Cookie函数
+
+	*	@Param	$name		Cookie的识别名称
+				$value		Cookie的值
+				$expire		Cookie的生存期限(天)
+				$path		Cookie在服务器端的指定路径		|		"/"(可以修订,使之可以适应于虚拟空间等的情况下,同一目录下存在多个项目的情况)
+	*	@Return
+	*
+	*
+	*/
+	function set_cookie( $name, $value, $expire, $path = "/" ){
+	
+		global $Cookie_pwd;
+
+		//md5加密其值(串接密钥)
+		$value = md5( $value.$Cookie_pwd );
+
+		//整合Cookie保存时间
+		$expire = time() + $expire *60*60 *24;
+
+		//设置Cookie
+		setcookie( $name, $value, $expire, $path );
+	
+	}
+
+
 ?>
