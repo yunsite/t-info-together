@@ -228,74 +228,82 @@
 	/*
 	*
 	*	@Description:	发送邮件函数
-	*	@Param	None
+
+	*	@Param	$sendto_email	目的邮件地址
+				$subject		邮件主题
+				$body			邮件主体
+				$user_name		目的用户名
 	*	@Return
 	*
 	*
 	*/
 
-	function send_mail( $smtp_host, $smtp_username, $smtp_pwd, $sendto_email, $subject, $body, $extra_hdrs, $user_name ){
+	function send_mail( $sendto_email, $subject, $body, $user_name ){
 	
+		global $smtp_host,$smtp_username,$smtp_pwd,$mail_from,$mail_from_name,$mail_charset,$mail_encoding;
+
 		//包含发送邮件类(仅包含一次)
 		require_once("includes/phpmailer/class.phpmailer.php");
 		
 		//实例化对象
 		$mail = new PHPMailer();
-		
+
+		// send via SMTP
 		//SMTP方式发送邮件
-		$mail->IsSMTP();						// send via SMTP
+		$mail->IsSMTP();
 
+		// SMTP servers
 		//SMTP邮件服务器地址
-		$mail->Host = $smtp_host;				// SMTP servers
+		$mail->Host = $smtp_host;
 
+		// turn on SMTP authentication
 		//开启SMTP认证
-		$mail->SMTPAuth = true;					// turn on SMTP authentication
+		$mail->SMTPAuth = true;
 
+		// SMTP username  注意：普通邮件认证不需要加 @域名
 		//SMTP用户名
-		$mail->Username = $smtp_username;		// SMTP username  注意：普通邮件认证不需要加 @域名
+		$mail->Username = $smtp_username;
 
+		// SMTP password
 		//SMTP密码
-		$mail->Password = $smtp_pwd;		// SMTP password
+		$mail->Password = $smtp_pwd;
 
-		//
-		$mail->From = "yourmail@yourdomain.com";      // 发件人邮箱
-		$mail->FromName =  "管理员";  // 发件人
-		$mail->CharSet = "GB2312";   // 这里指定字符集！
-		$mail->Encoding = "base64"; 
-		$mail->AddAddress($sendto_email,"username");  // 收件人邮箱和姓名
-		$mail->AddReplyTo("yourmail@yourdomain.com","yourdomain.com"); 
+		// 发件人邮箱
+		$mail->From = $mail_from;
+		// 发件人
+		$mail->FromName =  $mail_from_name;
+		// 这里指定字符集！
+		$mail->CharSet = $mail_charset;
+		$mail->Encoding = $mail_encoding;
+
+		// 收件人邮箱和姓名
+		$mail->AddAddress( $sendto_email, $user_name );
+		$mail->AddReplyTo( $mail_from, $mail_from_name);
+
 		//$mail->WordWrap = 50; // set word wrap 换行字数
 		//$mail->AddAttachment("/var/tmp/file.tar.gz"); // attachment 附件
 		//$mail->AddAttachment("/tmp/image.jpg", "new.jpg");
-		$mail->IsHTML(true);  // send as HTML
+
+		// send as HTML
+		$mail->IsHTML( true );
+
 		// 邮件主题
 		$mail->Subject = $subject;
-		// 邮件内容
-		$mail->Body = "
-		<html><head>
-		<meta http-equiv="Content-Language" content="zh-cn">
-		<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
-		</head>
-		<body>
-		I love php。
-		</body>
-		</html>
-		";
-		 $mail->AltBody ="text/html"; 
-		 if(!$mail->Send())
-			 {    
-			 echo "邮件发送有误 <p>";  
-			 echo "邮件错误信息: " . $mail->ErrorInfo;    
-			 exit;  
-			 }
-			 else {    
-				  echo "$user_name 邮件发送成功!<br />";    
-				   }    
-				   }    
-				   // 参数说明(发送到, 邮件主题, 邮件内容, 附加信息, 用户名)    
-				   smtp_mail("yourmail@yourdomain.com", "欢迎使用phpmailer！", "NULL", "yourdomain.com", "username"); 
-				   ?> 
 
+		// 邮件内容
+		$mail->Body = $body;
+
+		//$mail->AltBody ="text/html"; 
+		 if(!$mail->Send()){    
+			
+			echo "<h3>邮件发送有误!</h3>";
+			echo "邮件错误信息: " . $mail->ErrorInfo;
+
+			//可通过try...catch获取错误,进行友好处理
+			exit;
+		}else {
+			echo "邮件发送成功!<br/>";
+		}    
 	
 	}
 
