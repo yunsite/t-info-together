@@ -14,6 +14,10 @@
 			// 登陆&登出
 			if( @$arg_get["logio"] == 1 ){	//登陆系统
 			
+				//包含UserBase.php(model)
+				//可判断 传递来的信息数组$arg_post参数中 是否有已存在的Cookie,如果有的话,则不需包含文件,直接读取Cookie就行
+				include_once("models/UserBase.php");
+
 				//调用 登陆系统控制器
 				$this->login_sys( $arg_post );
 			
@@ -25,7 +29,7 @@
 			}
 			
 			//注册用户
-			if( $arg_get["reg"] == 1 ){	//注册用户
+			if( @$arg_get["reg"] == 1 ){	//注册用户
 			
 				//包含 用户基本处理模型
 				include_once("models/UserBase.php");
@@ -33,7 +37,7 @@
 				//调用 注册用户控制器
 				$this->reg_user( $arg_post );
 			
-			}elseif( $arg_get["reg"] == 0 ){	//注册用户界面
+			}elseif( @$arg_get["reg"] == 0 ){	//注册用户界面
 			
 				//调用 输出注册用户界面控制器
 				$this->reg_user_view();
@@ -57,10 +61,56 @@
 			//4.观察 好乐买,人人,126,weibo,pw,dz,csdn 等网站 退出浏览器 及 保持登陆 的处理行为 -> Cookie加密后保存登陆状态?
 			//5.
 		
-			//包含UserBase.php(model)
-			include_once("models/UserBase.php");
-
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+			
+			$UserBase = new UserBase( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+			
+			//查询是否有已存在的用户
+			$UserInfo = $UserBase -> seli_user( "*", "mem_name = '".$UserInfo["username"]."'" );
 			//print_r( $UserInfo );
+			if( empty( $UserInfo ) ){
+			
+				//调用 输出注册用户界面控制器
+				//$this->reg_user_view("Sorrry: 亲,已经存在用户了哦!");
+				//die("Sorrry: 亲,已经存在用户了哦!");
+				die("Soory: 亲,您输入的用户不存在哦,再检查下输入信息吧!");
+
+			}
+			
+			//整合 $UserInfo数组
+			$UserInfo = $UserInfo[0];
+			//print_r( $UserInfo );
+
+			//设置Cookie id
+			set_cookie( "user_id", $UserInfo["mem_id"], 7 );
+			//设置Cookie username
+			set_cookie( "username", $UserInfo["mem_name"], 7 );
+			//设置Cookie group
+			set_cookie( "group", $UserInfo["mem_group"], 7 );
+			//设置Cookie qq
+			set_cookie( "user_qq", $UserInfo["mem_qq"], 7 );
+			//设置Cookie email
+			set_cookie( "user_email", $UserInfo["mem_email"], 7 );
+			//设置Cookie sign
+			set_cookie( "user_sign", $UserInfo["mem_sign"], 7 );
+			//设置Cookie phone
+			set_cookie( "user_phone", $UserInfo["mem_phone"], 7 );
+			//设置Cookie city
+			set_cookie( "user_city", $UserInfo["mem_city"], 7 );
+			//设置Cookie area
+			set_cookie( "user_area", $UserInfo["mem_area"], 7 );
+			//设置Cookie regtime
+			set_cookie( "regtime", $UserInfo["mem_regtime"], 7 );
+			//设置Cookie lastlogtime
+			set_cookie( "lastlogtime", $UserInfo["mem_llogtime"], 7 );
+			//设置Cookie lastlogip
+			set_cookie( "lastlogip", $UserInfo["mem_llogip"], 7 );
+			
+			//登陆成功,跳转到个人中心
+			echo "登陆成功";
+
+			print_r( $_COOKIE );
+			
 
 
 		}

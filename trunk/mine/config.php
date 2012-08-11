@@ -26,7 +26,7 @@
 	$db_pwd = '';
 
 	//Cookie加密密钥
-	$Cookie_pwd = '';
+	$Cookie_pwd = 't_info_together';
 
 	//Smarty模板配置变量
 
