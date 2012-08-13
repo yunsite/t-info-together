@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>µÇÂ½¡ª<{$title}></title>
+		<title>ç™»é™†â€”<{$title}></title>
 		<meta name="keywords" content="<{$keywords}>" />
 		<meta name="description" content="<{$description}>" />
 		<meta http-equiv="Content-Type" content="text/html; charset=<{$charset}>"/>
@@ -10,35 +10,41 @@
 
 	<body>
 
-		<!-- µÇÂ½¿ò -->
+		<!-- ç™»é™†æ¡† -->
 		<form action="index.php?logio=1" method="post">
 		<table>
 			<tr></tr>
 			<tr>
-				<td>ÓÃ»§Ãû:</td>
+				<td>ç”¨æˆ·å:</td>
 				<td><input type="text" name="username"/></td>
 			</tr>
 			<tr>
-				<td>ÃÜÂë:</td>
+				<td>å¯†ç :</td>
 				<td><input type="password" name="password"/></td>
 			</tr>
 			<tr>
-				<td><input type="checkbox" name="rem_me" value="1"/>¼Ç×¡ÎÒ</td>
-				<td><a href="#">Íü¼ÇÃÜÂë</a></td>
+				<td><input type="checkbox" name="rem_me" value="1"/>è®°ä½æˆ‘</td>
+				<td><a href="#">å¿˜è®°å¯†ç </a></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="µÇÂ½"/></td>
-				<td><a href="index.php?reg=0">×¢²á</a></td>
+				<td><input type="submit" value="ç™»é™†"/></td>
+				<td><a href="index.php?reg=0">æ³¨å†Œ</a></td>
 			</tr>
 		</table>
 		</form>
-		<!-- End(µÇÂ½¿ò) -->
+		<!-- End(ç™»é™†æ¡†) -->
+
+		<!-- é”™è¯¯ä¿¡æ¯ -->
+		<div class="error_info">
+			<span style="color:red;"><{$error_info}></span>
+		</div>
+		<!-- End(é”™è¯¯ä¿¡æ¯) -->
 
 		<div class="footer">
 			<span><a href="#">ICP:<{$icp_num}></a></span>
-			<span><a href="#">ÁÔÍ·Çë½ø</a></span>
-			<span><a href="#">ÕÒÎÒ×÷ÊµÏ°Éú</a></span>
-			<span><a href="#">¼ÓÈëÎÒÃÇ</a></span>
+			<span><a href="#">çŒŽå¤´è¯·è¿›</a></span>
+			<span><a href="#">æ‰¾æˆ‘ä½œå®žä¹ ç”Ÿ</a></span>
+			<span><a href="#">åŠ å…¥æˆ‘ä»¬</a></span>
 		</div>
 	</body>
 
