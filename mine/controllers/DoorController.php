@@ -47,6 +47,30 @@
 		}
 
 		/*	()
+		*	@Description:	登陆系统视图
+
+			@param	$error_info	错误信息	|	空
+		*
+		*
+		*/
+		private function login_sys_view( $error_info = '' ){
+		
+			//print_r( $error_info );
+
+			//Smarty类对象在global.php实例化过
+			global $tpl,$siteinfo_new,$sys_charset;
+			
+			$tpl->assign( "title",$siteinfo_new["site_name"] );
+			$tpl->assign( "keywords",$siteinfo_new["site_keywords"] );
+			$tpl->assign( "description",$siteinfo_new["site_description"] );
+			$tpl->assign( "charset",$sys_charset );
+			$tpl->assign( "charset",$sys_charset );
+			$tpl->assign( "error_info",$error_info );
+			$tpl->display("login.tpl");
+
+		}
+
+		/*	()
 		*	@Description:	登陆系统
 
 			@param	$UserInfo	$_POST方式传递过来的用户信息
@@ -70,11 +94,16 @@
 			//print_r( $UserInfo );
 			if( empty( $UserInfo ) ){
 			
-				//调用 输出注册用户界面控制器
+				//调用 输出注册用户界面控制器Action
 				//$this->reg_user_view("Sorrry: 亲,已经存在用户了哦!");
 				//die("Sorrry: 亲,已经存在用户了哦!");
-				die("Soory: 亲,您输入的用户不存在哦,再检查下输入信息吧!");
+				//die("Soory: 亲,您输入的用户不存在哦,再检查下输入信息吧!");
+				
+				//调用 输出登陆用户界面的Action
+				$this->login_sys_view("Soory: 亲,您输入的用户不存在哦,再检查下输入信息吧!");
 
+				//输出视图后,终止脚本
+				die();
 			}
 			
 			//整合 $UserInfo数组
@@ -109,7 +138,7 @@
 			//登陆成功,跳转到个人中心
 			echo "登陆成功";
 
-			print_r( $_COOKIE );
+			//print_r( $_COOKIE );
 			
 
 
