@@ -325,7 +325,7 @@
 		global $Cookie_pwd;
 
 		//md5加密其值(串接密钥)
-		$value = md5( $value.$Cookie_pwd );
+		//$value = md5( $value.$Cookie_pwd );
 
 		//整合Cookie保存时间
 		$expire = time() + $expire *60*60 *24;
