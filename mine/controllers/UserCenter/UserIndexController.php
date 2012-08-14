@@ -17,6 +17,8 @@
 
 			//print_r($arg_get);
 
+			//print_r( $_COOKIE );
+
 			//无参调用 IndexController控制器
 			if( $arg_get['u'] == 'index' ){
 			
