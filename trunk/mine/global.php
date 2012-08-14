@@ -5,26 +5,30 @@
 	*
 	*/
 
+	//包含	系统配置文件
+	@include_once( "config.php" );
+	//针对 controllers/UserCenter/UserIndexController.php 做的包含处理
+	@include_once( "../../config.php" );
+
 	//包含	函数库
-	include_once("includes/function.php");
+	include_once( $sys_dir."includes/function.php" );
 
 	//脚本开始执行时间
 	//Description:用于计算每次请求页面,所消耗的时间——需要在输出模板前在Action里再调用一次,设置$End_time,然后把 ($Used_time = $End_time - $Start_time) 输出到模板
 	$Start_time = microtime_float();
 
-	//包含	系统配置文件
-	include_once("config.php");
+	
 
 	//包含	数据库操作基类
-	include_once("includes/db_class.php");
+	include_once( $sys_dir."includes/db_class.php" );
 
 	//包含	安全处理文件
-	include_once("includes/security.php");
+	include_once( $sys_dir."includes/security.php" );
 
 	
 	
 	//包含	Smarty类文件
-	include_once("includes/Smarty/libs/Smarty.class.php");
+	include_once( $sys_dir."includes/Smarty/libs/Smarty.class.php" );
 	
 	//Smarty模板配置
 	$tpl = new Smarty();
@@ -36,14 +40,15 @@
 	$tpl->left_delimiter = $sys_left_delimiter;
 	$tpl->right_delimiter = $sys_right_delimiter;
 
+	
+
 	//echo "test";
 	//print_r( $tpl );
 	
 
 	//检测程序是否已安装,没有安装的话,则跳转到安装文件
-	//这里为使项目跑起来,暂时假定从index.php文件包含global.php,把文件路劲暂时指定为"install/install.lock",但这里存在缺陷,需要更改
-	if( !file_exists("install/install.lock") )
-		header("Location: ../install/index.php");
+	if( !file_exists($sys_dir."install/install.lock") )
+		header("Location: ".$sys_dir."install/index.php");
 
 
 	/*
@@ -74,12 +79,12 @@
 	//获取系统基本信息
 
 	//判断缓存是否存在,而读取缓存
-	if( file_exists("data/cache/SiteInfo.cache") ){
+	if( file_exists($sys_dir."data/cache/SiteInfo.cache") ){
 				
 		//echo "缓存文件存在!";
 		//echo "<br/>";
 
-		$siteinfo_new =  read_cache("data/cache/SiteInfo.cache");
+		$siteinfo_new =  read_cache($sys_dir."data/cache/SiteInfo.cache");
 		//print_r($siteinfo_new);
 
 		//读取缓存文件相关信息;
@@ -105,7 +110,7 @@
 
 		//包含 model,在这里检测包含处理用到的model
 		//@include_once("../models/SiteInfo.php");
-		include_once("models/SiteInfo.php");
+		include_once($sys_dir."models/SiteInfo.php");
 
 		/*if( 是直接访问 ){
 				
@@ -178,10 +183,15 @@
 		}
 		*/
 		//这里暂未考虑缓存机制开启选项(需要修改缓存的内容——缓存指定的信息)
-		write_cache( 'data/cache/SiteInfo.cache', $siteinfo_new );
+		write_cache( $sys_dir.'data/cache/SiteInfo.cache', $siteinfo_new );
 	}
 
-
+	
+	//输出 系统基本模板变量
+	$tpl->assign( "title",$siteinfo_new["site_name"] );
+	$tpl->assign( "keywords",$siteinfo_new["site_keywords"] );
+	$tpl->assign( "description",$siteinfo_new["site_description"] );
+	$tpl->assign( "charset",$sys_charset );
 
 	//检测系统是否关闭
 
