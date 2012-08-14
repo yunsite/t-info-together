@@ -28,6 +28,36 @@
 		die();
 	}
 
+	//登陆个人中心
+	if( isset($_GET['u']) && $_GET['u']=='index' ){
+	
+		//根据Cookie检测用户是否已经登陆
+		//检测Cookie: 暂时先检测有无Username,若无则表示没有登陆,否则表示已登陆
+		//没登陆则跳转到登陆Controller
+
+		/*
+
+		//检测是否选择了某个模块
+		if( isset($_GET['c']) ){
+			
+			//根据switch匹配模块,来包含 用户中心 下的某个模块
+			switch( $_GET['c'] ){
+			
+				include_once("controllers/UserCenter/xxx.php");
+			
+			}
+
+			die();
+
+		
+		}
+		*/
+
+		//包含个人中心显示主界面的Action
+		include_once("controllers/UserCenter/UserIndexController.php");
+	
+	}
+
 	//包含 入口控制器
 	include_once("controllers/IndexController.php");
 
