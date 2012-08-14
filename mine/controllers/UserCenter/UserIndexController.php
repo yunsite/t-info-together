@@ -10,14 +10,15 @@
 		//把 $_GET和$_POST数组 作为构造函数的参数,供构造函数处理
 		function __construct( $arg_get = '', $arg_post = '' ){
 		
-			
 
 			//print_r($tpl);
 
 			//print_r($sys_charset);
 
+			//print_r($arg_get);
+
 			//无参调用 IndexController控制器
-			if( empty($arg_get) && empty($arg_post) ){
+			if( $arg_get['u'] == 'index' ){
 			
 				//调用默认Action方法(初始动作)显示首页
 				$this->IndexAction();
