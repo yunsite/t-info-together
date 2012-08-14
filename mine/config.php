@@ -9,6 +9,12 @@
 	//系统版本号
 	$sys_version = '';
 	
+	//用户填写的 系统主目录信息
+	$sys_dir_base = '/t-info-together/mine/';
+
+	//系统主目录
+	$sys_dir = $_SERVER['DOCUMENT_ROOT'].$sys_dir_base;
+
 	//系统编码
 	$sys_charset = 'utf8';
 
@@ -47,13 +53,13 @@
 	//替换变量右边界符
 	$sys_right_delimiter = "}>";
 	*/
-	$sys_template_dir = "templates/";
+	$sys_template_dir = $sys_dir."templates/";
 
-	$sys_compile_dir = "data/templates_c/";
+	$sys_compile_dir = $sys_dir."data/templates_c/";
 
 	$sys_config_dir = "";
 
-	$sys_cache_dir = "data/cache/";
+	$sys_cache_dir = $sys_dir."data/cache/";
 
 	$sys_caching = 0;
 
