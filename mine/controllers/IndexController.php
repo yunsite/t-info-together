@@ -54,12 +54,8 @@
 		private function IndexAction(){
 			
 			//Smarty类对象在global.php实例化过
-			global $tpl,$siteinfo_new,$sys_charset;
+			global $tpl;
 			
-			$tpl->assign( "title",$siteinfo_new["site_name"] );
-			$tpl->assign( "keywords",$siteinfo_new["site_keywords"] );
-			$tpl->assign( "description",$siteinfo_new["site_description"] );
-			$tpl->assign( "charset",$sys_charset );
 			$tpl->display("index.tpl");
 			
 
