@@ -1,11 +1,11 @@
 <html>
 
 	<head>
-		<title>�û����ġ�<{$title}></title>
+		<title>用户中心—<{$title}></title>
 		<meta name="keywords" content="<{$keywords}>" />
 		<meta name="description" content="<{$description}>" />
 		<meta http-equiv="Content-Type" content="text/html; charset=<{$charset}>"/>
-		<link rel="stylesheet" type="text/css" href="templates/css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="<{$sys_dir_base}>templates/css/main.css"/>
 	</head>
 
 	<body>
@@ -17,13 +17,13 @@
 				<!-- logo&banner -->
 				<div class="logo">
 					<a href="#">
-						<img src="templates/images/logo.gif" width="189px" height="75px" />
+						<img src="<{$sys_dir_base}>templates/images/logo.gif" width="189px" height="75px" />
 					</a>
 				</div>
 
 				<div class="banner">
 					<a href="#">
-						<img src="templates/images/banner.gif" width="700px" height="75px"/>
+						<img src="<{$sys_dir_base}>templates/images/banner.gif" width="700px" height="75px"/>
 					</a>
 				</div>
 				<!-- End(logo&banner) -->
@@ -33,27 +33,27 @@
 					<ul>
 						<li>
 							<a href="index.php">
-								��ҳ
+								首页
 							</a>
 						</li>
 						<li>
 							<a href="sort_index.php">
-								����
+								分类
 							</a>
 						</li>
 						<li>
 							<a href="user_space.php">
-								��Ա�㳡
+								会员广场
 							</a>
 						</li>
 						<li>
 							<a href="user_index.php">
-								��Ա����
+								会员中心
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								����
+								搜索
 							</a>
 						</li>
 					</ul>
@@ -70,42 +70,42 @@
 					<ul>
 						<li>
 							<a href="user_index.php">
-								��������
+								个人中心
 							</a>
 						</li>
 						<li>
 							<a href="user_dairy.php">
-								��־����
+								日志管理
 							</a>
 						</li>
 						<li>
 							<a href="user_msg.php">
-								վ����Ϣ
+								站内消息
 							</a>
 						</li>
 						<li>
 							<a href="user_info.php">
-								��������
+								基本资料
 							</a>
 						</li>
 						<li>
 							<a href="pass_modi.php">
-								�����޸�
+								密码修改
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								���Һ���
+								查找好友
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								���ѹ���
+								好友管理
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								�˳���½
+								退出登陆
 							</a>
 						</li>
 					</ul>
@@ -119,9 +119,9 @@
 						<div class="publish">
 							<div class="text_box">
 								<textarea cols="55" rows="3">
-									����������
+									这里是内容
 								</textarea>
-								<input type="submit" value="�ύ" width="50px" height="50px"/>
+								<input type="submit" value="提交" width="50px" height="50px"/>
 							</div>
 						</div>
 					<!-- End(Publish) -->
@@ -132,40 +132,40 @@
 								<li>
 									<div class="face">
 										<a href="#">
-											<img src="templates/images/face.jpg" width="70px" height="70px"/>
+											<img src="<{$sys_dir_base}>templates/images/face.jpg" width="70px" height="70px"/>
 										</a>
 									</div>
 									<div class="name" style="float:left;">
-										һ����
+										一二三
 									</div>
 									<div class="state_content">
-										���¹���Ͷ������Ŀ,����ȫ����,��Techcrunch�Ƴ�,�ṩ�޷켴ʱ��վ���ư�ȫ��վ�����Կ���www.anquanbao.com��
+										创新工场投资新项目,“安全宝”,在Techcrunch推出,提供无缝即时网站的云安全。站长可以看看www.anquanbao.com。
 									</div>
 								</li>
 								<li>
 									<div class="face">
 										<a href="#">
-											<img src="templates/images/face.jpg" width="70px" height="70px"/>
+											<img src="<{$sys_dir_base}>templates/images/face.jpg" width="70px" height="70px"/>
 										</a>
 									</div>
 									<div class="name">
-										һ����
+										一二三
 									</div>
 									<div class="state_content">
-										���¹���Ͷ������Ŀ,����ȫ����,��Techcrunch�Ƴ�,�ṩ�޷켴ʱ��վ���ư�ȫ��վ�����Կ���www.anquanbao.com��
+										创新工场投资新项目,“安全宝”,在Techcrunch推出,提供无缝即时网站的云安全。站长可以看看www.anquanbao.com。
 									</div>
 								</li>
 								<li>
 									<div class="face">
 										<a href="#">
-											<img src="templates/images/face.jpg" width="70px" height="70px"/>
+											<img src="<{$sys_dir_base}>templates/images/face.jpg" width="70px" height="70px"/>
 										</a>
 									</div>
 									<div class="name" style="float:left;">
-										һ����
+										一二三
 									</div>
 									<div class="state_content" style="float:right;width:560px;">
-										���¹���Ͷ������Ŀ,����ȫ����,��Techcrunch�Ƴ�,�ṩ�޷켴ʱ��վ���ư�ȫ��վ�����Կ���www.anquanbao.com��
+										创新工场投资新项目,“安全宝”,在Techcrunch推出,提供无缝即时网站的云安全。站长可以看看www.anquanbao.com。
 									</div>
 								</li>
 							</ul>
@@ -182,27 +182,27 @@
 						<tr>
 							<td>
 								<a href="#">
-									��ϵ����
+									联系我们
 								</a>
 							</td>
 							<td>
 								<a href="#">
-									��������
+									关于我们
 								</a>
 							</td>
 							<td>
 								<a href="#">
-									������ʿ
+									招贤纳士
 								</a>
 							</td>
 							<td>
 								<a href="#">
-									��վ��ͼ
+									网站地图
 								</a>
 							</td>
 							<td>
 								<a href="#">
-									��������
+									帮助中心
 								</a>
 							</td>
 						</tr>
