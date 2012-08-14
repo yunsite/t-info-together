@@ -33,7 +33,16 @@
 	
 		//根据Cookie检测用户是否已经登陆
 		//检测Cookie: 暂时先检测有无Username,若无则表示没有登陆,否则表示已登陆
-		//没登陆则跳转到登陆Controller
+
+		//没登陆则跳转到 登陆Controller视图
+		if( !isset( $_COOKIE['user_id'] ) ){
+		
+			//跳转到首页(暂时先为跳转到首页,因为登陆单独界面的Action之前的想法没有放出来使用)
+			header("Location: index.php");
+
+			die();
+
+		}
 
 		
 		//检测是否选择了某个模块
