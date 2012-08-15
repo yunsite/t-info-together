@@ -24,12 +24,8 @@
 	
 		include_once("controllers/DoorController.php");
 		
-		//在包含调用控制器后,结束脚本的执行
-		die();
-	}
 
-	//登陆个人中心
-	if( isset($_GET['u']) ){
+	}elseif( isset($_GET['u']) ){	//登陆个人中心
 	
 		//根据Cookie检测用户是否已经登陆
 		//检测Cookie: 暂时先检测有无Username,若无则表示没有登陆,否则表示已登陆
@@ -39,8 +35,6 @@
 		
 			//跳转到首页(暂时先为跳转到首页,因为登陆单独界面的Action之前的想法没有放出来使用)
 			header("Location: index.php");
-
-			die();
 
 		}
 
@@ -65,11 +59,15 @@
 
 		//echo "test";
 		//echo "test";
+	
+	}else{	//默认情况
+	
+		//包含 入口控制器
+		include_once("controllers/IndexController.php");
 
 	}
 
-	//包含 入口控制器
-	include_once("controllers/IndexController.php");
+	
 
 
 ?>
