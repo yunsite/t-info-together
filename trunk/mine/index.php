@@ -60,10 +60,21 @@
 		//echo "test";
 		//echo "test";
 	
-	}else{	//默认情况
+	}else{	//其他情况
 	
-		//包含 入口控制器
-		include_once("controllers/IndexController.php");
+		//如果已登陆,则跳转到个人中心模块选择页
+		if( isset( $_COOKIE['user_id'] ) ){
+		
+			//跳转到模块选择页面
+			header("Location: index.php?u=index");
+
+		}else{
+		
+			//包含 入口控制器
+			include_once("controllers/IndexController.php");
+		
+		}
+		
 
 	}
 
