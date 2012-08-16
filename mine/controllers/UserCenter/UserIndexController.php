@@ -7,6 +7,13 @@
 
 	class UserIndexController{
 	
+		//功能模块名(作标题用)
+		private $controller_name = "用户中心";
+
+		//功能模块模板名(模版调用时用)
+		private $tpl_file = "shuoshuo_main";
+		
+
 		//把 $_GET和$_POST数组 作为构造函数的参数,供构造函数处理
 		function __construct( $arg_get = '', $arg_post = '' ){
 		
@@ -71,6 +78,8 @@
 			//print_r($tpl);
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->assign( "controller_name",$this->controller_name );
+			$tpl->assign( "tpl_file",$this->tpl_file );
 			$tpl->display("UserCenter/index.tpl");
 			
 
