@@ -80,7 +80,7 @@
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
 			$tpl->assign( "controller_name",$this->controller_name );
 			$tpl->assign( "tpl_file",$this->tpl_file );
-			$tpl->display("UserCenter/index.tpl");
+			$tpl->display("UserCenter/frame.tpl");
 			
 
 		}
