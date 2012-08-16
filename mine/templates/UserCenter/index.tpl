@@ -104,7 +104,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="index.php?logio=2">
 								退出登陆
 							</a>
 						</li>

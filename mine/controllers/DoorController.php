@@ -159,8 +159,36 @@
 		*/
 		private function logout_sys(){
 		
-			
+			//删除Cookie(设置Cookie的时间为,当前时间前1天)
+
+			//设置Cookie id
+			set_cookie( "user_id", "", -1 );
+			//设置Cookie username
+			set_cookie( "username", "", -1 );
+			//设置Cookie group
+			set_cookie( "group", "", -1 );
+			//设置Cookie qq
+			set_cookie( "user_qq", "", -1 );
+			//设置Cookie email
+			set_cookie( "user_email", "", -1 );
+			//设置Cookie sign
+			set_cookie( "user_sign", "", -1 );
+			//设置Cookie phone
+			set_cookie( "user_phone", "", -1 );
+			//设置Cookie city
+			set_cookie( "user_city", "", -1 );
+			//设置Cookie area
+			set_cookie( "user_area", "", -1 );
+			//设置Cookie regtime
+			set_cookie( "regtime", "", -1 );
+			//设置Cookie lastlogtime
+			set_cookie( "lastlogtime", "", -1 );
+			//设置Cookie lastlogip
+			set_cookie( "lastlogip", "", -1 );
 		
+			//跳转到首页(以后可改为跳转到登录页)
+			header("Location: index.php");
+
 		}
 
 
