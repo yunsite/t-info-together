@@ -51,7 +51,11 @@
 				case "index":
 					include_once("controllers/UserCenter/UserIndexController.php");
 				break;
-					
+
+				//包含日志控制器
+				case "dairy":
+					include_once("controllers/UserCenter/DairyController.php");
+				break;
 				
 			}
 			
