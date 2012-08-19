@@ -136,6 +136,18 @@ INSERT INTO t_siteinfo(conf_name,conf_value) VALUES('close_reason','网站维护
 
 #----------------------------------------End(#站点基本信息表)----------------------------------------------
 
+#-----------------------------------------IP记录表(纯真数据库)-----------------------------------------------------------
+#IP记录表
+DROP TABLE IF EXISTS t_iptable;
+CREATE TABLE t_iptable
+(
+	ip_id		INT		NOT NULL	AUTO_INCREMENT,
+	ip_from		VARCHAR(15)	NOT NULL,
+	ip_to		VARCHAR(15)	NOT NULL,
+	ip_area		VARCHAR(255)	NULL,
+	PRIMARY KEY(ip_id)
+)DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
+#-----------------------------------------End(IP记录表)-----------------------------------------------------------
 
 #-----------------------------------------百度官方新闻(Over)---------------------------------------------------------
 
