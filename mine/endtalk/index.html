@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>EndTalk beta</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link type="text/css" rel="stylesheet" href="style.css">
+		<meta name="Description" content="EndTalk 是一个匿名的陌生人随机聊天网站，进入网站，你可以马上跟一个互不认识的陌生人聊天。通过文字逐渐相互了解。尽情享受这种从陌生人到朋友的感觉吧。" />
+		<meta name="Keywords" content="匿名聊天,陌生人聊天,在线聊天,Omegle,山寨Omegle,国内Omegle,中国Omegle" />
+		<meta name="Author" content="Longbill" />
+        <script src="jquery.js"></script>
+        <script>
+        function init_window()
+        {
+        	$('#main').height($(window).height()-$('#header').height());
+        	$('#content').width($('#chat_window').width()-$('#disconnectwrapper').width()*2-6);
+        	
+			var space = 50;
+			if (navigator.userAgent.match(/msie\s7/i)) space = 50;
+			if (navigator.userAgent.match(/msie\s6/i)) space = 50;
+	
+        	$('#chat_window').height($(window).height()-$('#header').height()-$('#content').height()-space);
+        }
+        init_window();
+        window.onresize = init_window;
+        var lang = 
+        {
+        	send_error:'发送失败',
+        	bye:'Bye!',
+        	online_num:'在线人数：',
+        	waiting:'等待陌生人连接...',
+        	me:'<span style="color:#333">我：</span>',
+        	stranger:'<span style="color:#333">陌生人：</span>',
+        	connected:'<span style="color:orange">连接成功，快跟对方打个招呼吧！</span>对方可能来自：',
+        	disconnected:'对方已断开。',
+        	typing:'<span style="font-size:12px;color:#999">对方正在输入文字</span>',
+        	reconnect:'重新连接',
+        	download:'下载聊天记录',
+        	logining:'登录中..',
+        	logined:'登录成功',
+        	you_disconnect:'您已经断开',
+        	contact_me:'&nbsp;<a href="http://php.js.cn" target="_blank">留言给站长</a>',
+			new_msg:'新消息来啦！'
+        };
+        var ajax_delay = 1000; //ms
+        </script>
+        <script src="chat.js"></script>
+    </head>
+    <body scroll="no">
+        <div id="header">
+        	<div id="header_content">
+        		<table cellpadding="0" cellspacing="0" border="0">
+        			<tr>
+        				<td><img id="logo"  src="images/logo.jpg" /></td>
+        				<td>
+							
+								
+						
+						</td>
+    	       			<td style="text-align:right" valign="middle">
+    	       				在线人数：<span id="online_num"></span>
+    	       			</td>
+    	       		</tr>
+    	       	</table>
+    	    </div>
+        </div> 
+        <div id="main">
+        	<div id="description">
+        		<div style="width:600px;margin:0 auto;text-align:center;">
+	        		<div style="height:400px;float:left; width:300px;">
+	        			<img src="images/taibei.jpg" />
+	        		</div>
+	        		<div style="height:400px;float:left; width:230px;">
+	        			<div style="margin-top:70px;">
+	        				<img src="images/title.jpg" />
+	        			</div>
+	        			<div style="margin:20px 0;margin-bottom:40px;">
+	        				<a href="javascript:init_chat();"><img src="images/start.jpg" /></a>
+	        			</div>
+	        			
+	        		</div>
+        		</div>
+        		<div id="announcement">
+        			
+					<a href="http://longbill.cn" target="_blank">By Longbill</a>
+					
+        		</div>
+        	</div>
+        	<div id="chat" style="display:none">
+        		<div id="chat_window">
+	 			</div>
+        		<div id="chat_bottom">
+        			<div id="disconnectwrapper" onclick="disconnect()">
+        				断开
+        			</div>
+	        			<textarea id="content" ></textarea>
+        			<div id="sendwrapper" onclick="send_bt()" >
+        				发送
+        			</div>
+        		</div>
+        	</div>
+        </div>
+    </body>
+</html>
