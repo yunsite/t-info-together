@@ -25,7 +25,54 @@
 		include_once("controllers/DoorController.php");
 		
 
-	}elseif( isset($_GET['u']) ){	//登陆个人中心
+	}elseif( isset($_GET['c']) ){	//访问单独耦合性小的模块
+	
+
+			//
+			switch( $_GET['c'] ){
+			
+				//包含,调用相应的用户中心下的相应控制器
+				
+				//控制器模块列表
+				case "controllerlist":
+					include_once("controllers/controlistController.php");
+				break;
+
+				//关于我们
+				case "aboutus":
+					include_once("controllers/UserCenter/DairyController.php");
+				break;
+
+				//加入我们
+				case "joinus":
+					include_once("controllers/UserCenter/DairyController.php");
+				break;
+
+				//实习生
+				case "trainee":
+					include_once("controllers/UserCenter/DairyController.php");
+				break;
+
+				//招聘
+				case "inviteus":
+					include_once("controllers/UserCenter/DairyController.php");
+				break;
+
+				//您的建议
+				case "advise":
+					include_once("controllers/UserCenter/DairyController.php");
+				break;
+
+				//您的想法
+				case "idea":
+					include_once("controllers/UserCenter/DairyController.php");
+				break;
+
+
+				
+			}
+
+		}elseif( isset($_GET['u']) ){	//登陆个人中心
 	
 		//根据Cookie检测用户是否已经登陆
 		//检测Cookie: 暂时先检测有无Username,若无则表示没有登陆,否则表示已登陆
