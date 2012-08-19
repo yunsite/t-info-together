@@ -1,0 +1,94 @@
+<style>
+	* {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+	}
+
+	body {
+    color: #000000;
+    font-family: Arial,"ËÎÌו";
+    font-size: 12px;
+    line-height: 150%;
+	}
+
+	.divBox {
+    background-color: #FFFFFF;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    width: 960px;
+	}
+
+
+	.divBoxTitle {
+    background: url("<{$sys_dir_base}>templates/images/bg.gif") repeat-x scroll 0 -80px transparent;
+    color: #C51D1D;
+    font-weight: 700;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+	}
+
+	.divBoxTitle span {
+    float: right;
+	}
+
+	.divBoxTitle span.s_more a {
+    background: url("<{$sys_dir_base}>templates/images/s_more.gif") no-repeat scroll 0 13px transparent;
+    display: inline-block;
+    font-size: 0;
+    height: 30px;
+    line-height: 100px;
+    overflow: hidden;
+    width: 29px;
+	}
+
+	a:link {
+		color: #6F6F6F;
+		text-decoration: none;
+	}
+
+	.divBox ul {
+    overflow: hidden;
+	}
+	ul {
+		list-style: none outside none;
+	}
+
+	.divBox ul.divBoxH76 li {
+    display: inline;
+    float: left;
+    margin: 7px;
+    text-align: center;
+    width: 226px;
+	}
+
+	.divBox ul.divBoxH76 li a {
+    background-color: #F2D4D4;
+    color: #C51D1D;
+    display: inline-block;
+    font-weight: bold;
+    height: 109px;
+    line-height: 25px;
+    text-align: center;
+    width: 226px;
+	}
+
+	.divBox ul.divBoxH76 li a:hover {
+	
+		 background-color: #EFB7B7;
+
+		 text-decoration: none;
+
+	}
+
+	.divBox ul.divBoxH76 li img {
+    background-color: #FFFFFF;
+    margin: 3px;
+    padding: 1px;
+	}
+	img {
+		border: 0 none;
+	}
+
+</style>

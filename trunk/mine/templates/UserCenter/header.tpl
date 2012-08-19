@@ -24,9 +24,7 @@
 				</li>
 
 				<li>
-					<a href="sort_index.php">
-						分类
-					</a>
+					<a href="index.php?c=controllerlist">产品列表</a>
 				</li>
 
 				<li>
