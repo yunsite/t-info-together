@@ -42,6 +42,18 @@ CREATE TABLE `t_info_together`.`t_dairy` (
 `dry_private` BIT( 2 ) NOT NULL DEFAULTb '0'
 ) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+#日志分类表
+DROP TABLE IF EXISTS t_dairysort;
+CREATE TABLE t_dairysort
+(
+	dry_sid		INT		NOT NULL	AUTO_INCREMENT,
+	dry_uid		INT		NOT NULL,
+	dry_stitle	VARCHAR(24)	NOT NULL,
+	dry_sifcomm	BOOLEAN		NOT NULL	DEFAULT 0,
+	dry_sprivate	BIT(2)		NOT NULL	DEFAULT 0,
+	PRIMARY KEY(dry_sid)
+)DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
+
 #日志评论表
 DROP TABLE IF EXISTS t_drycomm;
 CREATE TABLE t_drycomm
