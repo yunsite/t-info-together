@@ -7,7 +7,7 @@
 	<!-- End(Ueditor相关包含文件) -->
 	
 	<!-- Ueditor显示 -->
-	<form action="index.php?u=dairy&a=add" method="post">
+	<form action="index.php?u=dairy" method="post">
 		<script type="text/plain" id="myContent" name="myContent"></script>
 		<input type="submit" value="发布"/>
 	</form>
