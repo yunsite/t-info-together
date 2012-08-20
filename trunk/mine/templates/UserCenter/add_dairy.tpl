@@ -8,7 +8,7 @@
 	
 	<!-- Ueditor显示 -->
 	<form action="index.php?u=dairy" method="post">
-		<script type="text/plain" id="myContent" name="myContent"></script>
+		<script type="text/plain" id="myContent" name="myDairy"></script>
 		<input type="submit" value="发布"/>
 	</form>
 	<script type="text/javascript">
