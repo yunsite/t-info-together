@@ -68,15 +68,20 @@
 
 			//print_r( $_COOKIE );
 
-			//无参调用 IndexController控制器
-			if( $arg_get['a'] == 'add' ){
+			if( @$arg_get['a'] == 'add' ){
 			
-				//调用默认Action方法(初始动作)显示首页
-				$this->AddAction();
+				$this->AddDairyView();
 
-				//交给默认控制器显示模板后,就不再需要显示其他Action方法的模板了,所以结束代码
-				die();
+			}elseif( !empty($arg_post['myDairy']) ){
 
+				//添加日志
+				$this->AddDairyAction( $arg_post );
+			
+			}else{	//参数里无Action(即参数为?u=dairy时),无POST参数时
+				
+				//显示日志列表方法
+				$this->ShowListAction();
+			
 			}
 			
 
@@ -129,7 +134,7 @@
 
 		/*
 		*
-		*	@Description:	添加日志
+		*	@Description:	添加日志视图
 		*	@Param	None
 		*	@Return
 				string	$
@@ -137,7 +142,7 @@
 		*
 		*
 		*/
-		private function AddAction(){
+		private function AddDairyView(){
 			
 			$tpl_file = "add_dairy";
 			$controller_name = "添加日志";
@@ -151,6 +156,57 @@
 			$tpl->display("UserCenter/frame.tpl");
 			
 
+		}
+
+		/*
+		*
+		*	@Description:	添加日志动作(执行成功后,显示视图 ①再写一篇 ②查看已发布的文章)
+		*	@Param	$dairy_info		POST传递进来的日志相关信息
+		*	@Return
+				string	$
+				string	$
+		*
+		*
+		*/
+		private function AddDairyAction( $dairy_info ){
+		
+			echo "添加日志Action";
+			echo "<br/>";
+
+			print_r( $dairy_info );
+		
+		}
+
+		/*
+		*
+		*	@Description:	显示日志列表
+		*	@Param	None
+		*	@Return
+				string	$
+				string	$
+		*
+		*
+		*/
+		private function ShowListAction(){
+		
+			echo "显示日志列表Action";
+
+		}
+
+		/*
+		*
+		*	@Description:	显示日志内容
+		*	@Param	None
+		*	@Return
+				string	$
+				string	$
+		*
+		*
+		*/
+		private function ShowDairyContentAction(){
+		
+			echo "显示日志内容Action";
+		
 		}
 
 	}
