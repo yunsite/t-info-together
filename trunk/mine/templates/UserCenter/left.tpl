@@ -7,7 +7,7 @@
 		</li>
 
 		<li>
-			<a href="user_dairy.php">
+			<a href="index.php?u=dairy">
 				日志管理
 			</a>
 		</li>
