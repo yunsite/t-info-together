@@ -189,7 +189,16 @@
 		*/
 		private function ShowListAction(){
 		
-			echo "显示日志列表Action";
+			$tpl_file = "dairy_list";
+			$controller_name = "日志列表(日志管理)";
+
+			//Smarty类对象在global.php实例化过
+			global $tpl,$sys_dir_base;
+
+			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->assign( "controller_name",$controller_name );
+			$tpl->assign( "tpl_file",$tpl_file );
+			$tpl->display("UserCenter/frame.tpl");
 
 		}
 
