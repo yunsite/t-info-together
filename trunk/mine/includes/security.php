@@ -164,6 +164,29 @@
 	}
 
 	/*
+	*
+	*	@Description:	电子邮件格式校验
+	*	@Param	$email	待检验的电子邮件地址
+	*	@Return
+			Boolean	true	格式正确
+					false	格式错误
+	*
+	*
+	*/
+	function check_email( $email ){
+	
+		if ( preg_grep( "/(\w+\.)*\w+@(\w+\.)+[A-Za-z]+/", $email ) ){
+			
+			return true;
+		
+		}else{
+		
+			return false;
+		
+		}
+
+	}
+	/*
 	*	Description:	数据库安全
 	*
 	*
