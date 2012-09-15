@@ -42,6 +42,9 @@ CREATE TABLE `t_info_together`.`t_dairy` (
 `dry_private` BIT( 2 ) NOT NULL DEFAULTb '0'
 ) ENGINE = MYISAM CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+	#增加字段dry_sid 2012年9月16日 07:39:36
+	ALTER TABLE t_dairy ADD dry_sid INT NOT NULL;
+
 #日志分类表
 DROP TABLE IF EXISTS t_dairysort;
 CREATE TABLE t_dairysort
