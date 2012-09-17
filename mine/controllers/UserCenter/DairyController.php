@@ -37,7 +37,7 @@
 	*
 	*/
 
-	class UserIndexController{
+	class DairyController{
 	
 		//功能模块名(作标题用)
 		private $controller_name = "日志管理";
@@ -58,6 +58,7 @@
 
 			//print_r( $_COOKIE );
 
+			//添加日志
 			if( @$arg_get['a'] == 'add' ){
 			
 				$this->AddDairyView();
@@ -211,6 +212,6 @@
 	}
 
 	//实例化 IndexController控制器
-	$UserIndex = new UserIndexController( $_GET, $_POST );
+	$Dairy = new DairyController( $_GET, $_POST );
 
 ?>
