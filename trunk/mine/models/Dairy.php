@@ -124,12 +124,29 @@
 			/*	()
 			*	@Description:	添加日志分类
 
-				@param	
+				@param
+						$dry_uid		分类用户id
+						$dry_stitle		分类标题
+						$dry_sifcomm	是否允许评论	|	0(允许)
+						$dry_sprivate	日志隐私设置	|	0(所有人可见)
+
 			*
 			*
 			*/
-			private function add_sort(){
+			private function add_sort( $dry_uid, $dry_stitle, $dry_sifcomm = 0, $dry_sprivate = 0 ){
 			
+
+				//构造 $coloumns	字段
+				$coloumns = "dry_uid,dry_stitle,dry_sifcomm,dry_sprivate";
+
+				//构造 $values		值
+				$values = "'".$dry_uid."','".$dry_stitle."','".$dry_sifcomm."','".$dry_sprivate."'";
+
+				//增加日志
+				parent::db_insert( 't_dairysort', $coloumns, $values );
+
+
+
 			}
 
 			/*	()
