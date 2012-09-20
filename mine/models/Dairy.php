@@ -152,23 +152,56 @@
 			/*	()
 			*	@Description:	删除日志分类
 
-				@param	
+				@param
+			*	@Param		$conditions		条件
 			*
 			*
 			*/
-			private function del_sort(){
-			
+			public function del_sort( $conditions = '' ){
+				
+				//删除日志
+				parent::db_delete( 't_dairysort', $conditions = '' );
+
 			}
 
 			/*	()
 			*	@Description:	修改日志分类
 
-				@param	
+				@param
+				@Param		$modify			修改的列值
+			*	@Param		$conditions		依据的条件列值
 			*
 			*
 			*/
-			private function modi_sort(){
+			public function modi_sort( $modify, $conditions ){
 			
+				//修改用户信息
+				parent::db_update( 't_dairysort', $modify, $conditions );
+
+			}
+
+			/*	()
+			*	@Description:	查询日志分类
+
+				@param
+
+					$columns		操作的列
+					$conditions		查询条件
+			*
+			*
+			*/
+			public function sele_sort( $columns = '*', $conditions = '' ){
+				
+				/*
+				echo $conditions;
+				echo "<br/>";
+				*/
+
+				//查询用户信息
+				$SortInfo =  parent::db_select( 't_dairysort', $columns, $conditions );
+				
+				return $SortInfo;
+
 			}
 
 	}
