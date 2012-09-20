@@ -46,34 +46,56 @@
 			/*	()
 			*	@Description:	删除日志
 
-				@param	
+				@param
+			*	@Param		$conditions		条件
 			*
 			*
 			*/
-			private function del_dairy(){
-			
+			public function del_dairy( $conditions = '' ){
+				
+				//删除日志
+				parent::db_delete( 't_dairy', $conditions = '' );
+
 			}
 
 			/*	()
-			*	@Description:	修改日志
+			*	@Description:	修改日志(需要添加限制:禁止修改 日志id )
 
 				@param
+				@Param		$modify			修改的列值
+			*	@Param		$conditions		依据的条件列值
 			*
 			*
 			*/
-			private function modi_dairy(){
+			public function modi_dairy( $modify, $conditions ){
 			
+				//修改用户信息
+				parent::db_update( 't_dairy', $modify, $conditions );
+
 			}
 
 			/*	()
 			*	@Description:	查询日志
 
-				@param	
+				@param
+
+					$columns		操作的列
+					$conditions		查询条件
 			*
 			*
 			*/
-			private function sele_dairy(){
-			
+			public function sele_dairy( $columns = '*', $conditions = '' ){
+				
+				/*
+				echo $conditions;
+				echo "<br/>";
+				*/
+
+				//查询用户信息
+				$DairyInfo =  parent::db_select( 't_dairy', $columns, $conditions );
+				
+				return $DairyInfo;
+
 			}
 
 
