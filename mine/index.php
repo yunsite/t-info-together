@@ -72,7 +72,7 @@
 				
 			}
 
-		}elseif( isset($_GET['u']) ){	//登陆个人中心
+	}elseif( isset($_GET['u']) ){	//登陆个人中心
 	
 		//根据Cookie检测用户是否已经登陆
 		//检测Cookie: 暂时先检测有无Username,若无则表示没有登陆,否则表示已登陆

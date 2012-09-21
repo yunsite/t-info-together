@@ -16,8 +16,7 @@
 		
 			<!-- 日志标题 -->
 			<div class="dry_title">
-				<input type="text" value="" tabindex="1" name="dry_title"><span>限 80 字节</span>
-				<div style="display:none;" class="error_info"></div>
+				<input type="text" value="" tabindex="1" name="dry_title"><span style="font-size:12px;">&nbsp;&nbsp;限 80 字节</span>
 			</div>
 			<!-- End(日志标题) -->
 			
@@ -36,22 +35,19 @@
 					<tr class="tr3">
 						<td width="62">日志分类</td>
 						<td>
-							<span class="dropdown mr10">
-								<span class="dropselectbox" style="width: 95px;">
-									<div class="fl">
-										<ul style="width: 95px; display: none;"></ul>
-									</div>
-									<a hidefocus="true" href="javascript:;" style="width: 95px;">默认分类</a>
-								</span>
-								<select id="dtid_add" name="dtid" style="display: none;">
+							<span>
+								<select name="">
 									<option value="0">默认分类</option>
+									<!-- 这里需要编译出用户的日志分类 -->
+									<option value="">日志分类x</option>
+									<!-- End(这里需要编译出用户的日志分类) -->
 								</select>
 							</span>
-							<span class="btn_add">
-								<span>
-									<button type="button" onclick="javascript:add_dtid('0','dtid_add');">添加分类</button>
-								</span>
-							</span>
+
+							<!-- 添加分类_按钮 -->
+							<span class="btn_add"><span><button type="button">添加分类</button></span></span>
+							<!-- End(添加分类_按钮) -->
+
 						</td>
 					</tr>
 					<!-- End(日志分类) -->
