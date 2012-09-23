@@ -16,116 +16,72 @@
 		
 			<!-- 日志标题 -->
 			<div class="dry_title">
-				<input type="text" value="" tabindex="1" name="dry_title"><span style="font-size:12px;">&nbsp;&nbsp;限 80 字节</span>
+				<input type="text" name="dry_title"><span style="font-size:12px;">&nbsp;&nbsp;限 80 字节</span>
 			</div>
 			<!-- End(日志标题) -->
 			
-			<!-- Ueditor显示 -->
+			<!-- 日志内容_Ueditor显示 -->
 			<script type="text/plain" id="myContent" name="myDairy"></script>
 			<script type="text/javascript">
 			    var editor = new baidu.editor.ui.Editor();
 			    editor.render("myContent");
 			</script>
-			<!-- End(Ueditor显示) -->
+			<!-- End(日志内容_Ueditor显示) -->
 			
 			<!-- 日志设置项 -->
-			<table width="100%" cellspacing="0" cellpadding="0" style=" table-layout:fixed;">
+			<table width="100%" cellspacing="0" cellpadding="0">
 				<tbody>
 					<!-- 日志分类 -->
-					<tr class="tr3">
-						<td width="62">日志分类</td>
+					<tr>
+						<td width="99">日志分类</td>
 						<td>
+							<!-- 日志分类 -->
 							<span>
-								<select name="">
+								<select name="dry_sid">
 									<option value="0">默认分类</option>
 									<!-- 这里需要编译出用户的日志分类 -->
 									<option value="">日志分类x</option>
 									<!-- End(这里需要编译出用户的日志分类) -->
 								</select>
 							</span>
+							<!-- End(日志分类) -->
 
 							<!-- 添加分类_按钮 -->
-							<span class="btn_add"><span><button type="button">添加分类</button></span></span>
+							<span><span><a href="#">添加分类</a></span></span>
 							<!-- End(添加分类_按钮) -->
 
 						</td>
 					</tr>
 					<!-- End(日志分类) -->
 
-					<!-- 隐私设置 -->
-					<tr class="tr3">
+					<!-- 设置 -->
+					<tr>
 					    <td>隐私设置</td>
 					    <td>
-						<span class="dropdown mr10">
-							<span class="dropselectbox" style="width: 107px;">
-								<div class="fl">
-									<ul style="width: 107px; display: none;"></ul>
-								</div>
-								<a hidefocus="true" href="javascript:;" style="width: 107px;">全站可见</a>
-							</span>
-							<select onchange="optionsel(this.value,'1')" id="dtid_pvc" name="privacy" style="display: none;">
-							    <option value="0">全站可见</option>
-							    <option value="1">仅好友可见</option>
-							    <option value="2">仅自己可见</option>
-							</select>
-						</span>
 
-						<label class="mr10" for="if_copy">
-							<input type="checkbox" checked="" value="1" name="ifcopy" id="if_copy">&nbsp;允许转载
+						<!-- 日志隐私设置 -->
+						<select name="dry_private">
+							<option value="0">全站可见</option>
+							<option value="1">仅好友可见</option>
+							<option value="2">仅自己可见</option>
+						</select>
+						<!-- End(日志隐私设置) -->
+						
+						<!-- 是否允许评论 -->
+						<label for="if_copy">
+							<input type="checkbox" checked="" value="1" name="dry_ifcomm">&nbsp;允许评论
 						</label>
-
-						<label id="lab_weibo" class="mr10" for="if_sendweibo">
-							<input type="checkbox" checked="checked" value="1" name="ifsendweibo" id="if_sendweibo">&nbsp;同时发送到新鲜事
-						</label>
-						<!-- 将checked 替换成 checked="checked" -->
-						<label style="display: none" for="atc_convert">
-							<input type="checkbox" checked="checked" value="1" id="atc_convert" name="atc_convert">&nbsp;Wind Code自动转换
-						</label>
+						<!-- End(是否允许评论) -->
 					       
 					    </td>
 					</tr>
-					<!-- End(隐私设置) -->
-
-					<!-- 验证码 -->
-					<tr class="tr3 vt">
-					    <td>验证码:</td>
-					    <td>
-						<input type="text" tabindex="3" size="5" id="gdcode" name="gdcode" onfocus="showgd();" class="input">
-
-						<span style="" id="ckcode"><img align="top" title="看不清楚，换一张" alt="看不清楚，换一张" onclick="changeCkImage(this)" class="cp sitegdcheck" src="http://www.phpwind.net/&amp;sessionid=56fa252c561879edbf5fbe9c394814d9&amp;&amp;nowtime=1347839466822" id="changeGdCode"><span id="changeGdCode_a" class="s4 cp" style="margin-left:3px;" onclick="changeCkImage(this.previousSibling);">换一个</span></span>
-						
-						<script type="text/javascript">
-						var flashWidth = "90";
-						var flashHeight = "30";
-						var gdtype = 1;
-						var cloudgdcode = 1;var cloudcaptchaurl = "&amp;sessionid=56fa252c561879edbf5fbe9c394814d9";var cloudmode=1;
-						</script>
-						<script src="js/pw_authcode.js" type="text/javascript"></script>
-					    </td>
-					</tr>
-					<!-- End(验证码) -->
-
-					<!-- 提交,存为草稿 -->
-					<tr>
-					    <td>&nbsp;</td>
-					    <td>
-					    <div class="p10">
-						<span class="btn">
-							<span><button type="submit" name="Submit">提 交</button></span>
-						</span>
-						<span class="bt">
-							<span><button onclick="savedraft();return false;" class="w_bt" type="button">存为草稿</button></span>
-						</span>
-						</div>
-					    </td>
-					</tr>
-					<!-- End(提交,存为草稿) -->
+					<!-- End(设置) -->
 				</tbody>
 			</table>
 			<!-- End(日志设置项) -->
 
 			<!-- 提交发布 -->
-			<input type="submit" value="发布"/>
+			<input type="submit" name="Submit" value="发布"/>
 			<!-- End(提交发布) -->
 
 		</form>
