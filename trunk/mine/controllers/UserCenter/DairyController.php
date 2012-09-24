@@ -50,24 +50,18 @@
 		function __construct( $arg_get = '', $arg_post = '' ){
 		
 
-			//print_r($tpl);
+			if(!empty($arg_post['myDairy'])){
+			
+				//添加日志
+				$this->AddDairyAction( $arg_post );
 
-			//print_r($sys_charset);
-
-			//print_r($arg_get);
-
-			//print_r( $_COOKIE );
+			}
 
 			//添加日志
 			if( @$arg_get['a'] == 'add' ){
 			
 				$this->AddDairyView();
 
-			}elseif( !empty($arg_post['myDairy']) ){
-
-				//添加日志
-				$this->AddDairyAction( $arg_post );
-			
 			}else{	//参数里无Action(即参数为?u=dairy时),无POST参数时
 				
 				//显示日志列表方法
@@ -138,11 +132,27 @@
 			$tpl_file = "add_dairy";
 			$controller_name = "添加日志";
 
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
+
 			//Smarty类对象在global.php实例化过
 			global $tpl,$sys_dir_base;
+			
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+			
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+			
+			//print_r($_COOKIE);
+
+			//日志分类
+			$Dairy_sort = $Dairy->sele_sort("*","dry_uid = ".$_COOKIE["user_id"]);
+
+			//print_r($Dairy_sort);
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
 			$tpl->assign( "controller_name",$controller_name );
+			$tpl->assign( "dairy_sort",$Dairy_sort );
 			$tpl->assign( "tpl_file",$tpl_file );
 			$tpl->display("UserCenter/frame.tpl");
 			

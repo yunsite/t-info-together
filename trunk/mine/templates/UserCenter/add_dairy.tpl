@@ -39,9 +39,9 @@
 							<span>
 								<select name="dry_sid">
 									<option value="0">默认分类</option>
-									<!-- 这里需要编译出用户的日志分类 -->
-									<option value="">日志分类x</option>
-									<!-- End(这里需要编译出用户的日志分类) -->
+									<{foreach from=$dairy_sort item=sort}>
+										<option value="<{$sort.dry_sid}>"><{$sort.dry_stitle}></option>
+									<{/foreach}>
 								</select>
 							</span>
 							<!-- End(日志分类) -->
