@@ -47,7 +47,7 @@
 							<!-- End(日志分类) -->
 
 							<!-- 添加分类_按钮 -->
-							<span><span><a href="#">添加分类</a></span></span>
+							<span><a href="#">添加分类</a></span>
 							<!-- End(添加分类_按钮) -->
 
 						</td>
@@ -68,8 +68,8 @@
 						<!-- End(日志隐私设置) -->
 						
 						<!-- 是否允许评论 -->
-						<label for="if_copy">
-							<input type="checkbox" checked="" value="1" name="dry_ifcomm">&nbsp;允许评论
+						<label for="dry_ifcomm">
+							<input type="checkbox" checked="checked" value="1" name="dry_ifcomm" id="dry_ifcomm">&nbsp;允许评论
 						</label>
 						<!-- End(是否允许评论) -->
 					       
