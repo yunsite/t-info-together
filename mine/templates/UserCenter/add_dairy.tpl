@@ -81,7 +81,7 @@
 			<!-- End(日志设置项) -->
 
 			<!-- 提交发布 -->
-			<input type="submit" name="Submit" value="发布"/>
+			<input type="submit" name="add_dairy" value="发布"/>
 			<!-- End(提交发布) -->
 
 		</form>
