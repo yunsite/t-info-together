@@ -50,11 +50,11 @@
 		function __construct( $arg_get = '', $arg_post = '' ){
 		
 
-			if(!empty($arg_post['myDairy'])){
-			
+			if(!empty($arg_post['add_dairy'])){
+
 				//添加日志
 				$this->AddDairyAction( $arg_post );
-
+				exit();
 			}
 
 			//添加日志
@@ -171,10 +171,27 @@
 		*/
 		private function AddDairyAction( $dairy_info ){
 		
-			echo "添加日志Action";
-			echo "<br/>";
+			//echo "添加日志Action";
+			//echo "<br/>";
+			
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
 
-			print_r( $dairy_info );
+			//Smarty类对象在global.php实例化过
+			global $tpl,$sys_dir_base;
+			
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+			
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+			$Dairy -> add_dairy( $_COOKIE["user_id"], $dairy_info['dry_sid'], $dairy_info['dry_title'], $dairy_info['myDairy'], $dairy_info['dry_ifcomm'], $dairy_info['dry_private'] );
+
+			echo "发布成功!";
+			
+			//调用ShowPostedView()方法,显示相关视图
+
+			//print_r( $dairy_info );
 		
 		}
 
