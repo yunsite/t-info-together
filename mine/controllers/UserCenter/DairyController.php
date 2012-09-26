@@ -178,7 +178,7 @@
 			include_once("models/Dairy.php");
 
 			//Smarty类对象在global.php实例化过
-			global $tpl,$sys_dir_base;
+			//global $tpl,$sys_dir_base;
 			
 			//数据库配置全局参数
 			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
@@ -252,18 +252,46 @@
 
 		/*
 		*
-		*	@Description:	显示日志内容
-		*	@Param	None
+		*	@Description:	显示日志内容(视图)
+		*	@Param	$did	日志id
 		*	@Return
 				string	$
 				string	$
 		*
 		*
 		*/
-		private function ShowDairyContentAction(){
+		private function ShowDairyContentAction( $did ){
 		
-			echo "显示日志内容Action";
-		
+			//echo "显示日志内容Action";
+			
+			$tpl_file = "read_dairy";
+			//$controller_name = "日志列表(日志管理)";
+
+			//Smarty类对象在global.php实例化过
+			global $tpl,$sys_dir_base;
+			
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+			
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+			
+
+			//日志分类
+			$DairyInfo = $Dairy->sele_dairy("*","dry_id = ".$did);
+
+			//网页标题
+			$controller_name = $DairyInfo["dry_title"];
+
+
+			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->assign( "controller_name",$controller_name );
+			$tpl->assign( "title",$DairyInfo["dry_title"] );
+			$tpl->assign( "content",$DairyInfo["dry_content"] );
+			$tpl->assign( "pub_time", );
+			$tpl->assign( "lastmodi_time", );
+			$tpl->assign( "tpl_file",$tpl_file );
+			$tpl->display("UserCenter/frame.tpl");
+
 		}
 
 	}
