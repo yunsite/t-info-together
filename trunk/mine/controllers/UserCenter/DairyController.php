@@ -50,38 +50,67 @@
 		function __construct( $arg_get = '', $arg_post = '' ){
 		
 
-			if(!empty($arg_post['add_dairy'])){
-
-				//添加日志
-				$this->AddDairyAction( $arg_post );
-				exit();
-			}
-
-			//添加日志
-			if( @$arg_get['a'] == 'add' ){
 			
-				$this->AddDairyView();
-
-			}else{	//参数里无Action(即参数为?u=dairy时),无POST参数时
+			//URL参数处理
+			if( !empty($arg_get['a']) ){//日志主体部分
+			
+				switch( $arg_get['a'] ){
 				
-				//显示日志列表方法
+					//添加日志
+					case "add":
+						//检测 提交处理情况
+						if(!empty($arg_post['add_dairy'])){
+							//添加日志Action
+							$this->AddDairyAction( $arg_post );
+						}else{
+							//调用 添加日志 视图
+							$this->AddDairyView();
+						}
+						break;
+
+					//删除日志
+					case "del":
+						if( !empty($arg_get['did']) ){
+					
+							//调用删除日志方法
+
+						}
+						break;
+
+					//修改日志
+					case "modi":
+
+						break;
+
+					//查看日志
+					case "read":
+						if( !empty($arg_get['did']) ){
+					
+							//调用查看日志方法(显示日志内容VIEW)
+							$this->ShowDairyContentAction( $arg_get['did'] )
+						}
+						break;
+				
+					//查看用户指定分类下的日志列表
+					case "list":
+						if( !empty($arg_get['sid']) ){
+					
+							//
+							$this->ShowListAction( $arg_get['sid'] );
+						}
+						break;
+				}
+
+			}elseif( !empty($arg_get['s']) ){//日志分类部分
+			
+			}elseif( !empty($arg_get['comm']) ){//日志评论部分
+			
+			}else{//无参数_参数里无Action(即参数为?u=dairy时),无POST参数时
+			
+				//显示日志列表Action
 				$this->ShowListAction();
-			
-			}
-			
-
-			//下面被注释掉的if...else...语句结构是程序设计模式的一个示范
-			/*
-			if( $get/$post/... ){
-			
-				
-
-			}else{
-				
-				xxx;
 
 			}
-			*/
 		
 		}
 	
@@ -227,15 +256,15 @@
 
 		/*
 		*
-		*	@Description:	显示日志列表
-		*	@Param	None
+		*	@Description:	显示日志列表(需要修订,考虑默认日志列表和指定分类下日志列表情况)
+		*	@Param	$sid	日志分类id	|	(需参考pw,默认为空以显示所有日志的列表呢,还是默认为0以显示默认分类下的日志列表呢)
 		*	@Return
 				string	$
 				string	$
 		*
 		*
 		*/
-		private function ShowListAction(){
+		private function ShowListAction( $sid = '' ){
 		
 			$tpl_file = "dairy_list";
 			$controller_name = "日志列表(日志管理)";
