@@ -101,6 +101,9 @@
 					die('Insert Error :'.mysql_error());
 
 				}
+
+				//取得上一步 INSERT 操作产生的 ID(需要考虑:查询语句之间被重置的情况)
+				return mysql_insert_id();
 			}
 
 			

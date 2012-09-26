@@ -185,14 +185,44 @@
 			
 			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
 
-			$Dairy -> add_dairy( $_COOKIE["user_id"], $dairy_info['dry_sid'], $dairy_info['dry_title'], $dairy_info['myDairy'], $dairy_info['dry_ifcomm'], $dairy_info['dry_private'] );
+			//插入记录,返回日志id
+			$did =  $Dairy -> add_dairy( $_COOKIE["user_id"], $dairy_info['dry_sid'], $dairy_info['dry_title'], $dairy_info['myDairy'], $dairy_info['dry_ifcomm'], $dairy_info['dry_private'] );
 
-			echo "发布成功!";
 			
+
+			//echo "发布成功!";
+
 			//调用ShowPostedView()方法,显示相关视图
+			$this->ShowPostedView( $did );
+			
 
 			//print_r( $dairy_info );
 		
+		}
+
+		/*
+		*
+		*	@Description:	发布/修改成功后显示的视图
+		*	@Param	$did	日志id
+		*	@Return
+				string	$
+				string	$
+		*
+		*
+		*/
+		private function ShowPostedView( $did ){
+		
+			$tpl_file = "posted_view";
+			$controller_name = "发布成功";
+
+			//Smarty类对象在global.php实例化过
+			global $tpl,$sys_dir_base;
+
+			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->assign( "did",$did );
+			$tpl->assign( "tpl_file",$tpl_file );
+			$tpl->display("UserCenter/frame.tpl");
+
 		}
 
 		/*

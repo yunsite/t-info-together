@@ -38,8 +38,10 @@
 				$values = "'".$dry_uid."','".$dry_sid."','".$dry_title."','".$dry_content."','".$dry_pubtime."','".$dry_lmoditime."','".$dry_ifcomm."','".$dry_private."'";
 
 				//增加日志
-				parent::db_insert( 't_dairy', $coloumns, $values );
+				$did = parent::db_insert( 't_dairy', $coloumns, $values );
 
+				//返回新添加的日志id
+				return $did;
 
 
 			}
