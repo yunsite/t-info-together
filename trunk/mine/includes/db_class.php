@@ -203,5 +203,23 @@
 
 				return $result;
 			}
+
+			/*	()
+			*	@Description:	多表联合查询记录(这里主要考虑两个表联结,条件为字段等值的情况)
+
+				@param	$$selicolumns	要查询的列(以半角逗号分隔的多个列,如"did,sid,title...",可AS改名,如"did AS id,sid,...")
+						$table1			要联结的表名
+						$table2			要联结的表名
+						$equlcolumns	查询的等值列(如sid,在函数体中将把列构造为$table1.".".$columarray[0]."=".$table2.".".$columarray[1])
+													($equlcolumns可为半角逗号分隔的,多个等值数组,函数体将把它们explode为数组元素而组合成多个AND等值的WHERE条件)
+													($equlcolumns还可以为带运算符的值,如">id",这个还暂未考虑)
+
+				@return		$result		
+			*
+			*
+			*/
+			public function db_multi_select( $selicolumns, $table1, $table2, $equlcolumns ){
+			
+			}
 		}
 ?>

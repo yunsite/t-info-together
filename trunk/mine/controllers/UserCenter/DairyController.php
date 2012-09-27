@@ -6,22 +6,6 @@
 	*/	
 
 	/*	()
-	*	@Description:	删除日志
-
-		@param	none
-	*
-	*
-	*/
-
-	/*	()
-	*	@Description:	修改日志(内容,分类,隐私等)
-
-		@param	none
-	*
-	*
-	*/
-
-	/*	()
 	*	@Description:	查询日志
 
 		@param	none
@@ -73,13 +57,23 @@
 						if( !empty($arg_get['did']) ){
 					
 							//调用删除日志方法
+							$this->DeleDairyAction( $did );
 
 						}
 						break;
 
 					//修改日志
 					case "modi":
+						if( !empty($arg_get['did']) ){
+					
+							//
+							$this->ModiDairyAction( $did );
 
+						}else{
+						
+							$this->ModiDairyView();
+						
+						}
 						break;
 
 					//查看日志
@@ -87,7 +81,7 @@
 						if( !empty($arg_get['did']) ){
 					
 							//调用查看日志方法(显示日志内容VIEW)
-							$this->ShowDairyContentAction( $arg_get['did'] )
+							$this->ShowDairyContentAction( $arg_get['did'] );
 						}
 						break;
 				
@@ -103,8 +97,33 @@
 
 			}elseif( !empty($arg_get['s']) ){//日志分类部分
 			
+				switch( $arg_get['s'] ){
+				
+					case "add":
+						break;
+					case "del":
+						break;
+					case "modi":
+						break;
+					case "list":
+						break;
+				
+				}
+
+
 			}elseif( !empty($arg_get['comm']) ){//日志评论部分
-			
+
+				switch( $arg_get['comm'] ){
+				
+					case "add":
+						break;
+					case "del":
+						break;
+					case "modi":
+						break;
+				
+				}
+
 			}else{//无参数_参数里无Action(即参数为?u=dairy时),无POST参数时
 			
 				//显示日志列表Action
@@ -254,6 +273,39 @@
 
 		}
 
+		/*	()
+		*	@Description:	删除日志Action
+
+			@param	$did	日志id
+		*
+		*
+		*/
+		private function DeleDairyAction( $did ){
+		
+		}
+
+		/*	()
+		*	@Description:	修改日志视图VIEW(把日志内容显示在编辑器里)
+
+			@param	none
+		*
+		*
+		*/
+		private function ModiDairyView(){
+		
+		}
+
+		/*	()
+		*	@Description:	修改日志Action(内容,分类,隐私等)(更新日志表,并显示"修改成功视图")
+
+			@param	$did	日志id
+		*
+		*
+		*/
+		private function ModiDairyAction( $did ){
+		
+		}
+
 		/*
 		*
 		*	@Description:	显示日志列表(需要修订,考虑默认日志列表和指定分类下日志列表情况)
@@ -292,7 +344,9 @@
 		private function ShowDairyContentAction( $did ){
 		
 			//echo "显示日志内容Action";
-			
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
+
 			$tpl_file = "read_dairy";
 			//$controller_name = "日志列表(日志管理)";
 
@@ -308,6 +362,10 @@
 			//日志分类
 			$DairyInfo = $Dairy->sele_dairy("*","dry_id = ".$did);
 
+			$DairyInfo = $DairyInfo[0];
+
+			//print_r($DairyInfo);
+
 			//网页标题
 			$controller_name = $DairyInfo["dry_title"];
 
@@ -316,8 +374,8 @@
 			$tpl->assign( "controller_name",$controller_name );
 			$tpl->assign( "title",$DairyInfo["dry_title"] );
 			$tpl->assign( "content",$DairyInfo["dry_content"] );
-			$tpl->assign( "pub_time", );
-			$tpl->assign( "lastmodi_time", );
+			//$tpl->assign( "pub_time", );
+			//$tpl->assign( "lastmodi_time", );
 			$tpl->assign( "tpl_file",$tpl_file );
 			$tpl->display("UserCenter/frame.tpl");
 
