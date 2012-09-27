@@ -12,7 +12,7 @@
 	
 	<!-- 日志提交表单 -->
 		
-		<form action="index.php?u=dairy" method="post">
+		<form action="index.php?u=dairy&a=add" method="post">
 		
 			<!-- 日志标题 -->
 			<div class="dry_title">
