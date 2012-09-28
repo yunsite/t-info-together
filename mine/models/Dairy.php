@@ -47,7 +47,7 @@
 			}
 
 			/*	()
-			*	@Description:	删除日志
+			*	@Description:	删除日志(需要增加:删除日志时,同时删除日志下的评论)
 
 				@param
 			*	@Param		$conditions		条件
@@ -153,7 +153,7 @@
 			}
 
 			/*	()
-			*	@Description:	删除日志分类
+			*	@Description:	删除日志分类(需要增加:删除日志分类时,同时删除分类下的日志)
 
 				@param
 			*	@Param		$conditions		条件
