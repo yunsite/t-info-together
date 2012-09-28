@@ -364,18 +364,36 @@
 
 			$DairyInfo = $DairyInfo[0];
 
+			//获取作者名
+			//$Author = $Dairy->db_multi_select("mem_name","t_dairy","t_member", "t_member.mem_id = ".$DairyInfo['dry_uid']);
+			//$Author = $Author[0];
+			//print_r($Author);
 			//print_r($DairyInfo);
+			//包含 日志处理模型
+			include_once("models/UserBase.php");
+			$UserInfo = new UserBase( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+			$Author = $UserInfo->seli_user( "mem_name", "mem_id = ".$DairyInfo['dry_uid'] );
+			//获取日志作者
+			$Author = $Author[0]['mem_name'];
+			//print_r($Author);
 
 			//网页标题
 			$controller_name = $DairyInfo["dry_title"];
+
+			//转换日期格式
+			$DairyInfo["dry_pubtime"] = date( "Y/m/d G:i:s", $DairyInfo["dry_pubtime"] );
+
+			//转换日期格式
+			$DairyInfo["dry_lmoditime"] = date( "Y/m/d G:i:s", $DairyInfo["dry_lmoditime"] );
 
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
 			$tpl->assign( "controller_name",$controller_name );
 			$tpl->assign( "title",$DairyInfo["dry_title"] );
 			$tpl->assign( "content",$DairyInfo["dry_content"] );
-			//$tpl->assign( "pub_time", );
-			//$tpl->assign( "lastmodi_time", );
+			$tpl->assign( "author", $Author );
+			$tpl->assign( "pub_time", $DairyInfo["dry_pubtime"]);
+			$tpl->assign( "lastmodi_time", $DairyInfo["dry_lmoditime"]);
 			$tpl->assign( "tpl_file",$tpl_file );
 			$tpl->display("UserCenter/frame.tpl");
 

@@ -8,15 +8,15 @@
 		<!-- 日志信息 -->
 		<p>
 			<!-- 作者 -->
-			<span><{$author}></span>
+			<span>作者:</span><span><{$author}></span>
 			<!-- End(作者) -->
 
 			<!-- 发布时间 -->
-			<span><{$pub_time}></span>
+			<span>发布时间:</span><span><{$pub_time}></span>
 			<!-- End(发布时间) -->
 
 			<!-- 最后修订时间 -->
-			<span><{$lastmodi_time}></span>
+			<span>最后修订时间:</span><span><{$lastmodi_time}></span>
 			<!-- End(最后修订时间) -->
 		</p>
 		<!-- End(日志信息) -->
