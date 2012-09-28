@@ -87,10 +87,20 @@
 				
 					//查看用户指定分类下的日志列表
 					case "list":
-						if( !empty($arg_get['sid']) ){
-					
+						
+						//print_r($arg_get['sid']);
+
+						//0也视为空,url中的参数为string类型
+						if( !empty($arg_get['sid']) || (int)$arg_get['sid'] === 0 ){
+							
+							//echo "test";
+
 							//
 							$this->ShowListAction( $arg_get['sid'] );
+						}else{
+						
+							$this->ShowListAction();
+
 						}
 						break;
 				}
@@ -99,13 +109,16 @@
 			
 				switch( $arg_get['s'] ){
 				
+					//添加日志分类
 					case "add":
 						break;
+
+					//删除日志分类
 					case "del":
 						break;
+
+					//修改日志分类
 					case "modi":
-						break;
-					case "list":
 						break;
 				
 				}
@@ -320,10 +333,43 @@
 		
 			$tpl_file = "dairy_list";
 			$controller_name = "日志列表(日志管理)";
+			
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
+				
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+				
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+			//print_r($sid);
+
+			//相应分类下的日志列表
+			if( !empty($sid) || (int)$sid === 0 ){
+			
+				//echo "test";
+				$DairyList = $Dairy->sele_dairy( "*", "dry_sid = ".$sid );
+
+			}else{
+			
+				$DairyList = $Dairy->sele_dairy( "*" );
+
+			}
+
+			print_r($DairyList);
+
+			/*if( $sid === 0 ){
+				echo "默认分类";
+			}*/
 
 			//Smarty类对象在global.php实例化过
 			global $tpl,$sys_dir_base;
-
+			
+			//$tpl->assign( "dry_title", "这里是日志标题" );
+			//$tpl->assign( "dry_lmoditime", "日志最后修改时间" );
+			//$tpl->assign( "did", "123" );
+			//$tpl->assign( "sid", "123" );
+			//$tpl->assign( "sort_name", "测试分类" );
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
 			$tpl->assign( "controller_name",$controller_name );
 			$tpl->assign( "tpl_file",$tpl_file );
