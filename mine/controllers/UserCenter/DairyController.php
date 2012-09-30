@@ -111,14 +111,23 @@
 				
 					//添加日志分类
 					case "add":
+
+							$this->AddDairySortAction();
+
 						break;
 
 					//删除日志分类
 					case "del":
+
+							$this->DelDairySortAction();
+
 						break;
 
 					//修改日志分类
 					case "modi":
+
+							$this->ModiDairySortView();
+
 						break;
 				
 				}
@@ -445,7 +454,50 @@
 
 		}
 		
+		/*	()
+		*	@Description:	增加日志分类Action
 
+			@param	none
+		*
+		*
+		*/
+		private function AddDairySortAction(){
+		
+		}
+
+
+		/*	()
+		*	@Description:	删除日志分类Action
+
+			@param	none
+		*
+		*
+		*/
+		private function DelDairySortAction(){
+		
+		}
+
+		/*	()
+		*	@Description:	修改日志分类View
+
+			@param	none
+		*
+		*
+		*/
+		private function ModiDairySortView(){
+		
+		}
+
+		/*	()
+		*	@Description:	修改日志分类Action
+
+			@param	none
+		*
+		*
+		*/
+		private function ModiDairySortAction(){
+		
+		}
 
 	}
 
