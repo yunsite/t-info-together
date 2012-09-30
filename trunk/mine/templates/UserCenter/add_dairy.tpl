@@ -1,7 +1,9 @@
 <div class="user_main">
 
 	<!-- 日志页头 -->
-		<h4><img align="absmiddle" src="<{$sys_dir_base}>templates/images/diary.png"><span>日志</span></h4>
+		<h4>
+			<img align="absmiddle" src="<{$sys_dir_base}>templates/images/diary.png"><span>日志</span>
+			<span style="float:right;""><a href="index.php?u=dairy">返回日志列表</a></span></h4>
 	<!-- End(日志页头) -->
 
 	<!-- Ueditor相关包含文件 -->
