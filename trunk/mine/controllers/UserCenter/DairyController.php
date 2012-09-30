@@ -299,7 +299,7 @@
 
 		/*	()
 		*	@Description:	修改日志视图VIEW(把日志内容显示在编辑器里)
-
+											(在编辑器里显示原日志内容)
 			@param	none
 		*
 		*
@@ -310,71 +310,13 @@
 
 		/*	()
 		*	@Description:	修改日志Action(内容,分类,隐私等)(更新日志表,并显示"修改成功视图")
-
+										  (接收修改的内容做UPDATE更新)
 			@param	$did	日志id
 		*
 		*
 		*/
 		private function ModiDairyAction( $did ){
 		
-		}
-
-		/*
-		*
-		*	@Description:	显示日志列表(需要修订,考虑默认日志列表和指定分类下日志列表情况)
-		*	@Param	$sid	日志分类id	|	(需参考pw,默认为空以显示所有日志的列表呢,还是默认为0以显示默认分类下的日志列表呢)
-		*	@Return
-				string	$
-				string	$
-		*
-		*
-		*/
-		private function ShowListAction( $sid = '' ){
-		
-			$tpl_file = "dairy_list";
-			$controller_name = "日志列表(日志管理)";
-			
-			//包含 日志处理模型
-			include_once("models/Dairy.php");
-				
-			//数据库配置全局参数
-			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
-				
-			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
-
-			//print_r($sid);
-
-			//相应分类下的日志列表
-			if( !empty($sid) || $sid === '0' ){
-			
-				//echo "test";
-				$DairyList = $Dairy->sele_dairy( "*", "dry_sid = ".$sid );
-
-			}else{
-			
-				$DairyList = $Dairy->sele_dairy( "*" );
-
-			}
-
-			//print_r($DairyList);
-
-			/*if( $sid === 0 ){
-				echo "默认分类";
-			}*/
-
-			//Smarty类对象在global.php实例化过
-			global $tpl,$sys_dir_base;
-			
-			//$tpl->assign( "dry_title", "这里是日志标题" );
-			//$tpl->assign( "dry_lmoditime", "日志最后修改时间" );
-			//$tpl->assign( "did", "123" );
-			//$tpl->assign( "sid", "123" );
-			//$tpl->assign( "sort_name", "测试分类" );
-			$tpl->assign( "sys_dir_base",$sys_dir_base );
-			$tpl->assign( "controller_name",$controller_name );
-			$tpl->assign( "tpl_file",$tpl_file );
-			$tpl->display("UserCenter/frame.tpl");
-
 		}
 
 		/*
@@ -444,6 +386,66 @@
 			$tpl->display("UserCenter/frame.tpl");
 
 		}
+
+		/*
+		*
+		*	@Description:	显示日志列表(需要修订,考虑默认日志列表和指定分类下日志列表情况)
+		*	@Param	$sid	日志分类id	|	(需参考pw,默认为空以显示所有日志的列表呢,还是默认为0以显示默认分类下的日志列表呢)
+		*	@Return
+				string	$
+				string	$
+		*
+		*
+		*/
+		private function ShowListAction( $sid = '' ){
+		
+			$tpl_file = "dairy_list";
+			$controller_name = "日志列表(日志管理)";
+			
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
+				
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+				
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+			//print_r($sid);
+
+			//相应分类下的日志列表
+			if( !empty($sid) || $sid === '0' ){
+			
+				//echo "test";
+				$DairyList = $Dairy->sele_dairy( "*", "dry_sid = ".$sid );
+
+			}else{
+			
+				$DairyList = $Dairy->sele_dairy( "*" );
+
+			}
+
+			//print_r($DairyList);
+
+			/*if( $sid === 0 ){
+				echo "默认分类";
+			}*/
+
+			//Smarty类对象在global.php实例化过
+			global $tpl,$sys_dir_base;
+			
+			//$tpl->assign( "dry_title", "这里是日志标题" );
+			//$tpl->assign( "dry_lmoditime", "日志最后修改时间" );
+			//$tpl->assign( "did", "123" );
+			//$tpl->assign( "sid", "123" );
+			//$tpl->assign( "sort_name", "测试分类" );
+			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->assign( "controller_name",$controller_name );
+			$tpl->assign( "tpl_file",$tpl_file );
+			$tpl->display("UserCenter/frame.tpl");
+
+		}
+		
+
 
 	}
 
