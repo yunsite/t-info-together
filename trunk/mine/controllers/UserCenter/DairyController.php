@@ -27,7 +27,7 @@
 		private $controller_name = "日志管理";
 
 		//功能模块模板名(模版调用时用)
-		private $tpl_file = "shuoshuo_main";
+		private $tpl_file = "";
 		
 
 		//把 $_GET和$_POST数组 作为构造函数的参数,供构造函数处理
@@ -91,7 +91,7 @@
 						//print_r($arg_get['sid']);
 
 						//0也视为空,url中的参数为string类型
-						if( !empty($arg_get['sid']) || (int)$arg_get['sid'] === 0 ){
+						if( !empty($arg_get['sid']) || $arg_get['sid'] === '0' ){
 							
 							//echo "test";
 
@@ -345,7 +345,7 @@
 			//print_r($sid);
 
 			//相应分类下的日志列表
-			if( !empty($sid) || (int)$sid === 0 ){
+			if( !empty($sid) || $sid === '0' ){
 			
 				//echo "test";
 				$DairyList = $Dairy->sele_dairy( "*", "dry_sid = ".$sid );
@@ -356,7 +356,7 @@
 
 			}
 
-			print_r($DairyList);
+			//print_r($DairyList);
 
 			/*if( $sid === 0 ){
 				echo "默认分类";
