@@ -112,7 +112,11 @@
 					//添加日志分类
 					case "add":
 
-							$this->AddDairySortAction();
+							if( !empty($arg_post['new_sort']) ){
+							
+								$this->AddDairySortAction( $arg_post );
+
+							}
 
 						break;
 
@@ -463,12 +467,27 @@
 		/*	()
 		*	@Description:	增加日志分类Action
 
-			@param	none
+			@param	$SortInfo	日志分类信息数组
 		*
 		*
 		*/
-		private function AddDairySortAction(){
+		private function AddDairySortAction( $SortInfo ){
 		
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
+				
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+				
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+			//print_r($_COOKIE);
+
+			//添加分类
+			$Dairy->add_sort( $_COOKIE['user_id'], $SortInfo['new_sort_name'], $SortInfo['new_sort_ifcomm'], $SortInfo['new_sort_private'] );
+
+			$this->ModiDairySortView();
+
 		}
 
 

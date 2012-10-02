@@ -41,7 +41,7 @@
 			<option value="1">禁止评论</option>
 		</select>
 		<!-- End(允许评论设置) -->
-		<input name="new_sort" type="button" value="添加分类"/>
+		<input name="new_sort" type="submit" value="添加分类"/>
 	</p>
 	</form>
 
