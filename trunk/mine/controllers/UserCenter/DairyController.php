@@ -354,7 +354,7 @@
 			//包含 日志处理模型
 			include_once("models/Dairy.php");
 
-			$tpl_file = "read_dairy";
+			//$tpl_file = "read_dairy";
 			//$controller_name = "日志列表(日志管理)";
 
 			//Smarty类对象在global.php实例化过
@@ -395,14 +395,13 @@
 
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
-			$tpl->assign( "controller_name",$controller_name );
 			$tpl->assign( "title",$DairyInfo["dry_title"] );
 			$tpl->assign( "content",$DairyInfo["dry_content"] );
 			$tpl->assign( "author", $Author );
+			$tpl->assign( "blogname", $Author );
 			$tpl->assign( "pub_time", $DairyInfo["dry_pubtime"]);
 			$tpl->assign( "lastmodi_time", $DairyInfo["dry_lmoditime"]);
-			$tpl->assign( "tpl_file",$tpl_file );
-			$tpl->display("UserCenter/frame.tpl");
+			$tpl->display("blog/article.tpl");
 
 		}
 
