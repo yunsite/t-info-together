@@ -523,6 +523,19 @@
 						break;
 				
 				}
+
+				switch( $value['dry_sifcomm'] ){
+				
+					case 0:
+						$DairyList[$key]['sortifcomm0'] = 'selected="selected"';
+						//print_r($value);
+						//print_r($DairyList);
+						break;
+					case 1:
+						$DairyList[$key]['sortifcomm1'] = 'selected="selected"';
+						break;
+				
+				}
 			
 			}
 			//print_r($DairyList);
