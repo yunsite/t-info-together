@@ -125,8 +125,11 @@
 					$sql = 	'DELETE FROM '.$table;
 
 				}
+
+				//echo $sql;
+				//echo "<br/>";
 				
-				if( !mysql_query( $sql, $this->link ) ){
+				if( !mysql_query( $sql, $this->dblink ) ){
 
 					die( 'Delete Error :'.mysql_error() );
 

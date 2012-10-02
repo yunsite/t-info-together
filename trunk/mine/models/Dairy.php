@@ -56,8 +56,10 @@
 			*/
 			public function del_dairy( $conditions = '' ){
 				
+				//echo "conditions:".$conditions;
+
 				//删除日志
-				parent::db_delete( 't_dairy', $conditions = '' );
+				parent::db_delete( 't_dairy', $conditions );
 
 			}
 
@@ -155,15 +157,21 @@
 			/*	()
 			*	@Description:	删除日志分类(需要增加:删除日志分类时,同时删除分类下的日志)
 
-				@param
-			*	@Param		$conditions		条件
+				@param		$sid			删除的分类sid
+			*	@Param		$
 			*
 			*
 			*/
-			public function del_sort( $conditions = '' ){
+			public function del_sort( $sid ){
 				
-				//删除日志
-				parent::db_delete( 't_dairysort', $conditions = '' );
+				//删除日志分类
+				parent::db_delete( 't_dairysort', "dry_sid = ".$sid );
+
+				//删除分类下日志
+				//parent::db_delete( 't_dairy', "dry_sid = ".$sid );
+				
+				//删除分类下日志
+				$this->del_dairy( "dry_sid = ".$sid );
 
 			}
 

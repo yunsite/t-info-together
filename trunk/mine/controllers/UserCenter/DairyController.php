@@ -118,8 +118,12 @@
 
 					//删除日志分类
 					case "del":
+							
+							if( !empty($arg_get['sid']) ){//分类号不为空
+							
+								$this->DelDairySortAction( $arg_get['sid'] );
 
-							$this->DelDairySortAction();
+							}
 
 						break;
 
@@ -471,12 +475,24 @@
 		/*	()
 		*	@Description:	删除日志分类Action
 
-			@param	none
+			@param	$sid	日志分类号
 		*
 		*
 		*/
-		private function DelDairySortAction(){
+		private function DelDairySortAction( $sid ){
 		
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
+
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+				
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+			$Dairy->del_sort( $sid );
+
+			$this->ModiDairySortView();
+
 		}
 
 		/*	()
