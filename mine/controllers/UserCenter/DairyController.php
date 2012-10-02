@@ -488,6 +488,56 @@
 		*/
 		private function ModiDairySortView(){
 		
+			$tpl_file = "modi_dairysort";
+			$controller_name = "修改日志分类";
+			
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
+				
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+				
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+			//print_r($sid);
+
+			//用户的分类记录
+			$DairyList = $Dairy->sele_sort( "*", "dry_uid = ".$_COOKIE["user_id"] );
+			
+			//print_r($DairyList);
+
+			foreach( $DairyList AS $key => $value ){
+			
+				switch( $value['dry_sprivate'] ){
+				
+					case 0:
+						$DairyList[$key]['sortprivate0'] = 'selected="selected"';
+						//print_r($value);
+						//print_r($DairyList);
+						break;
+					case 1:
+						$DairyList[$key]['sortprivate1'] = 'selected="selected"';
+						break;
+					case 2:
+						$DairyList[$key]['sortprivate3'] = 'selected="selected"';
+						break;
+				
+				}
+			
+			}
+			//print_r($DairyList);
+
+			
+			//Smarty类对象在global.php实例化过
+			global $tpl,$sys_dir_base;
+			
+			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->assign( "controller_name",$controller_name );
+			$tpl->assign( "DairyList",$DairyList );
+			$tpl->assign( "tpl_file",$tpl_file );
+			$tpl->display("UserCenter/frame.tpl");
+			
+
 		}
 
 		/*	()
