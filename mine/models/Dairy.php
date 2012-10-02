@@ -138,7 +138,7 @@
 			*
 			*
 			*/
-			private function add_sort( $dry_uid, $dry_stitle, $dry_sifcomm = 0, $dry_sprivate = 0 ){
+			public function add_sort( $dry_uid, $dry_stitle, $dry_sifcomm = 0, $dry_sprivate = 0 ){
 			
 
 				//构造 $coloumns	字段
