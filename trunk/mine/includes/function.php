@@ -389,8 +389,10 @@
 
 		//如果是第一页，则不显示第一页和上一页的连接
 		if($page!=1){
-			$pagecode.="<a href="{$phpfile}?page=1"><<</a>";			//第一页
-			$pagecode.="<a href="{$phpfile}?page=".($page-1).""><</a>";	//上一页
+			//$pagecode.="<a href="{$phpfile}?page=1"><<</a>";			//第一页
+			$pagecode.="<a href='".$phpfile."?page=1'><<</a>";			//第一页
+			//$pagecode.="<a href="{$phpfile}?page=".($page-1).""><</a>";	//上一页
+			$pagecode.="<a href='".$phpfile."page=".($page-1)."'><</a>";	//上一页
 		}
 
 		if($pages>$pagelen){//分页数大于页码个数时可以偏移
@@ -419,13 +421,15 @@
 			if($i==$page){
 				$pagecode.='<span>'.$i.'</span>';
 			}else{
-				$pagecode.="<a href="{$phpfile}?page={$i}">$i</a>";
+				//$pagecode.="<a href="{$phpfile}?page={$i}">$i</a>";
 			}
 		}
 		
 		if($page!=$pages){
-			$pagecode.="<a href="{$phpfile}?page=".($page+1)."">></a>";		//下一页
-			$pagecode.="<a href="{$phpfile}?page={$pages}">>></a>";			//最后一页
+			//$pagecode.="<a href="{$phpfile}?page=".($page+1)."">></a>";		//下一页
+			$pagecode.="<a href='".$phpfile."?page=".($page+1)."'>></a>";		//下一页
+			//$pagecode.="<a href="{$phpfile}?page={$pages}">>></a>";			//最后一页
+			$pagecode.="<a href='".$phpfile."?page=".$pages."'>>></a>";			//最后一页
 		}
 
 		$pagecode.='</div>';
