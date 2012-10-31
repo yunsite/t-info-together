@@ -365,8 +365,14 @@
 			
 			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
 			
-
 			//日志分类
+			$DairySort = $Dairy->sele_sort("*","dry_uid = ".$_COOKIE['user_id']);
+
+			//print_r($DairySort);
+			//print_r($_COOKIE);
+
+
+			//日志信息
 			$DairyInfo = $Dairy->sele_dairy("*","dry_id = ".$did);
 
 			$DairyInfo = $DairyInfo[0];
@@ -395,6 +401,7 @@
 
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->assign( "DairySort",$DairySort );
 			$tpl->assign( "title",$DairyInfo["dry_title"] );
 			$tpl->assign( "content",$DairyInfo["dry_content"] );
 			$tpl->assign( "author", $Author );
