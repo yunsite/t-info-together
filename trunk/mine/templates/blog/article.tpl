@@ -97,12 +97,9 @@
 			<li class="widget widget_categories" id="categories-2">
 				<h2 class="widgettitle">分类目录</h2>
 				<ul>
-					<li class="cat-item cat-item-10"><a title="查看 协议开发 下的所有文章" href="#">协议开发</a></li>
-					<li class="cat-item cat-item-9"><a title="查看 服务器开发 下的所有文章" href="#">服务器开发</a></li>
-					<li class="cat-item cat-item-15"><a title="查看 游戏开发 下的所有文章" href="#">游戏开发</a></li>
-					<li class="cat-item cat-item-5"><a title="查看 知识与实践经验 下的所有文章" href="#">知识与实践经验</a></li>
-					<li class="cat-item cat-item-3"><a title="查看 资讯 下的所有文章" href="#">资讯</a></li>
-					<li class="cat-item cat-item-8"><a title="查看 软件和黑客文化 下的所有文章" href="#">软件和黑客文化</a></li>
+				<{foreach from=$DairySort item=dry_sort}>
+					<li class="cat-item cat-item-10"><a title="查看 <{$dry_sort.dry_stitle}>" href="#"><{$dry_sort.dry_stitle}></a></li>
+				<{/foreach}>
 				</ul>
 			</li>
 			<!-- End(分类目录) -->
