@@ -72,6 +72,22 @@ CREATE TABLE t_drycomm
 	PRIMARY KEY(drycm_id)
 )DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
 
+#日志配置表
+DROP TABLE IF EXISTS t_dryconfig;
+CREATE TABLE t_dryconfig
+(
+	conf_id		INT		NOT NULL	AUTO_INCREMENT,
+	conf_dryuid	INT		NOT NULL,
+	conf_dryname	
+	conf_dryurl
+	conf_dryaboutme
+	conf_drypersonality
+	conf_drymeta
+	conf_drydescription
+	conf_drybriefwords
+	conf_drypagenum
+)DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
+
 #----------------------------------------End(日志模块)---------------------------------------------------
 
 #----------------------------------------用户模块---------------------------------------------------
