@@ -101,7 +101,7 @@ a:hover,a:active	{ color:#004B73; text-decoration:underline; outline:none;}
 #masthead a:link, #masthead a:visited	{ color:#414F59; text-decoration:none; }
 #masthead a:hover, #masthead a:active	{ color:#444; text-decoration:underline;}
 #masthead .logo{width: 100px;position:relative;top:-55px;float:right;}
-#masthead .logo a, #masthead .logo a:hover {background: url("/t-info-together/mine/templates/blog/images/logo.png") no-repeat;display: block;height: 38px;overflow: hidden;text-indent: -9999px;width: 98px;float:left;}
+#masthead .logo a, #masthead .logo a:hover {background: url("/t-info-together/mine/templates/blog/images/logo2.png") no-repeat;display: block;height: 38px;overflow: hidden;text-indent: -9999px;width: 98px;float:left;}
 
 /*#banner { background: url("<{$sys_dir_base}>templates/blog/images/banner2.jpg") no-repeat; height:112px;}*/
 
