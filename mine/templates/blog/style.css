@@ -101,13 +101,13 @@ a:hover,a:active	{ color:#004B73; text-decoration:underline; outline:none;}
 #masthead a:link, #masthead a:visited	{ color:#414F59; text-decoration:none; }
 #masthead a:hover, #masthead a:active	{ color:#444; text-decoration:underline;}
 #masthead .logo{width: 100px;position:relative;top:-55px;float:right;}
-#masthead .logo a, #masthead .logo a:hover {background: url("<{$sys_dir_base}>templates/blog/images/logo.png") no-repeat;display: block;height: 38px;overflow: hidden;text-indent: -9999px;width: 98px;float:left;}
+#masthead .logo a, #masthead .logo a:hover {background: url("/t-info-together/mine/templates/blog/images/logo.png") no-repeat;display: block;height: 38px;overflow: hidden;text-indent: -9999px;width: 98px;float:left;}
 
 /*#banner { background: url("<{$sys_dir_base}>templates/blog/images/banner2.jpg") no-repeat; height:112px;}*/
 
-#banner1 { background: url("<{$sys_dir_base}>templates/blog/images/banner1.jpg") no-repeat; height:112px; }
+#banner1 { background: url("/t-info-together/mine/templates/blog/images/banner1.jpg") no-repeat; height:112px; }
 
-#banner2 { background: url("<{$sys_dir_base}>templates/blog/images/banner.jpg") no-repeat; height:112px; }
+#banner2 { background: url("/t-info-together/mine/templates/blog/images/banner.jpg") no-repeat; height:112px; }
 
 
 /************************************************
@@ -217,7 +217,7 @@ a:hover,a:active	{ color:#004B73; text-decoration:underline; outline:none;}
 	}
 	
 #contentleft ul li{
-	background:transparent url("<{$sys_dir_base}>templates/blog/images/ul-bullet.gif") 0px 3px no-repeat; /* 0px = horizontal position for left, 6px = vertical position from top */
+	background:transparent url("/t-info-together/mine/templates/blog/images/ul-bullet.gif") 0px 3px no-repeat; /* 0px = horizontal position for left, 6px = vertical position from top */
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 18px;
 	}
@@ -275,7 +275,7 @@ blockquote{
 
 
 #l_sidebar ul li {
-	background:transparent url("<{$sys_dir_base}>templates/blog/images/bullet.gif") 0px 11px no-repeat; /* 0px = horizontal position for left, 6px = vertical position from top */
+	background:transparent url("/t-info-together/mine/templates/blog/images/bullet.gif") 0px 11px no-repeat; /* 0px = horizontal position for left, 6px = vertical position from top */
 	display: block;
 	padding: 4px 0px 4px 10px;
 	margin: 0px;
@@ -315,7 +315,7 @@ blockquote{
 	
 
 #r_sidebar ul li {
-	background:transparent url("<{$sys_dir_base}>templates/blog/images/bullet.gif") 0px 11px no-repeat; /* 0px = horizontal position for left, 6px = vertical position from top */
+	background:transparent url("/t-info-together/mine/templates/blog/images/bullet.gif") 0px 11px no-repeat; /* 0px = horizontal position for left, 6px = vertical position from top */
 	display: block;
 	padding: 4px 0px 4px 10px;
 	margin: 0px;
@@ -323,7 +323,7 @@ blockquote{
 
 
 #feed {
-	background:  url("<{$sys_dir_base}>templates/blog/images/rss.gif") 183px 0px no-repeat; /* 0px = horizontal position for left, 6px = vertical position from top */
+	background:  url("/t-info-together/mine/templates/blog/images/rss.gif") 183px 0px no-repeat; /* 0px = horizontal position for left, 6px = vertical position from top */
 	padding: 4px 0px 4px 10px;
 }
 
@@ -347,7 +347,7 @@ blockquote{
 ************************************************/
 
 #footer {
-	background:  url("<{$sys_dir_base}>templates/blog/images/foot.gif") repeat-x;
+	background:  url("/t-info-together/mine/templates/blog/images/foot.gif") repeat-x;
 	width: 960px;
 	margin: 0px auto 0px;
 	text-align: center;
@@ -455,7 +455,7 @@ blockquote{
 	clear: both;
 	margin: 3px 0px 10px 0px;
 	padding: 20px 10px 5px 10px;
-	background: #FFFFFF url("<{$sys_dir_base}>templates/blog/images/comment.gif") no-repeat top;
+	background: #FFFFFF url("/t-info-together/mine/templates/blog/images/comment.gif") no-repeat top;
 	}
 
 #commentsformheader{
@@ -501,7 +501,7 @@ img.avatar {float:right; margin-right:20px; border: 1px solid #DDDDDD;padding:4p
 
 #comments, #respond { text-transform:uppercase; font-size: 14px; font-weight:normal;}
 .postcom { 
-	background: url("<{$sys_dir_base}>templates/blog/images/dewen_updates.gif") repeat-x left top #19558D;
+	background: url("/t-info-together/mine/templates/blog/images/dewen_updates.gif") repeat-x left top #19558D;
 	border: 1px solid #002B53;
 	border-radius: 3px 3px 3px 3px;
 	color: #FFFFFF;
@@ -512,7 +512,7 @@ img.avatar {float:right; margin-right:20px; border: 1px solid #DDDDDD;padding:4p
 .postuser {font-size:12px;line-height:35px;}
 .postuser img {border:none;padding:0px;background:none;}
 .comment-edit-link {
-	background:url("<{$sys_dir_base}>templates/blog/images/edit_update.gif") no-repeat 0 -13px;
+	background:url("/t-info-together/mine/templates/blog/images/edit_update.gif") no-repeat 0 -13px;
 	display: inline-block;
 	height: 16px;
 	padding: 0px 6px 0px 18px;
