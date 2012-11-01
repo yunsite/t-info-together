@@ -350,6 +350,9 @@
 		*/
 		private function ShowDairyContentAction( $did ){
 		
+			$keywords = "博客,T博客,T-sys博客,个人博客,T-blog";
+			$description = "这是T-blog用户的个人博客";
+
 			//echo "显示日志内容Action";
 			//包含 日志处理模型
 			include_once("models/Dairy.php");
@@ -412,15 +415,17 @@
 
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
-			$tpl->assign( "DairySort",$DairySort );
 			$tpl->assign( "title",$DairyInfo["dry_title"] );
+			$tpl->assign( "keywords", $keywords);
+			$tpl->assign( "description", $description);
 			$tpl->assign( "content",$DairyInfo["dry_content"] );
 			$tpl->assign( "author", $Author );
 			$tpl->assign( "blogname", $Author );
-			$tpl->assign( "pub_time", $DairyInfo["dry_pubtime"]);
-			$tpl->assign( "lastmodi_time", $DairyInfo["dry_lmoditime"]);
+			$tpl->assign( "DairySort",$DairySort );
 			$tpl->assign( "DairysSort", $DairysSort);
 			$tpl->assign( "DairysSortId", $DairysSortId['dry_sid']);
+			$tpl->assign( "pub_time", $DairyInfo["dry_pubtime"]);
+			$tpl->assign( "lastmodi_time", $DairyInfo["dry_lmoditime"]);
 			$tpl->display("blog/article.tpl");
 
 		}
