@@ -1,8 +1,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 	<title><{$title}></title>
+	<meta name="keywords" content="<{$keywords}>"/>
+	<meta name="description" content="<{$description}>"/>
 
 	<style type="text/css" media="screen">
 	<!-- @import url( <{$sys_dir_base}>templates/blog/style.css ); -->
