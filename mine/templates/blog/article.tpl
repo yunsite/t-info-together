@@ -56,7 +56,7 @@
 
 				<!-- 分类,标签 -->
 				<div class="bt-links">
-				<strong>分类:</strong> <a rel="category" title="查看 知识与实践经验 中的全部文章" href="#">知识与实践经验</a>, <a rel="category" title="查看 资讯 中的全部文章" href="#">资讯</a><br>
+				<strong>分类:</strong> <a rel="category" title="查看 <{$DairysSort}>" href="index.php?u=dairy&a=list&sid=<{$DairysSortId}>"><{$DairysSort}></a><br>
 				<strong>Tags:</strong> <a rel="tag" href="#">编程</a> &gt; <a rel="tag" href="#">编程语言</a> &gt; <a rel="tag" href="#">软件开发</a>
 				</div>
 				<!-- End(分类,标签) -->
@@ -98,7 +98,7 @@
 				<h2 class="widgettitle">分类目录</h2>
 				<ul>
 				<{foreach from=$DairySort item=dry_sort}>
-					<li class="cat-item cat-item-10"><a title="查看 <{$dry_sort.dry_stitle}>" href="#"><{$dry_sort.dry_stitle}></a></li>
+					<li class="cat-item cat-item-10"><a title="查看 <{$dry_sort.dry_stitle}>" href="index.php?u=dairy&a=list&sid=<{$dry_sort.dry_sid}>"><{$dry_sort.dry_stitle}></a></li>
 				<{/foreach}>
 				</ul>
 			</li>

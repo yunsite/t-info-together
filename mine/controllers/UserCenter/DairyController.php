@@ -368,6 +368,17 @@
 			//日志分类
 			$DairySort = $Dairy->sele_sort("*","dry_uid = ".$_COOKIE['user_id']);
 
+			//日志所属分类
+			$DairysSortId = $Dairy->sele_dairy("dry_sid","dry_id = ".$did);
+			$DairysSortId = $DairysSortId[0];
+			$DairysSort = $Dairy->sele_sort("dry_stitle","dry_sid = ".$DairysSortId['dry_sid']);
+			@$DairysSort = $DairysSort[0]['dry_stitle'];
+			//默认分类情况
+			if( empty($DairysSort) ){
+				$DairysSort = "默认分类";
+			}
+			//print_r($DairysSort);
+			
 			//print_r($DairySort);
 			//print_r($_COOKIE);
 
@@ -408,6 +419,8 @@
 			$tpl->assign( "blogname", $Author );
 			$tpl->assign( "pub_time", $DairyInfo["dry_pubtime"]);
 			$tpl->assign( "lastmodi_time", $DairyInfo["dry_lmoditime"]);
+			$tpl->assign( "DairysSort", $DairysSort);
+			$tpl->assign( "DairysSortId", $DairysSortId['dry_sid']);
 			$tpl->display("blog/article.tpl");
 
 		}
