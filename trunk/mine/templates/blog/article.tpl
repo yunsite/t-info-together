@@ -67,15 +67,13 @@
 				
 			<!-- 评论部分 -->
 			<h3>评论</h3>
-	
-			<!-- You can start editing here. -->
-
 			<div id="commentblock">
 				<p id="comments">1 评论 to “假如女人是一种编程语言”</p>
-
+				
+				<!-- 评论内容 -->
 				<ol class="commentlist">
-					<li class="alt" id="comment-160">
-						<a href="用户博客链接"><img alt="" src="" class="avatar avatar-32 photo" height="32" width="32"></a>
+					<li class="alt">
+						<a href="用户博客链接"><img alt="" src="/t-info-together/mine/templates/blog/images/logo2.png" class="avatar avatar-32 photo" height="32" width="32"></a>
 						<span class="auth-name"><a href="用户博客链接" rel="external nofollow" class="url">用户名</a></span><br>
 						<span class="auth-time">评论时间
 							<div class="commenttext">
@@ -84,26 +82,20 @@
 						</span>
 					</li>
 				</ol>
-
-				<!--<p id="respond">回复</p>-->
-
-				<form action="#" method="post" id="commentform">
-
-					<!--<p>以<a href="http://www.dewen.org/people/34163656">localtest</a>作为登录账号. <a href="http://www.dewen.org/user/logout?redirect_to=http%3A%2F%2Fhp.dewen.org%2F%3Fp%3D1955" title="退出该账号">退出 &raquo;</a></p>-->
-
-
-					<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+				<!-- End(评论内容) -->
+				
+				<!-- 提交评论部分 -->
+				<form action="#" method="post">
 
 					<p style="padding-bottom:2px;">
 						<label for="url" style="display:block;font-weight:bold;margin-bottom:5px;">发表评论</label>
-						<span class="postuser"><a href="http://www.dewen.org/people/34163656"><img alt="" src="%E5%81%87%E5%A6%82%E5%A5%B3%E4%BA%BA%E6%98%AF%E4%B8%80%E7%A7%8D%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%20%20%20%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6_files/user_34163656_avatar_1348983578_s.gif" class="avatar avatar-24 photo" height="24" width="24"></a><a href="http://www.dewen.org/people/34163656">localtest</a></span>
+						<span class="postuser"><a href="用户链接"><img alt="用户头像" src="/t-info-together/mine/templates/blog/images/logo2.png" class="avatar avatar-24 photo" height="24" width="24"></a><a href="用户链接">localtest</a></span>
 					</p>
-					<p><textarea name="comment" id="comment" cols="66" rows="4" tabindex="4" style="display:block;width:555px;"></textarea></p>
-
-					<p><input name="submit" id="submit" tabindex="5" value="发表评论" class="postcom" type="submit">
-					<input name="comment_post_ID" value="1955" type="hidden"></p>
+					<p><textarea name="comment" cols="66" rows="4" tabindex="4" style="display:block;width:555px;"></textarea></p>
+					<p><input name="submit" tabindex="5" value="发表评论" class="postcom" type="submit"/></p>
 
 				</form>
+				<!-- End(提交评论部分) -->
 
 			</div>
 			<!-- End(评论部分) -->
