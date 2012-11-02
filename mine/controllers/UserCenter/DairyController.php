@@ -146,6 +146,7 @@
 				switch( $arg_get['comm'] ){
 				
 					case "add":
+							echo "test";
 						break;
 					case "del":
 						break;
@@ -338,7 +339,7 @@
 
 		/*
 		*
-		*	@Description:	显示日志内容(视图)
+		*	@Description:	显示日志内容Action
 							(1.根据用户是否有权限阅读日志来做相应的处理
 							 2.如果是作者,则在显示的视图里增加("删除(文章)")链接,对于文章下评论同理)
 		*	@Param	$did	日志id
