@@ -146,7 +146,7 @@
 				switch( $arg_get['comm'] ){
 				
 					case "add":
-							echo "test";
+							$this->addCommentAction( $arg_get['did'], $_COOKIE["user_id"], $arg_post['comment'] );
 						break;
 					case "del":
 						break;
@@ -416,6 +416,7 @@
 
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->assign( "did", $did );
 			$tpl->assign( "title",$DairyInfo["dry_title"] );
 			$tpl->assign( "keywords", $keywords);
 			$tpl->assign( "description", $description);
@@ -622,6 +623,36 @@
 		*/
 		private function ModiDairySortAction(){
 		
+		}
+
+		/*	()
+		*	@Description:	添加评论Action
+
+			@param	
+					$did		评论的日志id
+					$uid		评论用户id
+					$content	评论内容
+		*
+		*
+		*/
+		private function addCommentAction( $did, $uid, $content ){
+		
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
+			
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+			
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+			//插入评论
+			$Dairy -> add_comment( $did, $uid, $content );
+
+			//echo "发布成功!";
+
+			//重新显示原日志
+			$this->ShowDairyContentAction( $did );
+
 		}
 
 	}

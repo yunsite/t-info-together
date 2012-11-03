@@ -85,7 +85,7 @@
 				<!-- End(评论内容) -->
 				
 				<!-- 提交评论部分 -->
-				<form action="#" method="post">
+				<form action="index.php?u=dairy&comm=add&did=<{$did}>" method="post">
 
 					<p style="padding-bottom:2px;">
 						<label for="url" style="display:block;font-weight:bold;margin-bottom:5px;">发表评论</label>
