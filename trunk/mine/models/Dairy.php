@@ -145,6 +145,30 @@
 			}
 
 			/*	()
+			*	@Description:	查询日志评论
+
+				@param
+
+					$columns		操作的列
+					$conditions		查询条件
+			*
+			*
+			*/
+			public function sele_comment( $columns = '*', $conditions = '' ){
+				
+				/*
+				echo $conditions;
+				echo "<br/>";
+				*/
+
+				//查询评论信息
+				$CommentInfo =  parent::db_select( 't_drycomm', $columns, $conditions );
+				
+				return $CommentInfo;
+
+			}
+
+			/*	()
 			*	@Description:	添加日志分类
 
 				@param

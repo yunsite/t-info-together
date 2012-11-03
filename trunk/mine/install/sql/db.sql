@@ -76,16 +76,17 @@ CREATE TABLE t_drycomm
 DROP TABLE IF EXISTS t_dryconfig;
 CREATE TABLE t_dryconfig
 (
-	conf_id		INT		NOT NULL	AUTO_INCREMENT,
-	conf_dryuid	INT		NOT NULL,
-	conf_dryname	
-	conf_dryurl
-	conf_dryaboutme
-	conf_drypersonality
-	conf_drymeta
-	conf_drydescription
-	conf_drybriefwords
-	conf_drypagenum
+	conf_id			INT		NOT NULL	AUTO_INCREMENT,
+	conf_dryuid		INT		NOT NULL,
+	conf_dryname		VARCHAR(24)	NULL	DEFAULT '',
+	conf_dryurl		VARCHAR(255)	NULL	DEFAULT '',
+	conf_dryaboutme		VARCHAR(255)	NULL	DEFAULT '',
+	conf_drypersonality	VARCHAR(255)	NULL	DEFAULT '',
+	conf_drymeta		VARCHAR(255)	NULL	DEFAULT '',
+	conf_drydescription	VARCHAR(255)	NULL	DEFAULT '',
+	conf_drybriefwords	TINYINT		NULL	DEFAULT 0,
+	conf_drypagenum		TINYINT		NULL	DEFAULT 5,
+	PRIMARY KEY(conf_id)
 )DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=MyISAM;
 
 #----------------------------------------End(日志模块)---------------------------------------------------

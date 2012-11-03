@@ -414,6 +414,24 @@
 			//转换日期格式
 			$DairyInfo["dry_lmoditime"] = date( "Y/m/d G:i:s", $DairyInfo["dry_lmoditime"] );
 
+			//查询日志评论信息
+			$CommentInfo = $Dairy->sele_comment( "*", "drycm_dryid = ".$did );
+			//评论数
+			$CommentNum = count( $CommentInfo );
+			//print_r( $CommentInfo );
+			//print_r( $CommentNum );
+
+			foreach( $CommentInfo AS $key => $value ){
+
+				$CommentInfo[$key]['drycm_pubtime'] = date( "Y/m/d G:i:s", $value['drycm_pubtime'] );
+
+				$CommAuthor = $UserInfo->seli_user( "mem_name", "mem_id = ".$value['drycm_uid'] );
+
+				$CommentInfo[$key]['author'] = $CommAuthor[0]["mem_name"];
+
+			}
+			
+			//print_r( $CommentInfo );
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
 			$tpl->assign( "did", $did );
@@ -428,6 +446,8 @@
 			$tpl->assign( "DairysSortId", $DairysSortId['dry_sid']);
 			$tpl->assign( "pub_time", $DairyInfo["dry_pubtime"]);
 			$tpl->assign( "lastmodi_time", $DairyInfo["dry_lmoditime"]);
+			$tpl->assign( "CommentNum", $CommentNum);
+			$tpl->assign( "CommentInfo", $CommentInfo);
 			$tpl->display("blog/article.tpl");
 
 		}
