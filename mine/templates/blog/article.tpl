@@ -68,19 +68,22 @@
 			<!-- 评论部分 -->
 			<h3>评论</h3>
 			<div id="commentblock">
-				<p id="comments">1 评论 to “假如女人是一种编程语言”</p>
+				<p id="comments"><{$CommentNum}> 评论 to “<{$title}>”</p>
 				
 				<!-- 评论内容 -->
 				<ol class="commentlist">
+								
+					<{foreach from=$CommentInfo item=Comment_Info}>
 					<li class="alt">
 						<a href="用户博客链接"><img alt="" src="/t-info-together/mine/templates/blog/images/logo2.png" class="avatar avatar-32 photo" height="32" width="32"></a>
-						<span class="auth-name"><a href="用户博客链接" rel="external nofollow" class="url">用户名</a></span><br>
-						<span class="auth-time">评论时间
+						<span class="auth-name"><a href="用户博客链接" rel="external nofollow" class="url"><{$Comment_Info.author}></a></span><br>
+						<span class="auth-time"><{$Comment_Info.drycm_pubtime}>
 							<div class="commenttext">
-							<p>评论内容</p>
+							<p><{$Comment_Info.drycm_content}></p>
 							</div>
 						</span>
 					</li>
+					<{/foreach}>
 				</ol>
 				<!-- End(评论内容) -->
 				
