@@ -108,11 +108,29 @@
 			*	@Description:	添加日志评论
 
 				@param	
+						$drycm_dryid		评论的日志id
+						$drycm_uid			评论用户id
+						$drycm_content		评论内容
 			*
 			*
 			*/
-			private function add_comment(){
+			public function add_comment( $drycm_dryid, $drycm_uid, $drycm_content  ){
 			
+				//评论发布时间
+				$drycm_pubtime = time();
+
+				//构造 $coloumns	字段
+				$coloumns = "drycm_dryid,drycm_uid,drycm_content,drycm_pubtime";
+
+				//构造 $values		值
+				$values = "'".$drycm_dryid."','".$drycm_uid."','".$drycm_content."','".$drycm_pubtime."'";
+
+				//增加日志
+				$did = parent::db_insert( 't_drycomm', $coloumns, $values );
+
+				//
+				//return $did;
+
 			}
 
 			/*	()
