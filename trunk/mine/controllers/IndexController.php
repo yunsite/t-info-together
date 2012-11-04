@@ -54,9 +54,10 @@
 		private function IndexAction(){
 			
 			//Smarty类对象在global.php实例化过
-			global $tpl;
+			global $tpl,$sys_dir_base;
 			
-			$tpl->display("index.tpl");
+			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->display("index2.tpl");
 			
 
 		}
