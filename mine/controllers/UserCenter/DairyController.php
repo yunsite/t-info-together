@@ -82,6 +82,11 @@
 					
 							//调用查看日志方法(显示日志内容VIEW)
 							$this->ShowDairyContentAction( $arg_get['did'] );
+						}elseif( !empty($arg_get['sid']) || $arg_get['sid'] === '0' ){
+						
+							//调用查看日志列表方法(显示日志列表VIEW)
+							$this->ShowDairyListAction( $arg_get['sid'] );
+
 						}
 						break;
 				
@@ -452,6 +457,114 @@
 
 		}
 
+
+		/*
+		*
+		*	@Description:	显示日志列表(博客平台下)
+		*	@Param	$sid	日志分类id	|	空
+		*	@Return
+				string	$
+				string	$
+		*
+		*
+		*/
+		private function ShowDairyListAction( $sid = '' ){
+		
+			
+			//包含 日志处理模型
+			include_once("models/Dairy.php");
+			
+			//Smarty类对象在global.php实例化过
+			global $tpl,$sys_dir_base;
+
+			//数据库配置全局参数
+			global $db_server, $db_name, $db_user, $db_pwd, $sys_charset;
+				
+			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+			//print_r($sid);
+
+			//相应分类下的日志列表
+			if( !empty($sid) || $sid === '0' ){
+			
+				//echo "test";
+				$DairyList = $Dairy->sele_dairy( "*", "dry_sid = ".$sid );
+
+			}else{
+			
+				$DairyList = $Dairy->sele_dairy( "*" );
+
+			}
+
+			//print_r($DairyList);
+			
+			//日志分类
+			$DairySort = $Dairy->sele_sort("*","dry_uid = ".$_COOKIE['user_id']);
+			
+
+
+			include_once("models/UserBase.php");
+			$UserInfo = new UserBase( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
+
+			foreach( $DairyList as $key => $value ){
+			
+				$Author = $UserInfo->seli_user( "mem_name", "mem_id = ".$value['dry_uid'] );
+				//日志作者
+				$DairyList[$key]['author'] = $Author[0]['mem_name'];
+
+				//转换日期格式
+				$DairyList[$key]["dry_pubtime"] = date( "Y/m/d G:i:s", $value["dry_pubtime"] );
+
+				//转换日期格式
+				$DairyList[$key]["dry_lmoditime"] = date( "Y/m/d G:i:s", $value["dry_lmoditime"] );
+				
+				//日志所属分类
+				$DairysSortId = $Dairy->sele_dairy("dry_sid","dry_id = ".$value['dry_id']);
+				$DairysSortId = $DairysSortId[0];
+				$DairysSort = $Dairy->sele_sort("dry_stitle","dry_sid = ".$DairysSortId['dry_sid']);
+				@$DairyList[$key]['DairysSort'] = $DairysSort[0]['dry_stitle'];
+				//日志分类id
+				$DairyList[$key]['DairysSortId'] = $DairysSortId['dry_sid'];
+				//默认分类情况
+				if( empty($DairysSort) ){
+					$DairyList[$key]['DairysSort'] = "默认分类";
+				}
+
+				//查询日志评论信息
+				$CommentInfo = $Dairy->sele_comment( "*", "drycm_dryid = ".$value['dry_id'] );
+				//评论数
+				$DairyList[$key]['CommentNum'] = count( $CommentInfo );
+
+
+				//日志简略内容
+				$DairyList[$key]['ContentBreif'] = "这是日志简略内容!";
+
+
+
+			}
+
+			//print_r($DairyList);
+
+
+			/*if( $sid === 0 ){
+				echo "默认分类";
+			}*/
+
+			$keywords = "博客,T博客,T-sys博客,个人博客,T-blog";
+			$description = "这是T-blog用户的个人博客";
+			$blogname = $Author[0]['mem_name'];
+			//print_r($blogname);
+
+			$tpl->assign( "sys_dir_base",$sys_dir_base );
+			$tpl->assign( "keywords", $keywords);
+			$tpl->assign( "description", $description);
+			$tpl->assign( "blogname", $blogname);
+			//日志分类目录
+			$tpl->assign( "DairySort",$DairySort );
+			$tpl->assign( "DairyList", $DairyList);
+			$tpl->display("blog/list.tpl");
+			
+		}
 		/*
 		*
 		*	@Description:	显示日志列表(需要修订,考虑默认日志列表和指定分类下日志列表情况)
