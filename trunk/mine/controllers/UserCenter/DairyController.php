@@ -82,10 +82,14 @@
 					
 							//调用查看日志方法(显示日志内容VIEW)
 							$this->ShowDairyContentAction( $arg_get['did'] );
-						}elseif( !empty($arg_get['sid']) || $arg_get['sid'] === '0' ){
+						}elseif( @!empty($arg_get['sid']) || @$arg_get['sid'] === '0' ){
 						
 							//调用查看日志列表方法(显示日志列表VIEW)
 							$this->ShowDairyListAction( $arg_get['sid'] );
+
+						}elseif( empty($arg_get['sid']) ){
+						
+							$this->ShowDairyListAction('');
 
 						}
 						break;
