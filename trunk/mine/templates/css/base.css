@@ -299,7 +299,7 @@ li.singin a.user {line-height:36px;}
 .main_bg .imgbox img{padding:20px;}
 .main_bg .imgbox a{display:block;}
 .main_bg .imgbox a:hover {background:none;}
-.main_bg .borderbox {background:url(/theme/images/shadow-lg.png) no-repeat right bottom;background-color:none;padding-bottom:14px;}
+.main_bg .borderbox {background:url(/t-info-together/mine/templates/images/shadow-lg.png) no-repeat right bottom;background-color:none;padding-bottom:14px;}
 
 .main_bg .intro-text {position:absolute;top:100px;left:280px;float: left;text-shadow: 0 1px 0 #FFFFFF;float:right;font-size: 33px;line-height:112%;color:#484642;background:#fff;}
 .alignr {/*background: -moz-linear-gradient(center top , #333333, #111111) repeat scroll 0 0 transparent;height: 42px; overflow: hidden;*/text-align:center; width: 100%;}
@@ -460,10 +460,10 @@ button.rust:hover {background:#AA220C;}
 a.prev {float:right;margin-right:10px;line-height:30px;color:#666;}
 
 #homelogo {position:relative;width:350px;text-align:left;padding-top:20px;margin-bottom:10px;}
-#homelogo a {background:url(/theme/images/mainlogo.png) no-repeat;color:#c6401b;height:45px;text-indent:-1000em;top:0;overflow-x:hidden;overflow-y:hidden;display:block;}
-#homelogo a span {background:url(/theme/images/slogan.jpg) no-repeat;text-indent:-1000em;display:block;width:100%;position:absolute;left:120px;font-size:20px;color:#666;text-shadow:2px 2px #fff;top:31px;line-height:140%;}
+#homelogo a {background:url(/t-info-together/mine/templates/images/mainlogo.png) no-repeat;color:#c6401b;height:45px;text-indent:-1000em;top:0;overflow-x:hidden;overflow-y:hidden;display:block;}
+#homelogo a span {background:url(/t-info-together/mine/templates/images/slogan.jpg) no-repeat;text-indent:-1000em;display:block;width:100%;position:absolute;left:120px;font-size:20px;color:#666;text-shadow:2px 2px #fff;top:31px;line-height:140%;}
 
-.main_bg .callout{background:url(/theme/images/callout-bg.png) no-repeat;padding:30px 10px 30px 40px;margin:0 auto;width:594px;position:relative;top:-10px;left:-4px;}
+.main_bg .callout{background:url(/t-info-together/mine/templates/images/callout-bg.png) no-repeat;padding:30px 10px 30px 40px;margin:0 auto;width:594px;position:relative;top:-10px;left:-4px;}
 .main_bg .callout p{line-height:30px;font-size:18px;text-align:center;margin-top:10px;margin-left:-22px;}
 .main_bg .callout p b{font-size:22px;color:#C6401B;}
 .main_bg .callout p span{font-size:18px;}

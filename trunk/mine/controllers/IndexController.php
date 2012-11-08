@@ -57,7 +57,7 @@
 			global $tpl,$sys_dir_base;
 			
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
-			$tpl->display("index2.tpl");
+			$tpl->display("index_unlogin.tpl");
 			
 
 		}
