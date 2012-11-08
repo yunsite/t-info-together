@@ -257,5 +257,92 @@
 
 			}
 
+			/*	()
+			*	@Description:	增加日志配置记录
+
+				@param
+						$conf_dryuid			配置记录的uid
+						$conf_dryname			博客名
+						$conf_dryurl			博客个性url
+						$conf_dryaboutme		“关于我”说明
+						$conf_drypersonality	“个性签名”部分
+						$conf_drymeta			博客meta
+						$conf_drydescription	博客description
+						$conf_drybriefwords		文章列表每篇文章显示概览字数(检索文章列表时，简略内容限定字数+“查看全文”)
+						$conf_drypagenum		每页显示的文章数
+
+			*
+			*
+			*/
+			public function add_dairy_config( $conf_dryuid, $conf_dryname, $conf_dryurl, $conf_dryaboutme, $conf_drypersonality, $conf_drymeta, $conf_drydescription, $conf_drybriefwords, $conf_drypagenum ){
+			
+
+				//构造 $coloumns	字段
+				$coloumns = "conf_dryuid,conf_dryname,conf_dryurl,conf_dryaboutme,conf_drypersonality,conf_drymeta,conf_drydescription,conf_drybriefwords,conf_drypagenum";
+
+				//构造 $values		值
+				$values = "'".$conf_dryuid."','".$conf_dryname."','".$conf_dryurl."','".$conf_dryaboutme."'"."','".$conf_drypersonality."'"."','".$conf_drymeta."'"."','".$conf_drydescription."'"."','".$conf_drybriefwords."'"."','".$conf_drypagenum."'";
+
+				//增加日志
+				parent::db_insert( 't_dryconfig', $coloumns, $values );
+
+
+			}
+
+			/*	()
+			*	@Description:	删除日志配置记录
+
+				@param		$uid			记录所属用户id
+			*	@Param		$
+			*
+			*
+			*/
+			public function del_dairy_config( $uid ){
+				
+				//删除日志分类
+				parent::db_delete( 't_dryconfig', "conf_dryuid = ".$uid );
+
+			}
+
+			/*	()
+			*	@Description:	修改日志配置记录
+
+				@param
+				@Param		$modify			修改的列值
+			*	@Param		$conditions		依据的条件列值
+			*
+			*
+			*/
+			public function modi_dairy_config( $modify, $conditions ){
+			
+				//修改用户信息
+				parent::db_update( 't_dryconfig', $modify, $conditions );
+
+			}
+
+			/*	()
+			*	@Description:	查询日志配置记录
+
+				@param
+
+					$columns		操作的列
+					$conditions		查询条件
+			*
+			*
+			*/
+			public function sele_dairy_config( $columns = '*', $conditions = '' ){
+				
+				/*
+				echo $conditions;
+				echo "<br/>";
+				*/
+
+				//查询用户信息
+				$ConfInfo =  parent::db_select( 't_dryconfig', $columns, $conditions );
+				
+				return $ConfInfo;
+
+			}
+
 	}
 ?>
