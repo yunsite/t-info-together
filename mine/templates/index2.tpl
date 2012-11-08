@@ -48,6 +48,10 @@
 									<div class="loginboxnew">
 										<form method="post" action="index.php?logio=1">
 											<ul class="floatul login_new_add_weibo">
+												
+												<li class="padb10">
+													<span style="color:red;"><{$error_info}></span>											
+												</li>
 
 												<li class="padb10">
 													<label class="f16_ line26">用户名</label>

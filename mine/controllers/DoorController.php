@@ -22,8 +22,16 @@
 				//可判断 传递来的信息数组$arg_post参数中 是否有已存在的Cookie,如果有的话,则不需包含文件,直接读取Cookie就行
 				include_once("models/UserBase.php");
 
-				//调用 登陆系统控制器
-				$this->login_sys( $arg_post );
+				if( empty($arg_post) ){
+				
+					$this->login_sys_view();
+
+				}else{
+				
+					//调用 登陆系统控制器
+					$this->login_sys( $arg_post );
+
+				}
 			
 			}elseif( @$arg_get["logio"] == 2 ){	//登出系统
 			
@@ -65,7 +73,7 @@
 			global $tpl;
 			
 			$tpl->assign( "error_info",$error_info );
-			$tpl->display("login.tpl");
+			$tpl->display("index2.tpl");
 
 		}
 
@@ -89,7 +97,7 @@
 			$UserBase = new UserBase( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
 			
 			//查询是否有已存在的用户
-			$UserInfo = $UserBase -> seli_user( "*", "mem_name = '".$UserInfo["username"]."'" );
+			@$UserInfo = $UserBase -> seli_user( "*", "mem_name = '".$UserInfo["username"]."'" );
 			//print_r( $UserInfo );
 			if( empty( $UserInfo ) ){
 			
@@ -211,7 +219,7 @@
 
 
 		/*	()
-		*	@Description:	注册用户
+		*	@Description:	注册用户(有bug,注册表单什么都不填,可以成功添加用户记录,虽然提示错误信息)
 			//1.检查用户名是否存在 -> 如果不存在,则添加用户并发送验证邮件
 			//2.Apache->邮件服务器
 			//3.验证成功后,跳转到登陆界面
