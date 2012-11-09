@@ -117,7 +117,7 @@
 
 										}else{//跳转到自己的博客首页
 										
-											header("Location: index.php?a=read");
+											header("Location: index.php?u=dairy&a=read");
 
 										}
 
@@ -128,7 +128,7 @@
 
 								}else{//跳转到自己的博客首页
 								
-									header("Location: index.php?a=read");
+									header("Location: index.php?u=dairy&a=read");
 
 								}
 
@@ -182,7 +182,7 @@
 
 								}else{//跳转到自己的博客首页
 										
-									header("Location: index.php?a=read");
+									header("Location: index.php?u=dairy&a=read");
 
 								}
 
