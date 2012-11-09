@@ -886,7 +886,7 @@
 			//echo "发布成功!";
 
 			//重新显示原日志
-			$this->ShowDairyContentAction( $did );
+			header("Location: index.php?u=dairy&a=read&did=".$did."#commentblock");
 
 		}
 
