@@ -47,7 +47,7 @@
 				<!-- End(文章标题) -->
 			
 				<!-- 文章说明 -->
-				<p style="font-size:12px;" class="date"><a href="#<{$dry_list.dry_uid}>"><{$dry_list.author}></a> | 发布时间: <{$dry_list.dry_pubtime}> | 最后修订: <{$dry_list.dry_lmoditime}> | <a href="#"><{$dry_list.CommentNum}>条评论</a></p>
+				<p style="font-size:12px;" class="date"><a href="#<{$dry_list.dry_uid}>"><{$dry_list.author}></a> | 发布时间: <{$dry_list.dry_pubtime}> | 最后修订: <{$dry_list.dry_lmoditime}> | <a href="index.php?u=dairy&a=read&did=<{$dry_list.dry_id}>#commentblock"><{$dry_list.CommentNum}>条评论</a></p>
 				<!-- End(文章说明) -->
 			
 				<!-- 文章主题内容 -->
