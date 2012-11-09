@@ -101,7 +101,7 @@
 				<h2 class="widgettitle">分类目录</h2>
 				<ul>
 				<{foreach from=$DairySort item=dry_sort}>
-					<li class="cat-item cat-item-10"><a title="查看 <{$dry_sort.dry_stitle}>" href="index.php?u=dairy&a=list&sid=<{$dry_sort.dry_sid}>"><{$dry_sort.dry_stitle}></a></li>
+					<li class="cat-item cat-item-10"><a title="查看 <{$dry_sort.dry_stitle}>" href="index.php?u=dairy&a=read&sid=<{$dry_sort.dry_sid}>"><{$dry_sort.dry_stitle}></a></li>
 				<{/foreach}>
 				</ul>
 			</li>
