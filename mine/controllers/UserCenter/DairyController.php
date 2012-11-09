@@ -96,52 +96,60 @@
 								
 							$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
 
-							if($arg_get['sid'] === '0'){
+							if($arg_get['sid'] === '0'){//sid=0
 								
-								if( !empty($arg_get['blog']) ){//a=read&sid=0&blog=abc(abc为用户名/个性url)
-								
-									include_once("models/UserBase.php");
-									$UserInfo = new UserBase( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
-			
-									$uid = $UserInfo->seli_user( "mem_id", "mem_name = ".$arg_get['blog'] );
-									if( !empty($uid) ){//blog字段的值为用户名
+									if( !empty($arg_get['blog']) ){//a=read&sid=0&blog=abc(abc为用户名/个性url)
 									
-										$this->ShowDairyListAction( $arg_get['sid'], $uid[0]['mem_id'] );
-
-									}else{//查询配置表里是否匹配blog字段的值
-									
-										$conf_dryuid = $Dairy->sele_dairy_config( "conf_dryuid", "conf_dryurl = ".$$arg_get['blog'] );
-										if( !empty($conf_dryuid) ){//blog字段的值为用户设置的个性url
+										include_once("models/UserBase.php");
+										$UserInfo = new UserBase( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
 										
-											$this->ShowDairyListAction( $arg_get['sid'], $conf_dryuid[0]['conf_dryuid'] );
+										//echo "test<br/>";
 
-										}else{//跳转到自己的博客首页
+										$uid = $UserInfo->seli_user( "mem_id", "mem_name = '".$arg_get['blog']."'" );
+										//print_r($uid);
+										if( !empty($uid) ){//blog字段的值为用户名(Test_Ok!)
 										
-											header("Location: index.php?u=dairy&a=read");
+											$this->ShowDairyListAction( $arg_get['sid'], $uid[0]['mem_id'] );
 
-										}
+										}else{//查询配置表里是否匹配blog字段的值(UnTest...)
+										
+											$conf_dryuid = $Dairy->sele_dairy_config( "conf_dryuid", "conf_dryurl = ".$$arg_get['blog'] );
+											if( !empty($conf_dryuid) ){//blog字段的值为用户设置的个性url
+											
+												$this->ShowDairyListAction( $arg_get['sid'], $conf_dryuid[0]['conf_dryuid'] );
 
-									}
+											}else{//跳转到自己的博客首页
+											
+												header("Location: index.php?u=dairy&a=read");
+
+											}//End_if( !empty($conf_dryuid) )~else
+
+										}//End_if( !empty($uid) )~else
+										
+
+
+
+									}else{//跳转到自己的博客首页
 									
+										header("Location: index.php?u=dairy&a=read");
 
+									}//End_if( !empty($arg_get['blog']) )~else
 
-
-								}else{//跳转到自己的博客首页
-								
-									header("Location: index.php?u=dairy&a=read");
-
+							}else{//sid不为0
+							
+								//分类所属用户
+								$dry_uid = $Dairy->sele_sort("dry_uid","dry_sid = ".$arg_get['sid']);
+								if( !empty($dry_uid) ){
+									$dry_uid = $dry_uid[0]['dry_uid'];
 								}
 
-							}
+								//print_r($dry_uid);
 
-							//分类所属用户
-							$dry_uid = $Dairy->sele_sort("dry_uid","dry_sid = ".$arg_get['sid']);
-							if( !empty($dry_uid) ){
-								$dry_uid = $dry_uid[0]['dry_uid'];
-							}
+								//调用查看日志列表方法(显示日志列表VIEW)
+								$this->ShowDairyListAction( $arg_get['sid'], $dry_uid );
 
-							//调用查看日志列表方法(显示日志列表VIEW)
-							$this->ShowDairyListAction( $arg_get['sid'] );
+							}//End_if($arg_get['sid'] === '0')~else
+
 
 						}elseif( empty($arg_get['blog']) ){//无blog字段(a=read情况)
 						
@@ -150,7 +158,9 @@
 								header("Location: index.php?logio=1");
 
 							}else{//根据 $_COOKIE['user_id'],查出博客配置表里的信息,调用日志列表
-							
+								
+								//print_r($_COOKIE['user_id']);
+
 								$this->ShowDairyListAction('',$_COOKIE['user_id']);
 
 							}
@@ -562,6 +572,7 @@
 		/*
 		*
 		*	@Description:	显示日志列表(博客平台下)
+							(bug:分类下无日志的情况有bug)
 		*	@Param	$sid		日志分类id	|	空
 					$uid		用户id(需要根据它来查询用户配置信息以显示用户日志列表)
 		*	@Return
@@ -601,7 +612,7 @@
 			//print_r($DairyList);
 			
 			//日志分类
-			$DairySort = $Dairy->sele_sort("*","dry_uid = ".$_COOKIE['user_id']);
+			$DairySort = $Dairy->sele_sort("*","dry_uid = ".$uid);
 			
 
 
