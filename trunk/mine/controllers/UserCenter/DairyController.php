@@ -85,6 +85,7 @@
 
 							//调用查看日志方法(显示日志内容VIEW)
 							$this->ShowDairyContentAction( $arg_get['did'] );
+
 						}elseif( @!empty($arg_get['sid']) || @$arg_get['sid'] === '0' ){//sid
 						
 
@@ -112,14 +113,16 @@
 											$this->ShowDairyListAction( $arg_get['sid'], $uid[0]['mem_id'] );
 
 										}else{//查询配置表里是否匹配blog字段的值(UnTest...)
-										
-											$conf_dryuid = $Dairy->sele_dairy_config( "conf_dryuid", "conf_dryurl = ".$$arg_get['blog'] );
-											if( !empty($conf_dryuid) ){//blog字段的值为用户设置的个性url
 											
+											
+											$conf_dryuid = $Dairy->sele_dairy_config( "conf_dryuid", "conf_dryurl = '".$arg_get['blog']."'" );
+											if( !empty($conf_dryuid) ){//blog字段的值为用户设置的个性url
+												
+												//print_r($conf_dryuid[0]['conf_dryuid']);
 												$this->ShowDairyListAction( $arg_get['sid'], $conf_dryuid[0]['conf_dryuid'] );
 
 											}else{//跳转到自己的博客首页
-											
+
 												header("Location: index.php?u=dairy&a=read");
 
 											}//End_if( !empty($conf_dryuid) )~else
@@ -177,26 +180,31 @@
 
 							include_once("models/UserBase.php");
 							$UserInfo = new UserBase( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
-			
-							$uid = $UserInfo->seli_user( "mem_id", "mem_name = ".$arg_get['blog'] );
+										
+							//echo "test<br/>";
+
+							$uid = $UserInfo->seli_user( "mem_id", "mem_name = '".$arg_get['blog']."'" );
+							//print_r($uid);
 							if( !empty($uid) ){//blog字段的值为用户名
-									
-								$this->ShowDairyListAction( $arg_get['sid'], $uid[0]['mem_id'] );
+										
+								$this->ShowDairyListAction( "", $uid[0]['mem_id'] );
 
 							}else{//查询配置表里是否匹配blog字段的值
-									
-								$conf_dryuid = $Dairy->sele_dairy_config( "conf_dryuid", "conf_dryurl = ".$$arg_get['blog'] );
+											
+											
+								$conf_dryuid = $Dairy->sele_dairy_config( "conf_dryuid", "conf_dryurl = '".$arg_get['blog']."'" );
 								if( !empty($conf_dryuid) ){//blog字段的值为用户设置的个性url
-										
-									$this->ShowDairyListAction( $arg_get['sid'], $conf_dryuid[0]['conf_dryuid'] );
+												
+									//print_r($conf_dryuid[0]['conf_dryuid']);
+									$this->ShowDairyListAction( "", $conf_dryuid[0]['conf_dryuid'] );
 
 								}else{//跳转到自己的博客首页
-										
+
 									header("Location: index.php?u=dairy&a=read");
 
-								}
+								}//End_if( !empty($conf_dryuid) )~else
 
-							}
+							}//End_if( !empty($uid) )~else
 
 						}
 						break;
@@ -466,9 +474,6 @@
 		*
 		*/
 		private function ShowDairyContentAction( $did ){
-		
-			$keywords = "博客,T博客,T-sys博客,个人博客,T-blog";
-			$description = "这是T-blog用户的个人博客";
 
 			//echo "显示日志内容Action";
 			//包含 日志处理模型
@@ -485,24 +490,6 @@
 			
 			$Dairy = new Dairy( $db_server, $db_name, $db_user, $db_pwd, $sys_charset );
 			
-			//日志分类
-			$DairySort = $Dairy->sele_sort("*","dry_uid = ".$_COOKIE['user_id']);
-
-			//日志所属分类
-			$DairysSortId = $Dairy->sele_dairy("dry_sid","dry_id = ".$did);
-			$DairysSortId = $DairysSortId[0];
-			$DairysSort = $Dairy->sele_sort("dry_stitle","dry_sid = ".$DairysSortId['dry_sid']);
-			@$DairysSort = $DairysSort[0]['dry_stitle'];
-			//默认分类情况
-			if( empty($DairysSort) ){
-				$DairysSort = "默认分类";
-			}
-			//print_r($DairysSort);
-			
-			//print_r($DairySort);
-			//print_r($_COOKIE);
-
-
 			//日志信息
 			$DairyInfo = $Dairy->sele_dairy("*","dry_id = ".$did);
 
@@ -546,17 +533,48 @@
 				$CommentInfo[$key]['author'] = $CommAuthor[0]["mem_name"];
 
 			}
-			
 			//print_r( $CommentInfo );
+
+			//日志分类
+			$DairySort = $Dairy->sele_sort("*","dry_uid = ".$DairyInfo['dry_uid']);
+
+			//日志所属分类
+			$DairysSortId = $Dairy->sele_dairy("dry_sid","dry_id = ".$did);
+			$DairysSortId = $DairysSortId[0];
+			$DairysSort = $Dairy->sele_sort("dry_stitle","dry_sid = ".$DairysSortId['dry_sid']);
+			@$DairysSort = $DairysSort[0]['dry_stitle'];
+			//默认分类情况
+			if( empty($DairysSort) ){
+				$DairysSort = "默认分类";
+			}
+			//print_r($DairysSort);
+			
+			//print_r($DairySort);
+			//print_r($_COOKIE);
+
+
+			
+
+			//博客配置信息
+			$DairyConfig = $Dairy->sele_dairy_config( "*", "conf_dryuid = ".$DairyInfo['dry_uid'] );
+			$DairyConfig = $DairyConfig[0];
+			//print_r($DairyConfig);
+
+			if( empty( $DairyConfig['conf_dryname'] ) ){
+				$DairyConfig['conf_dryname'] = $Author;
+			}
+
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
 			$tpl->assign( "did", $did );
 			$tpl->assign( "title",$DairyInfo["dry_title"] );
-			$tpl->assign( "keywords", $keywords);
-			$tpl->assign( "description", $description);
+			$tpl->assign( "keywords", $DairyConfig['conf_drymeta']);
+			$tpl->assign( "description", $DairyConfig['conf_drydescription']);
 			$tpl->assign( "content",$DairyInfo["dry_content"] );
 			$tpl->assign( "author", $Author );
-			$tpl->assign( "blogname", $Author );
+			$tpl->assign( "blogname", $DairyConfig['conf_dryname']);
+			$tpl->assign( "personality", $DairyConfig['conf_drypersonality']);
+			$tpl->assign( "aboutme", $DairyConfig['conf_dryaboutme']);
 			$tpl->assign( "DairySort",$DairySort );
 			$tpl->assign( "DairysSort", $DairysSort);
 			$tpl->assign( "DairysSortId", $DairysSortId['dry_sid']);
@@ -663,15 +681,21 @@
 				echo "默认分类";
 			}*/
 
-			$keywords = "博客,T博客,T-sys博客,个人博客,T-blog";
-			$description = "这是T-blog用户的个人博客";
-			$blogname = $Author[0]['mem_name'];
-			//print_r($blogname);
+			//博客配置信息
+			$DairyConfig = $Dairy->sele_dairy_config( "*", "conf_dryuid = ".$uid );
+			$DairyConfig = $DairyConfig[0];
+			//print_r($DairyConfig);
+
+			if( empty( $DairyConfig['conf_dryname'] ) ){
+				$DairyConfig['conf_dryname'] = $Author[0]['mem_name'];
+			}
 
 			$tpl->assign( "sys_dir_base",$sys_dir_base );
-			$tpl->assign( "keywords", $keywords);
-			$tpl->assign( "description", $description);
-			$tpl->assign( "blogname", $blogname);
+			$tpl->assign( "keywords", $DairyConfig['conf_drymeta']);
+			$tpl->assign( "description", $DairyConfig['conf_drydescription']);
+			$tpl->assign( "blogname", $DairyConfig['conf_dryname']);
+			$tpl->assign( "personality", $DairyConfig['conf_drypersonality']);
+			$tpl->assign( "aboutme", $DairyConfig['conf_dryaboutme']);
 			//日志分类目录
 			$tpl->assign( "DairySort",$DairySort );
 			$tpl->assign( "DairyList", $DairyList);

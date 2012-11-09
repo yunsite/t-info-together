@@ -30,7 +30,7 @@
 	<!-- masthead -->
 	<div id="masthead">
 		<h1><a href="#"><{$blogname}>的博客</a></h1>
-		<h3>这家伙很懒,什么都没有留下!</h3>
+		<h3><{$personality}></h3>
 		<div class="logo"><a href="#">T-Blog</a></div>
 	</div>
 	<!-- End(masthead) -->
@@ -114,7 +114,7 @@
 			<li class="widget widget_text" id="text-2">
 				<h2 class="widgettitle">关于我</h2>
 				<div class="textwidget">
-					<p><{$blogname}>的个人博客,欢迎光临哦!</p>
+					<p><{$aboutme}></p>
 				</div>
 			</li>
 			<!-- End(一些说明) -->

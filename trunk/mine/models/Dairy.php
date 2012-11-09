@@ -266,7 +266,7 @@
 						$conf_dryurl			博客个性url
 						$conf_dryaboutme		“关于我”说明
 						$conf_drypersonality	“个性签名”部分
-						$conf_drymeta			博客meta
+						$conf_drymeta			博客keywords
 						$conf_drydescription	博客description
 						$conf_drybriefwords		文章列表每篇文章显示概览字数(检索文章列表时，简略内容限定字数+“查看全文”)
 						$conf_drypagenum		每页显示的文章数
