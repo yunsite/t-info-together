@@ -7,6 +7,26 @@
 	*/
 
 	/*
+	*	Description:	设置错误报告级别(显示错误情况)
+	*	Note:	在开发的时候启动严格模式，发现错误，写出更优质的代码
+	*
+	*
+	*/
+	error_reporting(E_ALL | E_STRICT);
+	if( !ini_get('display_errors') ){
+		ini_set('display_errors',1);
+	}
+
+	/*
+	*	Description:	检测是否开启register_long_array
+	*	Note:	为了性能考虑，建议关闭register_long_array
+	*
+	*/
+	if( ini_get('register_long_arrays') ){
+		$register_long_arrays = 1;
+	}
+
+	/*
 	*	Description:程序不使用魔术引号，这个函数是为了增加移植性，在程序中关闭魔术引号
 	*	Advise:从系统级关闭魔术引号，不要依赖程序实现的时候关闭，这样会降低程序的效率
 	*	未完成
