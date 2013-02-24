@@ -25,23 +25,6 @@
 	//包含	安全处理文件
 	include_once( $sys_dir."includes/security.php" );
 
-	
-	
-	//包含	Smarty类文件
-	include_once( $sys_dir."includes/Smarty/libs/Smarty.class.php" );
-	
-	//Smarty模板配置
-	$tpl = new Smarty();
-	$tpl->template_dir = $sys_template_dir;
-	$tpl->compile_dir = $sys_compile_dir;
-	$tpl->config_dir = $sys_config_dir;
-	$tpl->cache_dir = $sys_cache_dir;
-	$tpl->caching = $sys_caching;
-	$tpl->left_delimiter = $sys_left_delimiter;
-	$tpl->right_delimiter = $sys_right_delimiter;
-
-	
-
 	//echo "test";
 	//print_r( $tpl );
 	
