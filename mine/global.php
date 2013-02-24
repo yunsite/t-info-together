@@ -10,6 +10,11 @@
 	//针对 controllers/UserCenter/UserIndexController.php 做的包含处理
 	@include_once( "../../config.php" );
 
+	//检测程序是否已安装,没有安装的话,则跳转到安装文件
+	if( !file_exists($sys_dir."install/install.lock") ){
+		header("Location: ".$sys_dir."install/index.php");
+	}
+
 	//包含	函数库
 	include_once( $sys_dir."includes/function.php" );
 
@@ -24,18 +29,6 @@
 
 	//包含	安全处理文件
 	include_once( $sys_dir."includes/security.php" );
-
-	//echo "test";
-	//print_r( $tpl );
-	
-
-	//检测程序是否已安装,没有安装的话,则跳转到安装文件
-	if( !file_exists($sys_dir."install/install.lock") )
-		header("Location: ".$sys_dir."install/index.php");
-
-	//检测当前脚本
-
-
 
 	//获取系统基本信息
 
