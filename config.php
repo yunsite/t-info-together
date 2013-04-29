@@ -7,7 +7,11 @@
 	*/
 	
 	//系统版本号
-	$sys_version = '';
+	/**
+	* 命名规范
+	*
+	*/
+	$sys_version = '0.1';
 	
 	//用户填写的 系统主目录信息
 	$sys_dir_base = '/t-info-together/mine/';
